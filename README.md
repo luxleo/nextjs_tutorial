@@ -78,6 +78,68 @@
     <Suspense fallback = {fallback component}/>로 컴포넌트를 감싼다.
 ## streaming component group
     <Suspense fallback = {fallback component}/>로 컴포넌트 그룹을 감싼다.
+
+# chap 11 - Adding search and pagination
+## benefit of implementing search with url params
+    - Bookmarkable and Shareable URLs: Since the search parameters are in the URL, users can bookmark the current state of the application, including their search queries and filters, for future reference or sharing.
+    - Server-Side Rendering and Initial Load: URL parameters can be directly consumed on the server to render the initial state, making it easier to handle server rendering.
+    - Analytics and Tracking: Having search queries and filters directly in the URL makes it easier to track user behavior without requiring additional client-side logic.
+## search functionality of next js
+    - useSearchParams : Allows you to access the parameters of the current URL. For example, the search params for this URL /dashboard/invoices?page=1&query=pending would look like this: {page: '1', query: 'pending'}.
+    - usePathName : Lets you read the current URL's pathname. For example, for the route /dashboard/invoices, usePathname would return '/dashboard/invoices'
+    - useRouter : Enables navigation between routes within client components programmatically. There are multiple methods you can use.
+[참조 코드 line 8-19](./app/ui/search.tsx)
+##  Keeping the URL and input in sync
+    To ensure the input field is in sync with the URL and will be populated when sharing, you can pass a defaultValue to input by reading from search
+[참조 코드 line 47](./app/ui/search.tsx)
+
+## debounce || throttling
+    검색 조건이 변할때 마다 api 요청을 날리는 것은 바람직 하지 않다.
+    유저의 입력이 멈춘후 일정 시간 후에 요청을 처리하는 것을 debouncing이라 한다.
+    일정 주기로 요청 하는 것을 throttling이라고 한다.
+[참조 코드 line 11-32](./app/ui/search.tsx)
+
+# chap 12 - Mutating data
+## 'use server' directive in react
+    By adding the 'use server', you mark all the exported functions within the file as server functions. These server functions can then be imported into Client and Server components, making them extremely versatile.
+## react 'action' attribute in form
+    Good to know: In HTML, you'd pass a URL to the action attribute. This URL would be the destination where your form data should be submitted (usually an API endpoint).
+
+    However, in React, the action attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
+
+    Behind the scenes, Server Actions create a POST API endpoint. This is why you don't need to create API endpoints manually when using Server Actions.
+## object.fromEntries(object.entries())
+    Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries(). For example:
+
+    const rawFormData = Object.fromEntries(formData.entries())
+[참조 코드 line 40](./app/lib/action.ts)
+
+## Type validation and coercion with Zod
+[참조 코드 line 7-13](./app/lib/action.ts)
+
+## Revalidate and redirect - revalidatePath, redirect
+    Next.js has a Client-side Router Cache that stores the route segments in the user's browser for a time. Along with prefetching, this cache ensures that users can quickly navigate between routes while reducing the number of requests made to the server.
+
+    Since you're updating the data displayed in the invoices route, you want to clear this cache and trigger a new request to the server. You can do this with the revalidatePath function from Next.js:
+[참조 코드 line 34-35](./app/lib/action.ts)
+
+##  Pass the id to the Server Action - using js bind()
+    Instead, you can pass id to the Server Action using JS bind. This will ensure that any values passed to the Server Action are encoded.
+[참조 코드 line 21](./app/ui/invoices/edit-form.tsx)
+
+# chap - 13 Handling errors
+
+## try - catch cannot reach revalidatePath()
+    try catch로 에러 처리시 revalidatePath에 코드 영역이 닿을 수 없다.
+    뿐만 아니라 에러 발생시 에러 로그를 보여 주어야한다. => error.tsx로 해결
+## notFound() => not-found.tsx
+    not-found.tsx는 찾는 페이지가 없을 때 기본적으로 반환하는 에러페이지 이다.
+    error.tsx는 모든 에러를 검출하지만 페이지가 없거나 찾는 리소스가 없는 경우 404로 응답코드를 내려 주기 위하여 적용함.
+    
+    찾는 리소스가 없는 경우 'next/navigation' 의 notFound()함수를 호출하면 자동으로 not-found.tsx페이지로 리다이렉트 한다.
+[참조 코드 line 14](./app/dashboard/invoices/[id]/edit/page.tsx)
+
+
 # trouble shooting 
 ## [intellij] Invalid VSC root mapping 에러
     intellij에서 git init을 최초의 루트 폴더가 추후의 폴더와 다른 경우 발생하는 에러이다. 이 경우 configure 에서 
@@ -85,3 +147,5 @@
 ## node moudle : bcrypt 
     bcrypt의 경우 c 프로그램이므로 c와 버젼이 맞지 않으면 에러가 발생한다.
     따라서 순수 자바스크립트로 짜인 bcryptjs를 이용하여 해결한다.
+## docker build 
+    next.config.js에서 output을 "standalone"으로 지정해주면 더 빌드에 지장이 없다.
