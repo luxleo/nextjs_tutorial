@@ -139,6 +139,13 @@
     찾는 리소스가 없는 경우 'next/navigation' 의 notFound()함수를 호출하면 자동으로 not-found.tsx페이지로 리다이렉트 한다.
 [참조 코드 line 14](./app/dashboard/invoices/[id]/edit/page.tsx)
 
+# chap -14 Improving Accessibility && server side validation(with zod)
+    accessibility 란 유저 친화적 기능을 의미한다.
+## Form Validation with Accessibility
+    폼에 입력하지 않은 값이 있거나 유효하지 않은값을 입력한 경우 유저에게 정보를 제공한다.
+## useFormState && zod 로 타입 검사 및 accessibility 제공
+[참조 코드1](./app/ui/invoices/create-form.tsx)
+[참조 코드2 line : 14-73](./app/lib/action.ts)
 
 # trouble shooting 
 ## [intellij] Invalid VSC root mapping 에러

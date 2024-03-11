@@ -4,16 +4,37 @@ import {sql} from "@vercel/postgres";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 
+// const FormSchema = z.object({
+//     id: z.string(),
+//     customerId: z.string(),
+//     amount: z.coerce.number(),
+//     status: z.enum(['pending', 'paid']),
+//     date: z.string()
+// })
 const FormSchema = z.object({
     id: z.string(),
-    customerId: z.string(),
-    amount: z.coerce.number(),
-    status: z.enum(['pending', 'paid']),
+    customerId: z.string({
+        invalid_type_error: "Please select a customer"
+    }),
+    amount: z.coerce.number()
+        .gt(0,{message: "please enter a number greater than $0"}),
+    status: z.enum(['pending', 'paid'],{
+        invalid_type_error: "Please select a invoice status"
+    }),
     date: z.string()
 })
 
 const CreateInvoice = FormSchema.omit({id:true, date: true});
-export async function createInvoice(formData: FormData) {
+
+export type State = {
+    errors?: {
+        customerId?: string[];
+        amount?: string[];
+        status?: string[];
+    };
+    message?: string | null;
+}
+export async function createInvoice(prevState: State,formData: FormData) {
     const rawFormData = {
         customerId: formData.get("customerId"),
         amount: formData.get('amount'),
@@ -23,7 +44,23 @@ export async function createInvoice(formData: FormData) {
     //const rawFormData1 = Object.fromEntries(formData.entries());
     console.log(rawFormData);
     //console.log(rawFormData1);
-    const {customerId, amount, status} = CreateInvoice.parse(rawFormData);
+
+    //const {customerId, amount, status} = CreateInvoice.parse(rawFormData);
+
+    //safeParse() will return an object containing either a success or error field.
+    // This will help handle validation more gracefully without having put this logic inside the try/catch block.
+    const validatedFields = CreateInvoice.safeParse({
+        customerId: formData.get('customerId'),
+        amount: formData.get('amount'),
+        status: formData.get('status')
+    });
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: "Missing fields. failed to create invoice"
+        }
+    }
+    const {customerId, amount, status} = validatedFields.data;
     const amountInCents = amount * 100;
     const date = new Date().toISOString().split('T')[0];
 
