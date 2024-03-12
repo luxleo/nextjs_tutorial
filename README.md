@@ -153,6 +153,7 @@
     에러가 발생하는 부분을 none으로 바꾸어주면 해결된다.
 ## node moudle : bcrypt 
     bcrypt의 경우 c 프로그램이므로 c와 버젼이 맞지 않으면 에러가 발생한다.
-    따라서 순수 자바스크립트로 짜인 bcryptjs를 이용하여 해결한다.
+    따라서 순수 자바스크립트로 짜인 bcryptjs를 이용하여 해결한다. => import 시 from 'bcryptjs'로 해주어야한다.
+
 ## docker build 
     next.config.js에서 output을 "standalone"으로 지정해주면 더 빌드에 지장이 없다.
