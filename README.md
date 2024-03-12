@@ -147,6 +147,29 @@
 [참조 코드1](./app/ui/invoices/create-form.tsx)
 [참조 코드2 line : 14-73](./app/lib/action.ts)
 
+# chap - 15 Adding Authentication
+    NextAuth 이용하여 authentication 적용시 순서는 다음과 같다.
+    auth.config.ts (auth 정보 설정) => middleware.ts ( 설정한 auth 정보 이용) => auth.ts (bcrypt를 이용할 수 없기에 별도의 모듈을 파줌다.)
+    => client 단에서 useFormState에 dispatcher 함수를 등록하여 authentication 진행
+
+# chap -16 MetaData
+## MetaData 종류
+    title : 
+    descriptio : 서비스에 대한 간단한 설명 
+    keywords :  seo시 index 를 제공한다.
+    open graph :   (소셜 미디어 등 )공유시에 사용하는 데이터
+    favicon : 
+## Adding metadata
+    1. next js 파일시스템을 활용하는 방법 : 규칙에 맞는 파일명을 /app 에 추가 해주면 자동으로 등록함.
+    - favicon.ico, apple-icon.jpg, and icon.jpg: Utilized for favicons and icons
+    - opengraph-image.jpg and twitter-image.jpg: Employed for social media images
+    - robots.txt: Provides instructions for search engine crawling
+    - sitemap.xml: Offers information about the website's structure
+    
+    2. Metadata 자료구조 이용하기 => layout.tsx / page.tsx 에 선언 해줄수 있다.
+## template title
+    
+
 # trouble shooting 
 ## [intellij] Invalid VSC root mapping 에러
     intellij에서 git init을 최초의 루트 폴더가 추후의 폴더와 다른 경우 발생하는 에러이다. 이 경우 configure 에서 
