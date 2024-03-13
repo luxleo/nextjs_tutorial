@@ -8,7 +8,6 @@ export const metadata : Metadata = {
     default: "donghan dashboard"
   },
   description: "next js tutorial project",
-
 }
 
 export default function RootLayout({

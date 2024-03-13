@@ -180,3 +180,22 @@
 
 ## docker build 
     next.config.js에서 output을 "standalone"으로 지정해주면 더 빌드에 지장이 없다.
+
+## useFormState 콜백 함수 인자
+    (prevState : string | undefind, formData : FormData) 로 해주어야한다.
+    prevState : string | null로 하면 에러를 반환한다.
+
+## 성능 지표 - lighthouse 이용
+## unit / integration / end to end test
+    
+    
+# dev tip
+## responsive 작성 요령
+    사이즈 별로 다른 컴포넌트를 아예 작성함 
+    <div className={"md:hidden"}>
+        작은 화면
+    </div>
+    <div className={"hidden md:table"}>
+        // md 이상의 사이즈에서는 
+        큰 화면
+    </div>
