@@ -1,4 +1,6 @@
-import HomeNavBar, {PhoneNavBar} from "@/app/ui/hkdemo/navbar/navbars";
+import HomeNavBar from "@/app/ui/hkdemo/navbar/desktop_navbars";
+import {PhoneNavBar} from "@/app/ui/hkdemo/navbar/mobile_navbars";
+
 
 /* TODO:
  * 1. link 더미 데이터 만들기
@@ -14,7 +16,7 @@ import HomeNavBar, {PhoneNavBar} from "@/app/ui/hkdemo/navbar/navbars";
 
 export default function NavBar() {
     return (
-        <header>
+        <header className={'w-full fixed'}>
             {/* PC 용 드랍다운 hkdemo */}
                 <HomeNavBar/>
             {/*  모바일 용 dropdown hkdemo*/}

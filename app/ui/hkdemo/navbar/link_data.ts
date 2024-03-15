@@ -9,11 +9,11 @@ export const links : mainLink[] = [
                 href: "/hkdemo/company_info/vision"
             },
             {
-                name: "History",
+                name: "회사 연혁",
                 href: "/hkdemo/company_info/history"
             },
             {
-                name: "Peoples",
+                name: "조직도",
                 href: "/hkdemo/company_info/peoples"
             }
         ]},
@@ -30,15 +30,54 @@ export const links : mainLink[] = [
             }
         ]},
     {
-        name: "기술 / 특허",
-        sub_link:[]
+        name: "기술개발",
+        sub_link:[
+            {
+                name: "기술",
+                href: "/hkdemo/business_info/techs"
+            },
+            {
+                name: "면허",
+                href: "/hkdemo/business_info/licenses"
+            }
+        ]
     },
     {
-        name: "test1",
-        sub_link:[]
+        name: "홍보센터",
+        sub_link:[
+            {
+                name: "tests1",
+                href: "/hkdemo/business_info/tests1"
+            },
+            {
+                name: "tests12",
+                href: "/hkdemo/business_info/tests1-2"
+            }
+        ]
     },
     {
-        name: "test2",
-        sub_link:[]
+        name: "테스트2",
+        sub_link:[
+            {
+                name: "test2",
+                href: "/hkdemo/business_info/test2"
+            },
+            {
+                name: "tests2-2",
+                href: "/hkdemo/business_info/tests2-2"
+            },
+            {
+                name: "tests2-3",
+                href: "/hkdemo/business_info/tests2-3"
+            },
+            {
+                name: "tests2-4",
+                href: "/hkdemo/business_info/tests2-4"
+            },
+            {
+                name: "tests2-5",
+                href: "/hkdemo/business_info/tests2-5"
+            }
+        ]
     },
 ]

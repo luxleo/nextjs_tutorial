@@ -55,40 +55,16 @@ export default function HomeNavBar() {
 
             {/* 서브링크 랜더링*/}
             <section
-                className={`${sublinks != undefined && sublinks.length > 0 ? 'absolute left-0 top-[100%] gap-6 flex justify-center items-center py-4 w-full rounded-lg shadow-md' : ''}`}>
-                {sublinks?.map((sublink) => (
-                    <NavSubLink key={sublink.name} link={sublink}/>
-                ))}
+                className={`${sublinks != undefined && sublinks.length > 0 ? 'absolute left-0 top-[100%] w-full flex justify-center' : ''}`}>
+                <div className={'gap-10 flex justify-center items-center py-4 rounded-lg shadow-md w-[80%]'}>
+                    {sublinks?.map((sublink) => (
+                        <NavSubLink key={sublink.name} link={sublink}/>
+                    ))}
+                </div>
             </section>
         </div>
     )
 };
-
-export function PhoneNavBar() {
-    const [sublinks, setSubLinks] = useState<subLink[] | undefined>([]);
-    return (
-        <div className={"relative flex md:hidden w-full px-[5%] py-3 text-sm"}>
-            {/*left side*/}
-            <section className={`grow-[0.2] flex justify-start w-[calc(86px+3.4vw)]`}>
-                <div className={'relative w-[18vw] aspect-[2/1] flex items-center'}>
-                    <Link href={"/hkdemo"}>
-                        <Image className={'left-0'} src={"/hk_log.png"} alt={"company logo"} width={120} height={60}
-                               priority={true}/>
-                    </Link>
-                </div>
-            </section>
-            <section className={'grow'}>
-            </section>
-
-            {/* right side*/}
-            <section className={"grow-[0.2] flex items-center justify-end gap-8"}>
-                <div className={'block shadow-lg border-2 rounded-md p-1 hover:shadow-2xl'}>
-                    <RxHamburgerMenu className={'min-h-[20px] min-w-[20px] aspect-[1/1]'}/>
-                </div>
-            </section>
-        </div>
-    )
-}
 
 function NavMainLink({link}:
                          {
@@ -122,7 +98,7 @@ function NavSubLink({link}: {
     return (
         <div>
             <Link href={link.href}>
-                <p className={'text-lg font-bold text-neutral-500 hover:text-black'}>
+                <p className={'text-lg font-medium text-neutral-600 hover:text-black hover:font-semibold'}>
                    <span>
                         {link.name}
                    </span>
