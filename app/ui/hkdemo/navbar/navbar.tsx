@@ -1,5 +1,8 @@
+'use client';
+
 import HomeNavBar from "@/app/ui/hkdemo/navbar/desktop_navbars";
 import {PhoneNavBar} from "@/app/ui/hkdemo/navbar/mobile_navbars";
+import {useEffect, useState} from "react";
 
 
 /* TODO:
@@ -15,10 +18,22 @@ import {PhoneNavBar} from "@/app/ui/hkdemo/navbar/mobile_navbars";
 // TODO: 모바일 / pc 완전히 구분해서 만들기
 
 export default function NavBar() {
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const updateScroll = ()=>{
+        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', updateScroll);
+        return () => {
+            // unmount시에는 scroll제거 해주기
+            window.removeEventListener('scroll', updateScroll);
+        };
+    }, []);
     return (
         <header className={'w-full fixed'}>
             {/* PC 용 드랍다운 hkdemo */}
-                <HomeNavBar/>
+                <HomeNavBar responsiveBackground={scrollPosition >50 ? 'scroll-downed' : ''}/>
             {/*  모바일 용 dropdown hkdemo*/}
                 <PhoneNavBar/>
         </header>

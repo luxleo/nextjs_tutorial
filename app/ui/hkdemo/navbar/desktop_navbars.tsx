@@ -8,11 +8,15 @@ import {mainLink, subLink} from "@/app/ui/hkdemo/navbar/link_types";
 import {RxHamburgerMenu} from "react-icons/rx";
 import {links} from "@/app/ui/hkdemo/navbar/link_data";
 import './navbar_style.css';
+import clsx from "clsx";
 
 // INFO: 데스크탑 브라우져와 폰 브라우져를 분리한 이유 => navbar 이탈시 이벤트나 다른 이벤트들을 분리하기 위해서
 
-export default function HomeNavBar() {
+export default function HomeNavBar({responsiveBackground}:{
+    responsiveBackground: string;
+}) {
     const [sublinks, setSubLinks] = useState<subLink[] | undefined>(undefined);
+
     const targetClassName = 'active_link_hover'
     function removeUnderLines() {
         let targets = document.getElementsByClassName(targetClassName);
@@ -24,7 +28,11 @@ export default function HomeNavBar() {
         }
     }
     return (
-        <div className={"relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md"}
+        <div className={clsx("relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md",
+            {
+                'bg-white': responsiveBackground == 'scroll-downed',
+
+            })}
              onMouseLeave={() => {
                  //TODO: 현재 참조한 링크에 해당하는 서브 링크들 랜더링 종료
                  setSubLinks(undefined);
