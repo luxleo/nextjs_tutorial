@@ -45,7 +45,7 @@ function BusinessMenuWrapper() {
     return (
         <div className={'flex justify-center mt-14 md:mt-20 bg-neutral-500'}>
             {businessMenus.map((menu, idx)=>(
-                <BusinessMenu iconName={menu.iconName} menu={menu.menu}/>
+                <BusinessMenu key={idx} iconName={menu.iconName} menu={menu.menu}/>
             ))}
         </div>
     )
