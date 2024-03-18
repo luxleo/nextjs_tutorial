@@ -52,7 +52,7 @@ export default function HomeNavBar({responsiveBackground}:{
                     <div key={mainlink.name} onMouseEnter={()=>{
                         setSubLinks(mainlink.sub_link);
                     }}>
-                        <NavMainLink link={mainlink}/>
+                        <NavMainLink link={mainlink} responsiveStyle={responsiveBackground}/>
                     </div>
                 ))}
             </section>
@@ -66,7 +66,7 @@ export default function HomeNavBar({responsiveBackground}:{
                 className={`${sublinks != undefined && sublinks.length > 0 ? 'absolute left-0 top-[100%] w-full flex justify-center' : ''}`}>
                 <div className={'gap-10 flex justify-center items-center py-4 rounded-lg shadow-md w-[80%]'}>
                     {sublinks?.map((sublink) => (
-                        <NavSubLink key={sublink.name} link={sublink}/>
+                        <NavSubLink key={sublink.name} link={sublink} responsiveStyle={responsiveBackground}/>
                     ))}
                 </div>
             </section>
@@ -74,9 +74,10 @@ export default function HomeNavBar({responsiveBackground}:{
     )
 };
 
-function NavMainLink({link}:
+function NavMainLink({link,responsiveStyle}:
                          {
                              link: mainLink;
+                             responsiveStyle: string;
                          }) {
     function onMouseEnterHandler(e: any) {
         const targetClassName = 'active_link_hover'
@@ -92,7 +93,11 @@ function NavMainLink({link}:
 
     return (
         <div className={'group px-2'} onMouseEnter={onMouseEnterHandler}>
-            <p className={'relative cursor-pointer flex items-center gap-2 text-neutral-600 text-xl font-bold text-inherit hover:text-inherit'}>
+            <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl font-bold text-inherit hover:text-inherit',
+                {
+                    'text-neutral-600' : responsiveStyle=='scroll-downed',
+                    'text-white' : responsiveStyle=='default'
+                })}>
                 <span id={`span-${link.name}`}
                       className={'link_hover'}>{link.name}</span>
             </p>
@@ -100,13 +105,18 @@ function NavMainLink({link}:
     );
 }
 
-function NavSubLink({link}: {
-    link: subLink
+function NavSubLink({link,responsiveStyle}: {
+    link: subLink;
+    responsiveStyle: string;
 }) {
     return (
         <div>
             <Link href={link.href}>
-                <p className={'text-lg font-medium text-neutral-600 hover:text-black hover:font-semibold text-inherit hover:text-inherit'}>
+                <p className={clsx('text-lg font-medium hover:text-black hover:font-semibold text-inherit hover:text-inherit',
+                    {
+                        'text-neutral-600' : responsiveStyle=='scroll-downed',
+                        'text-white' : responsiveStyle=='default'
+                    })}>
                    <span>
                         {link.name}
                    </span>
