@@ -13,17 +13,23 @@ import './navbar_style.css';
 import {IconContext} from "react-icons";
 import {links} from "@/app/ui/hkdemo/navbar/link_data";
 
-export function PhoneNavBar() {
+export function PhoneNavBar({responsiveStlye}:{
+    responsiveStlye: string
+}) {
     const [sublinks, setSubLinks] = useState<subLink[] | undefined>([]);
     const [isPopup, setIsPopUp] = useState<boolean>(false);
 
     return (
-        <div className={"relative flex md:hidden w-full max-h-[80px] h-[10vh] px-[5%] py-2 text-sm shadow-sm"}>
+        <div className={clsx("relative flex md:hidden w-full max-h-[80px] h-[10vh] px-[5%] py-2 text-sm shadow-sm",
+            {
+                'bg-white': responsiveStlye == 'scroll-downed',
+                'text-white': responsiveStlye == 'default',
+            })}>
             {/*left side*/}
-            <section className={`grow-[0.2] flex justify-start w-[calc(86px+3.4vw)]`}>
-                <div className={'relative w-[18vw] aspect-[2/1] flex items-center'}>
+            <section className={`grow-[0.2] flex justify-start w-[calc(120px+3.4vw)]`}>
+                <div className={'relative w-full aspect-[2/1] flex items-center'}>
                     <Link href={"/hkdemo"}>
-                        <Image className={'left-0'} src={"/hk_log.png"} alt={"company logo"} width={120} height={60}
+                        <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}
                                priority={true}/>
                     </Link>
                 </div>
@@ -46,7 +52,11 @@ export function PhoneNavBar() {
                     {isPopup? <IconContext.Provider value={{color:'white'}}>
                             <GrClose fill={'white'} className={'min-h-[20px] min-w-[20px] aspect-[1/1]'}/>
                         </IconContext.Provider>:
-                        <RxHamburgerMenu className={'min-h-[20px] min-w-[20px] aspect-[1/1]'}/>}
+                        <IconContext.Provider value={{color: responsiveStlye == 'default'? 'white' : 'black'}}>
+                            <RxHamburgerMenu className={'min-h-[20px] min-w-[20px] aspect-[1/1]'}/>
+                        </IconContext.Provider>
+                        }
+
                 </div>
             </section>
 

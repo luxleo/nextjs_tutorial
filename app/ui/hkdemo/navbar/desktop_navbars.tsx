@@ -16,8 +16,8 @@ export default function HomeNavBar({responsiveBackground}:{
     responsiveBackground: string;
 }) {
     const [sublinks, setSubLinks] = useState<subLink[] | undefined>(undefined);
+    const targetClassName = 'active_link_hover';
 
-    const targetClassName = 'active_link_hover'
     function removeUnderLines() {
         let targets = document.getElementsByClassName(targetClassName);
         let size = targets.length;
@@ -31,7 +31,7 @@ export default function HomeNavBar({responsiveBackground}:{
         <div className={clsx("relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
-
+                'text-white': responsiveBackground == 'default',
             })}
              onMouseLeave={() => {
                  //TODO: 현재 참조한 링크에 해당하는 서브 링크들 랜더링 종료
@@ -39,10 +39,10 @@ export default function HomeNavBar({responsiveBackground}:{
                  removeUnderLines();
              }}>
             {/*left side*/}
-            <section className={`grow-[0.2] flex basis-0 justify-start w-[calc(86px+3.4vw)]`}>
-                <div className={'relative md:w-[120px] w-[18vw] aspect-[2/1] flex items-center'}>
+            <section className={`grow-[0.2] flex basis-0 justify-start w-[calc(150px+3.4vw)]`}>
+                <div className={'relative md:w-full w-[18vw] flex items-center'}>
                     <Link href={"/hkdemo"}>
-                        <Image className={'left-0'} src={"/hk_log.png"} alt={"company logo"} width={120} height={60}
+                        <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}
                                priority={true}/>
                     </Link>
                 </div>
@@ -92,7 +92,7 @@ function NavMainLink({link}:
 
     return (
         <div className={'group px-2'} onMouseEnter={onMouseEnterHandler}>
-            <p className={'relative cursor-pointer flex items-center gap-2 text-neutral-600 group-hover:text-black text-xl font-bold'}>
+            <p className={'relative cursor-pointer flex items-center gap-2 text-neutral-600 text-xl font-bold text-inherit hover:text-inherit'}>
                 <span id={`span-${link.name}`}
                       className={'link_hover'}>{link.name}</span>
             </p>
@@ -106,7 +106,7 @@ function NavSubLink({link}: {
     return (
         <div>
             <Link href={link.href}>
-                <p className={'text-lg font-medium text-neutral-600 hover:text-black hover:font-semibold'}>
+                <p className={'text-lg font-medium text-neutral-600 hover:text-black hover:font-semibold text-inherit hover:text-inherit'}>
                    <span>
                         {link.name}
                    </span>

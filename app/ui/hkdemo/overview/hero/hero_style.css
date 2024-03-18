@@ -1,0 +1,27 @@
+.activate{
+    animation: fadeIn 3s forwards;
+}
+
+.bounce-icon{
+    animation: bounce 1s infinite;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 80%;
+        transform: scale(1.05);
+    }
+
+    100%{
+        opacity: 100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+
+    50%{
+        transform: translateY(-30%);
+    }
+
+}
