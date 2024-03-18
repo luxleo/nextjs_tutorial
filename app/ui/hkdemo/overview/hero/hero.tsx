@@ -30,6 +30,7 @@ export default function Hero() {
         });
     }
 
+    // LEARN: useEffect dependany array 비워도 가능하다.
     useEffect(()=>{
         const interval = setInterval(
             changeHeroImage, 3000
@@ -37,7 +38,7 @@ export default function Hero() {
         return ()=>{
             clearInterval(interval);
         }
-    },[])
+    })
 
     return (
         <section className={'h-screen w-full'}>
