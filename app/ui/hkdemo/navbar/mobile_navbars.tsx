@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {mainLink, subLink} from "@/app/ui/hkdemo/navbar/link_types";
 import Link from "next/link";
 import Image from "next/image";
@@ -61,12 +61,14 @@ export function PhoneNavBar({responsiveStlye}:{
             </section>
 
             {/*    side nav pop up*/}
-            {isPopup && <PopUpRootLayout/>}
+            {isPopup && <PopUpRootLayout setIsPopUp={setIsPopUp}/>}
         </div>
     );
 }
 
-function PopUpRootLayout(){
+function PopUpRootLayout({setIsPopUp}:{
+    setIsPopUp: Dispatch<SetStateAction<boolean>>;
+}){
     return (
         <section className={'absolute right-0 top-0 z-40 w-full min-h-screen backdrop-blur flex justify-end'}>
             <div id={'PopUpWrapper'}
@@ -76,7 +78,7 @@ function PopUpRootLayout(){
                 </div>
                 <div className={'max-h-[80vh] flex flex-col grow overflow-y-scroll'} >
                 {links.map((mainLink) => (
-                    <MainNavLink key={mainLink.name} mainLink={mainLink}/>
+                    <MainNavLink key={mainLink.name} mainLink={mainLink} setIsPopUp={setIsPopUp}/>
                 ))}
                 </div>
             </div>
@@ -84,8 +86,9 @@ function PopUpRootLayout(){
     );
 }
 
-function MainNavLink({mainLink}:{
+function MainNavLink({mainLink,setIsPopUp}:{
     mainLink: mainLink;
+    setIsPopUp: Dispatch<SetStateAction<boolean>>;
 }){
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -103,21 +106,34 @@ function MainNavLink({mainLink}:{
             </div>
             <ul className={'pl-6 mt-3 overflow-x-hidden'}>
             {isFocused && mainLink.sub_link?.map((subLink) => (
-                <SubNavLink key={subLink.name} subLink={subLink}/>
+                <SubNavLink key={subLink.name} subLink={subLink} mainLink={mainLink} setIsPopUp={setIsPopUp}/>
             ))}
             </ul>
         </div>
     );
 }
 
-function SubNavLink({subLink}: {
+function SubNavLink({subLink, mainLink, setIsPopUp}: {
     subLink: subLink;
+    mainLink: mainLink;
+    setIsPopUp: Dispatch<SetStateAction<boolean>>
 }) {
+
     return (
-        <li className={'text-[1rem] text-neutral-50 py-[.43rem] font-light sub_nav'}>
-            <Link href={subLink.href}>
+        <li className={'text-[1rem] text-neutral-50 py-[.43rem] font-light sub_nav'}
+            onClick={() => {
+                setIsPopUp(false);
+            }}>
+            <Link href={{
+                pathname: subLink.href,
+                query: {
+                    mainLinkName: mainLink.name,
+                    subLinkName: subLink.name
+                }
+            }}
+            >
                 {subLink.name}
             </Link>
         </li>
-    )
+    );
 }
