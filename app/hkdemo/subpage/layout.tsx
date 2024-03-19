@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import {ReactNode, Suspense} from "react";
 import PageHeader from "@/app/ui/hkdemo/navbar/pagenav/page_header";
 
 export default function Layout({children}:
@@ -8,7 +8,9 @@ export default function Layout({children}:
     return (
         <div className={'w-full min-h-screen'}>
             {/*TODO: Suspense 처리해주자*/}
-            <PageHeader/>
+            <Suspense fallback={<div>loading...</div>}>
+                <PageHeader/>
+            </Suspense>
             {children}
         </div>
     )
