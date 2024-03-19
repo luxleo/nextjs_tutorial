@@ -1,11 +1,10 @@
 'use client';
 
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {mainLink, subLink} from "@/app/ui/hkdemo/navbar/link_types";
 
-import {RxHamburgerMenu} from "react-icons/rx";
 import {links} from "@/app/ui/hkdemo/navbar/link_data";
 import './navbar_style.css';
 import clsx from "clsx";
@@ -16,6 +15,7 @@ export default function HomeNavBar({responsiveBackground}:{
     responsiveBackground: string;
 }) {
     const [sublinks, setSubLinks] = useState<subLink[] | undefined>(undefined);
+    const [mainLinkName, setMainLinkName] = useState<string>('');
     const targetClassName = 'active_link_hover';
 
     function removeUnderLines() {
@@ -36,12 +36,13 @@ export default function HomeNavBar({responsiveBackground}:{
              onMouseLeave={() => {
                  //TODO: 현재 참조한 링크에 해당하는 서브 링크들 랜더링 종료
                  setSubLinks(undefined);
+                 setMainLinkName('');
                  removeUnderLines();
              }}>
             {/*left side*/}
             <section className={`grow-[0.2] flex basis-0 justify-start w-[calc(150px+3.4vw)]`}>
                 <div className={'relative md:w-full w-[18vw] flex items-center'}>
-                    <Link href={"/hkdemo"}>
+                    <Link href={"/hk"}>
                         <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}
                                priority={true}/>
                     </Link>
@@ -51,6 +52,7 @@ export default function HomeNavBar({responsiveBackground}:{
                 {links.map(mainlink => (
                     <div key={mainlink.name} onMouseEnter={()=>{
                         setSubLinks(mainlink.sub_link);
+                        setMainLinkName(mainlink.name);
                     }}>
                         <NavMainLink link={mainlink} responsiveStyle={responsiveBackground}/>
                     </div>
@@ -64,9 +66,9 @@ export default function HomeNavBar({responsiveBackground}:{
             {/* 서브링크 랜더링*/}
             <section
                 className={`${sublinks != undefined && sublinks.length > 0 ? 'absolute left-0 top-[100%] w-full flex justify-center' : ''}`}>
-                <div className={'gap-10 flex justify-center items-center py-4 rounded-lg shadow-md w-[80%]'}>
+                <div className={'gap-10 flex justify-center items-center py-4 rounded-b-md shadow-inner w-[80%] bg-white'}>
                     {sublinks?.map((sublink) => (
-                        <NavSubLink key={sublink.name} link={sublink} responsiveStyle={responsiveBackground}/>
+                        <NavSubLink key={sublink.name} link={sublink} mainLinkName={mainLinkName}/>
                     ))}
                 </div>
             </section>
@@ -105,18 +107,21 @@ function NavMainLink({link,responsiveStyle}:
     );
 }
 
-function NavSubLink({link,responsiveStyle}: {
+//LEARN: 링크로 연결된 컴포넌트에 동적 랜더링을 위해서 searchParam을 이용한다.
+function NavSubLink({link,mainLinkName}: {
     link: subLink;
-    responsiveStyle: string;
+    mainLinkName: string
 }) {
     return (
         <div>
-            <Link href={link.href}>
-                <p className={clsx('text-lg font-medium hover:text-black hover:font-semibold text-inherit hover:text-inherit',
-                    {
-                        'text-neutral-600' : responsiveStyle=='scroll-downed',
-                        'text-white' : responsiveStyle=='default'
-                    })}>
+            <Link href={{
+                pathname: link.href,
+                query: {
+                    mainLinkName: mainLinkName,
+                    subLinkName: link.name
+                }
+            }}>
+                <p className={'text-lg font-medium hover:text-black hover:font-semibold text-neutral-600'}>
                    <span>
                         {link.name}
                    </span>

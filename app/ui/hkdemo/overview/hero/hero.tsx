@@ -9,7 +9,6 @@ import { BsArrowDown } from "react-icons/bs";
 import './hero_style.css';
 import {HeroTextContainerProp} from "@/app/ui/hkdemo/overview/hero/definitions";
 import {IconContext} from "react-icons";
-import {white} from "next/dist/lib/picocolors";
 
 const heroImageUrlPrefix = '/hkdemo/hero_images/';
 const heroImageUrls = ['city1.jpg', 'road1.jpg', 'water1.jpg'];
@@ -18,6 +17,7 @@ const heroImageUrls = ['city1.jpg', 'road1.jpg', 'water1.jpg'];
 const heroActionNames = ['회사 소개','프로젝트','오시는 길'];
 
 // TODO: 이미지 전환 될때 레이아웃 남겨두면서 부드럽게 전환하가
+// TODO: 이미지 화면에 랜더링 될때 요청한다. => 최초 랜더링시 모든 이미지 요청까지 시간이 걸린다. 해결하기 => hidden으로 하지 않고 opacity를 주었음.
 export default function Hero() {
     const [heroIdx, setHeroIdx] = useState<number>(0);
 
@@ -65,7 +65,7 @@ function HeroImageContainer({idx, currentIdx, imageURL}:
                       objectFit: 'cover'
                   }}
                   className={clsx('absolute top-0 left-0 -z-10', {
-                      'hidden': idx != currentIdx,
+                      'opacity-0': idx != currentIdx,
                       'activate': idx == currentIdx
                   })}
     />;

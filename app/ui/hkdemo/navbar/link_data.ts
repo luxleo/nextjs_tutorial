@@ -6,15 +6,15 @@ export const links : mainLink[] = [
         sub_link: [
             {
                 name: "비전",
-                href: "/hkdemo/company_info/vision"
+                href: "/hk/about-us/vision"
             },
             {
                 name: "회사 연혁",
-                href: "/hkdemo/company_info/history"
+                href: "/hk/about-us/history"
             },
             {
                 name: "조직도",
-                href: "/hkdemo/company_info/peoples"
+                href: "/hk/about-us/peoples"
             }
         ]},
     {
@@ -22,11 +22,11 @@ export const links : mainLink[] = [
         sub_link: [
             {
                 name: "사업영역",
-                href: "/hkdemo/business_info/business_domain"
+                href: "/hk/businesses/domains"
             },
             {
                 name: "프로젝트",
-                href: "/hkdemo/business_info/project"
+                href: "/hk/businesses/projects"
             }
         ]},
     {
@@ -81,3 +81,7 @@ export const links : mainLink[] = [
         ]
     },
 ]
+
+export function findMainLinkWithName(name: string) {
+    return links.filter(link => link.name == name)[0];
+}
