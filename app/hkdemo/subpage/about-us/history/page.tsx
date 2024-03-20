@@ -13,11 +13,11 @@ export default function Page() {
     return (
         <section className={'w-full'}>
             <SectionTitle title={subLinkName as string}/>
-            <div className={'mt-20 w-full flex flex-col items-start'}>
-                <Image src={CONTENT_URL.PROJECTS} alt={'ORGANIZATION'}
-                       width={1430}
-                       height={800}
-                       className={'w-full mb-20'}
+            <div className={'mt-20 w-full flex flex-col items-center'}>
+                <Image src={CONTENT_URL.HISTORY} alt={'HISTORY'}
+                       width={957}
+                       height={816}
+                       className={'w-[80%] mb-20'}
                 />
             </div>
         </section>

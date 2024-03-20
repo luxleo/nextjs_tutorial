@@ -2,16 +2,16 @@ export default function SectionTitle({title}:{
     title: string
 }) {
     return (
-        <div className={'w-full flex items-center text-2xl md:text-3xl mb-6'}>
-            <TitleIcon/> <span className={'pl-2 text-inherit font-bold'}>{title}</span>
-        </div>
+        <h1 className={'w-full flex items-center text-xl md:text-3xl mb-6 pt-10 sm:pt-20'}>
+            <TitleIcon/> <span className={'pl-2 text-inherit font-medium'}>{title}</span>
+        </h1>
     )
 };
 
 function TitleIcon() {
     return (
-        <div className={'flex items-center justify-center bg-[#ff1919] w-6 h-6 rounded-br-lg rounded-tl-lg'}>
-            <div className={'bg-white w-4 h-4'}></div>
+        <div className={'flex items-center justify-center bg-[#ff1919] w-5 h-5 sm:w-6 sm:h-6 rounded-br-lg rounded-tl-lg'}>
+            <div className={'bg-white w-3 h-3 sm:w-4 sm:h-4 rounded-br-sm rounded-tl-sm'}></div>
         </div>
     )
 }

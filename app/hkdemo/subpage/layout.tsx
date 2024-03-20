@@ -11,7 +11,11 @@ export default function Layout({children}:
             <Suspense fallback={<div>loading...</div>}>
                 <PageHeader/>
             </Suspense>
-            {children}
+            <section className={'px-[10%] flex justify-center'}>
+                <div className={'w-[90%]'}>
+                    {children}
+                </div>
+            </section>
         </div>
     )
 }

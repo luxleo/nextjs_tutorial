@@ -20,7 +20,7 @@ export default function PageHeader(){
 
 
     return (
-        <section className={'relative w-full flex flex-col h-[300px] sm:h-[400px] lg:h-[660px]'}>
+        <section className={'relative w-full flex flex-col h-[300px] sm:h-[400px] lg:h-[550px]'}>
             <PageNavbarBackgroundImage imageURL={imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName?.toString()} subLinkName={subLinkName?.toString()} mainLink={currentLink}/>
         </section>
@@ -33,7 +33,7 @@ function PageNavbarWrapper({mainLinkName, subLinkName,mainLink}:{
     mainLink: mainLink;
 }) {
     return (
-        <div className={'w-full min-h-full flex flex-col px-[5%]'}>
+        <div className={'w-full min-h-full flex flex-col px-[10%]'}>
             {/* guide layout section */}
             <div className={'grow'}></div>
             <div className={'min-h-[30%]'}></div>
@@ -54,6 +54,8 @@ function PageNavbar({mainLink,subLinkName}:{
         <div className={'relative flex flex-col h-full items-center w-full'}>
             <div className={'text-2xl sm:text-3xl lg:text-5xl text-white'}>
                 {mainLink.name}
+
+
             </div>
             <div className={'absolute bottom-0 flex w-[90%]'}>
                 {mainLink.sub_link?.map(sublink=>(

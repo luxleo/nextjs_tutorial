@@ -14,9 +14,9 @@ export default function Page() {
         <section className={'w-full'}>
             <SectionTitle title={subLinkName as string}/>
             <div className={'mt-20 w-full flex flex-col items-start'}>
-                <Image src={CONTENT_URL.PROJECTS} alt={'ORGANIZATION'}
-                       width={1430}
-                       height={800}
+                <Image src={CONTENT_URL.ORGANIZATION} alt={'ORGANIZATION'}
+                       width={693}
+                       height={358}
                        className={'w-full mb-20'}
                 />
             </div>

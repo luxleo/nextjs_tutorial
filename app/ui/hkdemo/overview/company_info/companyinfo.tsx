@@ -9,23 +9,28 @@ import { FaWrench } from "react-icons/fa";
 const businessMenus = [
     {
         iconName: '토목',
-        menu: '토목사업'
+        menu: '토목사업',
+        departments:['구조부','지반부','설계부','수자원부','조경부','상하수도부']
     },
     {
         iconName: '국토',
-        menu: '국토사업'
+        menu: '국토사업',
+        departments:['도시계획부','개발사업부','교통계획부']
     },
     {
         iconName: '진단',
-        menu: '진단사업'
+        menu: '진단사업',
+        departments:['안전진단부','감리사업부','계측부']
     },
     {
         iconName: '연구',
-        menu: 'R&D'
+        menu: 'R&D',
+        departments:['부설연구소']
     },
     {
         iconName: '관리',
-        menu: '건설관리'
+        menu: '건설관리',
+        departments:['건설사업관리부']
     }
 ]
 

@@ -14,10 +14,15 @@ export default function Page() {
         <section className={'w-full'}>
             <SectionTitle title={subLinkName as string}/>
             <div className={'mt-20 w-full flex flex-col items-start'}>
-                <Image src={CONTENT_URL.PROJECTS} alt={'ORGANIZATION'}
-                       width={1430}
-                       height={800}
-                       className={'w-full mb-20'}
+                <Image src={CONTENT_URL.GREETING} alt={'greeting'}
+                       width={922}
+                        height={548}
+                       className={'w-[90%]'}
+                       />
+                <Image src={CONTENT_URL.GREETING_BANNER} alt={'greeting'}
+                       width={922}
+                       height={548}
+                       className={'w-full mt-20'}
                 />
             </div>
         </section>

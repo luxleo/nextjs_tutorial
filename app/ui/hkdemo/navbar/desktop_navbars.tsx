@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {mainLink, subLink} from "@/app/ui/hkdemo/navbar/link_types";
@@ -28,11 +28,12 @@ export default function HomeNavBar({responsiveBackground}:{
         }
     }
     return (
-        <div className={clsx("relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md",
+        <div className={clsx("relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md group",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
-                'text-white': responsiveBackground == 'default',
+                'text-white bg-neutral-900 bg-opacity-10 hover:bg-white hover:bg-opacity-100': responsiveBackground == 'default'
             })}
+
              onMouseLeave={() => {
                  //TODO: 현재 참조한 링크에 해당하는 서브 링크들 랜더링 종료
                  setSubLinks(undefined);
@@ -53,7 +54,8 @@ export default function HomeNavBar({responsiveBackground}:{
                     <div key={mainlink.name} onMouseEnter={()=>{
                         setSubLinks(mainlink.sub_link);
                         setMainLinkName(mainlink.name);
-                    }}>
+                    }}
+                    >
                         <NavMainLink link={mainlink} responsiveStyle={responsiveBackground}/>
                     </div>
                 ))}
@@ -94,11 +96,11 @@ function NavMainLink({link,responsiveStyle}:
     }
 
     return (
-        <div className={'group px-2'} onMouseEnter={onMouseEnterHandler}>
+        <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
             <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl font-bold text-inherit hover:text-inherit',
                 {
                     'text-neutral-600' : responsiveStyle=='scroll-downed',
-                    'text-white' : responsiveStyle=='default'
+                    'text-white group-hover:text-black' : responsiveStyle=='default'
                 })}>
                 <span id={`span-${link.name}`}
                       className={'link_hover'}>{link.name}</span>

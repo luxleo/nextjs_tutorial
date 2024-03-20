@@ -5,16 +5,19 @@ export const links : mainLink[] = [
         name: "회사소개",
         sub_link: [
             {
-                name: "비전",
-                href: "/hk/about-us/vision"
+                name: "인사말",
+                href: "/hk/about-us/greeting"
             },
             {
-                name: "회사 연혁",
+                name: "경영이념",
+                href: "/hk/about-us/core_value"
+            },
+            {
+                name: "조직구조",
+                href: "/hk/about-us/organization"
+            },{
+                name: "연혁",
                 href: "/hk/about-us/history"
-            },
-            {
-                name: "조직도",
-                href: "/hk/about-us/peoples"
             }
         ]},
     {

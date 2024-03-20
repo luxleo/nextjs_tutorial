@@ -22,7 +22,6 @@ export default function Hero() {
     const [heroIdx, setHeroIdx] = useState<number>(0);
 
     const changeHeroImage = ()=>{
-        console.log(`hero image change with index ${heroIdx}`);
         setHeroIdx(prev => {
             if (prev == heroImageUrls.length-1)
                 return 0;
