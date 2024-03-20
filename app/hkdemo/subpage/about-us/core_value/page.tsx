@@ -16,7 +16,9 @@ export default function Page() {
                        height={548}
                        className={'w-full mb-20'}
                 />
-                <SectionTitle title={'공유가치'}/>
+                <Suspense>
+                    <SectionTitle title={'공유가치'}/>
+                </Suspense>
                 <Image src={CONTENT_URL.SHARE_VALUE} alt={'greeting'}
                        width={1210}
                        height={300}
