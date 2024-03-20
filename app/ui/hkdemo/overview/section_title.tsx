@@ -1,9 +1,17 @@
+'use client';
+import {useSearchParams} from "next/navigation";
+
 export default function SectionTitle({title}:{
-    title: string
+    title: string | null;
 }) {
+    const searchParams = useSearchParams();
+    const subLinkName = searchParams.get('subLinkName');
+
+    const displayTitle = title == null ? subLinkName?.toString() : title;
+
     return (
         <h1 className={'w-full flex items-center text-xl md:text-3xl mb-6 pt-10 sm:pt-20'}>
-            <TitleIcon/> <span className={'pl-2 text-inherit font-medium'}>{title}</span>
+            <TitleIcon/> <span className={'pl-2 text-inherit font-medium'}>{displayTitle}</span>
         </h1>
     )
 };
