@@ -54,15 +54,13 @@ function PageNavbar({mainLink,subLinkName}:{
         <div className={'relative flex flex-col h-full items-center w-full'}>
             <div className={'text-2xl sm:text-3xl lg:text-5xl text-white'}>
                 {mainLink.name}
-
-
             </div>
             <div className={'absolute bottom-0 flex w-[90%]'}>
                 {mainLink.sub_link?.map(sublink=>(
                     <div key={sublink.name} className={clsx('grow h-[3rem] text-md sm:h-[4rem] sm:text-lg lg:h-[5rem] lg:text-xl',
                         {
-                            'bg-neutral-500 bg-opacity-50 text-white' : sublink.name != subLinkName,
-                            'bg-white border-l-red-600 border-r-red-600 border-2': sublink.name == subLinkName
+                            'bg-neutral-900 bg-opacity-60 text-white' : sublink.name != subLinkName,
+                            'bg-red-700 bg-opacity-90 text-white': sublink.name == subLinkName
                         })}>
                         <Link href={{
                             pathname: sublink.href,
