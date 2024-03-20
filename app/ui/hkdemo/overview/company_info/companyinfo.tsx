@@ -5,6 +5,7 @@ import { FaBuilding } from "react-icons/fa";
 import { GiGears } from "react-icons/gi";
 import { TbReportAnalytics } from "react-icons/tb";
 import { FaWrench } from "react-icons/fa";
+import {Suspense} from "react";
 
 const businessMenus = [
     {
@@ -39,7 +40,9 @@ export default function Companyinfo({content}:{
 }){
     return (
         <div className={'mt-20 text-lg md:text-xl whitespace-pre-wrap w-full'}>
-            <SectionTitle title={'사업영역'}/>
+            <Suspense>
+                <SectionTitle title={'사업영역'}/>
+            </Suspense>
             {content}
             <BusinessMenuWrapper/>
         </div>
