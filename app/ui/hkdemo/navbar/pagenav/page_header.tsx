@@ -55,7 +55,7 @@ function PageNavbar({mainLink,subLinkName}:{
             <div className={'text-2xl sm:text-3xl lg:text-5xl text-white'}>
                 {mainLink.name}
             </div>
-            <div className={'absolute bottom-0 flex w-[90%]'}>
+            <div className={'absolute bottom-0 flex w-full sm:w-[90%]'}>
                 {mainLink.sub_link?.map(sublink=>(
                     <div key={sublink.name} className={clsx('grow h-[3rem] text-md sm:h-[4rem] sm:text-lg lg:h-[5rem] lg:text-xl',
                         {
@@ -89,6 +89,6 @@ function PageNavbarBackgroundImage({ imageURL}:
                   style={{
                       objectFit: 'cover'
                   }}
-                  className={'absolute top-0 left-0 -z-10'}
+                  className={'absolute top-0 left-0 -z-10 brightness-75'}
     />;
 }

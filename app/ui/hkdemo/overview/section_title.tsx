@@ -10,7 +10,7 @@ export default function SectionTitle({title}:{
     const displayTitle = title == null ? subLinkName?.toString() : title;
 
     return (
-        <h1 className={'w-full flex items-center text-xl md:text-3xl mb-6 pt-10 sm:pt-20'}>
+        <h1 className={'w-full flex items-center text-xl md:text-3xl sm:mb-6 pt-10 sm:pt-20'}>
             <TitleIcon/> <span className={'pl-2 text-inherit font-medium'}>{displayTitle}</span>
         </h1>
     )

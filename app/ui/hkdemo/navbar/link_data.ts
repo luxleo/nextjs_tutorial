@@ -36,12 +36,16 @@ export const links : mainLink[] = [
         name: "기술개발",
         sub_link:[
             {
-                name: "기술",
-                href: "/hkdemo/business_info/techs"
+                name: "지적재산권",
+                href: "/hk/rnd/ipr_list"
             },
             {
                 name: "면허",
-                href: "/hkdemo/business_info/licenses"
+                href: "/hk/rnd/licences"
+            },
+            {
+                name: "R&D",
+                href: "/hk/rnd/rnds"
             }
         ]
     },
@@ -49,38 +53,26 @@ export const links : mainLink[] = [
         name: "홍보센터",
         sub_link:[
             {
-                name: "tests1",
-                href: "/hkdemo/business_info/tests1"
+                name: "CI소개",
+                href: "/hk/pr_center/cis"
             },
             {
-                name: "tests12",
-                href: "/hkdemo/business_info/tests1-2"
+                name: "브로슈어",
+                href: "/hk/pr_center/brochures"
             }
         ]
     },
     {
-        name: "테스트2",
+        name: "Contact Us",
         sub_link:[
             {
-                name: "test2",
-                href: "/hkdemo/business_info/test2"
+                name: "오시는 길",
+                href: "/hk/contact/location"
             },
             {
-                name: "tests2-2",
-                href: "/hkdemo/business_info/tests2-2"
+                name: "문의메일",
+                href: "/hk/contact/mail"
             },
-            {
-                name: "tests2-3",
-                href: "/hkdemo/business_info/tests2-3"
-            },
-            {
-                name: "tests2-4",
-                href: "/hkdemo/business_info/tests2-4"
-            },
-            {
-                name: "tests2-5",
-                href: "/hkdemo/business_info/tests2-5"
-            }
         ]
     },
 ]
