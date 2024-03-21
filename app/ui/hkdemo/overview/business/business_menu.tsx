@@ -22,7 +22,7 @@ const businessMenus = [
     {
         iconName: '진단',
         menu: '진단사업',
-        departments:['안전진단부','감리사업부','계측부']
+        departments:['안전진단부','계측부']
     },
     {
         iconName: '연구',
@@ -32,7 +32,7 @@ const businessMenus = [
     {
         iconName: '관리',
         menu: '건설관리',
-        departments:['건설사업관리부']
+        departments:['감리사업부']
     }
 ]
 
