@@ -11,7 +11,7 @@ export default function Page() {
             <Suspense>
                 <SectionTitle title={null}/>
             </Suspense>
-            <div className={'sm:mt-20 w-full flex flex-col items-start'}>
+            <div className={'sm:mt-15 w-full flex flex-col items-start'}>
                 <BusinessMenuWrapper/>
                 <Image src={CONTENT_URL.DOMAINS_INFO} alt={'ORGANIZATION'}
                        width={1227}

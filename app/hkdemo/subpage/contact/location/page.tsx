@@ -46,7 +46,7 @@ export default function Page() {
             <Suspense>
                 <SectionTitle title={'오시는 길'}/>
             </Suspense>
-            <div ref={mapRef} className={'w-full h-[30vh] sm:h-[40vh]'}>
+            <div ref={mapRef} className={'w-full h-[30vh] sm:h-[50vh]'}>
 
             </div>
 

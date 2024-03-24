@@ -7,6 +7,8 @@ export const enum CONTENT_URL{
     ORGANIZATION =`${IMG_PREFIX}organization.png`,
     HISTORY =`${IMG_PREFIX}history.png`,
     PROJECTS = `${IMG_PREFIX}projects.png`,
+    PROJECTS1 = `${IMG_PREFIX}projects1.png`,
+    PROJECTS2 = `${IMG_PREFIX}projects2.png`,
     DOMAINS_DOMAINS = `${IMG_PREFIX}domains_domains.png`,
     DOMAINS_INFO = `${IMG_PREFIX}domains_info.png`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
