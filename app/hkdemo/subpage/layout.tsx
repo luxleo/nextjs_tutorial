@@ -12,7 +12,7 @@ export default function Layout({children}:
                 <PageHeader/>
             </Suspense>
             <section className={'px-[5%] sm:px-[10%] flex justify-center'}>
-                <div className={'w-[90%]'}>
+                <div className={'w-full'}>
                     {children}
                 </div>
             </section>
