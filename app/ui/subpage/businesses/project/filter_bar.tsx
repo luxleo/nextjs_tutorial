@@ -1,4 +1,5 @@
-import clsx from "clsx";
+'use client';
+
 import React, {Dispatch, SetStateAction, useState} from "react";
 
 export type business_category = {
@@ -92,6 +93,8 @@ const filter_buttons :business_category[] = [
 export default function FilterNavBar({setToggleImage}:{
     setToggleImage : Dispatch<SetStateAction<boolean>>
 }) {
+    const [categoryCheckBoxes, setCategoryCheckBoxes] = useState<string[]>([]);
+    const [domainCheckBoxes, setDomainCheckBoxes] = useState<string[]>([]);
     return (
         <div className={'w-full flex flex-col'}>
             <div className={'text-lg font-semibold text-red-600'}>
@@ -99,10 +102,14 @@ export default function FilterNavBar({setToggleImage}:{
             </div>
             {filter_buttons.map(category=>(
                 <div key={category.category_id} className={'text-md text-black'}>
-                    <CustomInput categoryId={category.category_id+''} labelHtmlFor={category.category_id+''} labelContent={category.category_name} isDomain={false} setToggleImage={setToggleImage}/>
+                    <CategoryCheckbox categoryId={category.category_id+''} labelHtmlFor={category.category_id+''} labelContent={category.category_name} setCategoryCheckBoxes={setCategoryCheckBoxes}
+                                      setDomainCheckBoxes={setDomainCheckBoxes} setToggleImage={setToggleImage}
+                                      isInclude={categoryCheckBoxes.includes(category.category_id+'')}/>
                     {category.domains.map(domain=>(
                         <div key={domain.domain_id}>
-                                 <CustomInput categoryId={domain.domain_id+''} labelHtmlFor={domain.domain_id+''} labelContent={domain.domain_name} isDomain={true} setToggleImage={setToggleImage}/>
+                                 <DomainCheckBox parentId={category.category_id+''} categoryId={`${domain.domain_id}`} labelHtmlFor={`${domain.domain_id}`} labelContent={domain.domain_name} isInclude={domainCheckBoxes.includes(domain.domain_id+'')} setToggleImage={setToggleImage}
+                                                 setCategoryCheckBoxes={setCategoryCheckBoxes}
+                                                 setDomainCheckBoxes={setDomainCheckBoxes}/>
                         </div>
                     ))}
                 </div>
@@ -111,29 +118,115 @@ export default function FilterNavBar({setToggleImage}:{
     )
 };
 
-function CustomInput({categoryId, labelHtmlFor, labelContent,isDomain,setToggleImage
-                     }:{
+function CategoryCheckbox({
+                              categoryId,
+                              labelHtmlFor,
+                              labelContent,
+                              setCategoryCheckBoxes,
+                              setDomainCheckBoxes,
+                              setToggleImage,
+                              isInclude
+                          }: {
     categoryId: string;
     labelHtmlFor: string;
     labelContent: string;
-    isDomain: boolean;
+    setCategoryCheckBoxes: Dispatch<SetStateAction<string[]>>;
+    setDomainCheckBoxes: Dispatch<SetStateAction<string[]>>;
     setToggleImage: Dispatch<SetStateAction<boolean>>;
+    isInclude: boolean;
 }) {
-    return(
+    function onChangeHandler() {
+        let flag = false;
+        setCategoryCheckBoxes(prev => {
+            const temp = [...prev];
+            if (temp.includes(categoryId)){
+                flag = true;
+                return temp.filter(el => el !== categoryId);
+            }
+
+            temp.push(categoryId);
+            return temp;
+        })
+        //LEARN: useState 안엥서 useState를 호출할 수가 없네?
+        setToggleImage(prev => !prev); //TODO: 임시 이므로 제거할것
+        setDomainCheckBoxes(prev=>{
+            const targetCategory = filter_buttons.filter(category => category.category_id + '' === categoryId)[0];
+            const temp = [...prev];
+            if (flag) {
+                targetCategory.domains.forEach(domain => {
+                    const index = temp.indexOf(domain.domain_id + '');
+                    if (index > -1) {
+                        temp.splice(index, 1);
+                    }
+                })
+                return temp;
+            }
+
+            targetCategory.domains.forEach(domain => {
+                temp.push(domain.domain_id + '');
+            });
+
+            const tempSet = new Set(temp);
+            return Array.from(tempSet);
+        })
+    }
+
+    return (
         <>
             <input type={'checkbox'}
-                   className={clsx('appearance-none w-5 h-5 bg-neutral-100 mr-2 border-0 focus:ring-0 checked:bg-red-400 checked:text-red-400',{
-                       'ml-4': isDomain,
-                   })}
+                   className={'appearance-none w-5 h-5 bg-neutral-100 mr-2 border-0 focus:ring-0 checked:bg-red-400 checked:text-red-400'}
                    id={categoryId}
-                   onChange={()=>{
-                       setToggleImage(prev => !prev);
+                   onChange={({target}) => {
+                       onChangeHandler();
                    }}
+                   checked={isInclude}
             />
-            <label htmlFor={labelHtmlFor} className={clsx('',{
-                'font-semibold text-black' : !isDomain,
-                'font-light font-neutral-400' : isDomain
-            })}>{labelContent}</label>
+            <label htmlFor={labelHtmlFor} className={'font-semibold text-black'}>{labelContent}</label>
         </>
-    )
+    );
+}
+
+
+function DomainCheckBox({parentId,categoryId, labelHtmlFor, labelContent,isInclude,setToggleImage,setCategoryCheckBoxes,setDomainCheckBoxes
+                     }:{
+    parentId: string;
+    categoryId: string;
+    labelHtmlFor: string;
+    labelContent: string;
+    isInclude: boolean;
+    setToggleImage: Dispatch<SetStateAction<boolean>>;
+    setCategoryCheckBoxes: Dispatch<SetStateAction<string[]>>;
+    setDomainCheckBoxes: Dispatch<SetStateAction<string[]>>;
+}) {
+    function onChangeHandler(target: EventTarget & HTMLInputElement) {
+        setToggleImage(prev => !prev);
+        if(!isInclude){
+            setDomainCheckBoxes(prev=>{
+                const temp = [...prev];
+                temp.push(categoryId);
+                return temp;
+            })
+            return;
+        }
+        setCategoryCheckBoxes(prev=>{
+            return [...prev].filter(el => el !== parentId)
+        })
+        setDomainCheckBoxes(prev=>{
+            return [...prev].filter(el => el !== categoryId);
+        })
+
+    }
+    return (
+        <>
+            <input type={'checkbox'}
+                   className={'appearance-none w-5 h-5 bg-neutral-100 mr-2 border-0 focus:ring-0 checked:bg-red-400 checked:text-red-400 ml-4'}
+                   id={categoryId}
+                   onChange={({target}) => {
+                       onChangeHandler(target);
+                   }}
+                   checked={isInclude}
+            />
+            <label htmlFor={labelHtmlFor} className={'font-light font-neutral-400'}>{labelContent}</label>
+        </>
+    );
 }

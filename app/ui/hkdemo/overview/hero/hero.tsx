@@ -9,12 +9,28 @@ import { BsArrowDown } from "react-icons/bs";
 import './hero_style.css';
 import {HeroTextContainerProp} from "@/app/ui/hkdemo/overview/hero/definitions";
 import {IconContext} from "react-icons";
+import Link from "next/link";
 
 const heroImageUrlPrefix = '/hkdemo/hero_images/';
 const heroImageUrls = ['city1.jpg', 'road1.jpg', 'water1.jpg'];
 
+type heroAction = {
+    actionName: string;
+    href: string;
+}
+
 //TODO: action name type 정하기
-const heroActionNames = ['회사 소개','프로젝트','오시는 길'];
+const tempHeroActions = ['회사 소개','프로젝트','오시는 길'];
+const heroActions : heroAction[] = [{
+    actionName: '회사 소개',
+    href: '/hk/about-us/greeting?mainLinkName=회사소개&subLinkName=인사말'
+},{
+    actionName:'프로젝트',
+    href: '/hk/businesses/projects?mainLinkName=사업소개&subLinkName=프로젝트'
+},{
+    actionName:'오시는 길',
+    href: '/hk/contact/location?mainLinkName=Contact+Us&subLinkName=오시는+길'
+}];
 
 // TODO: 이미지 전환 될때 레이아웃 남겨두면서 부드럽게 전환하가
 // TODO: 이미지 화면에 랜더링 될때 요청한다. => 최초 랜더링시 모든 이미지 요청까지 시간이 걸린다. 해결하기 => hidden으로 하지 않고 opacity를 주었음.
@@ -86,8 +102,8 @@ function HeroTextContainer({props}:
                     {props.subheading}
                 </h2>
                 <div className={'flex gap-3'}>
-                    {heroActionNames.map((action,idx) => (
-                        <HeroAction key={`${idx}-${action}`} actionName={action} />
+                    {heroActions.map((action,idx) => (
+                        <HeroAction key={`${idx}-${action}`} heroAction={action} />
                         ))}
                 </div>
             </div>
@@ -107,19 +123,21 @@ function HeroTextContainer({props}:
     )
 }
 
-function HeroAction({actionName}:{
-    actionName: string;
+function HeroAction({heroAction}:{
+    heroAction: heroAction;
 }){
     return (
-        <div className={'p-1 md:p-2 border-white border-[1px] flex items-center gap-1 md:gap-2'}>
+        <div className={'p-1 md:p-2 border-white border-[1px]'}>
+            <Link href={heroAction.href} className={'flex items-center gap-1 md:gap-2'}>
             <h3 className={'text-inherit text-[1rem] md:text-lg'}>
-                {actionName}
+                {heroAction.actionName}
             </h3>
             <div>
                 <IconContext.Provider value={{color:'white', size:'1rem'}}>
                     <RxExternalLink/>
                 </IconContext.Provider>
             </div>
+            </Link>
         </div>
     )
 }
