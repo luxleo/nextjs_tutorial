@@ -1,5 +1,6 @@
 import NavBar from "@/app/ui/hkdemo/navbar/navbar";
 import Script from "next/script";
+import Footer from "@/app/ui/hkdemo/footer/footer";
 
 declare global {
     interface Window {
@@ -19,6 +20,7 @@ export default function LayOut({children}:
         <div className={"w-full"}>
             <NavBar/>
             {children}
+            <Footer/>
         </div>
         </body>
         </html>
