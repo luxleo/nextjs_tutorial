@@ -80,7 +80,7 @@ export default function Page() {
             <div className={'w-full flex flex-col'}>
                 <div className={'w-full flex'}>
                     {locationData.map(locationInfo => (
-                        <div className={'grow basis-0'} onClick={() => {
+                        <div key={locationInfo.locationName} className={'grow basis-0'} onClick={() => {
                             setCurrentLocation(locationInfo);
                         }}>
                             <LocationControllerHeader locationInfo={locationInfo} currentLocation={currentLocation}/>

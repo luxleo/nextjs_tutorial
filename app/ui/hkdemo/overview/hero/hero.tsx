@@ -103,7 +103,7 @@ function HeroTextContainer({props}:
                 </h2>
                 <div className={'flex gap-3'}>
                     {heroActions.map((action,idx) => (
-                        <HeroAction key={`${idx}-${action}`} heroAction={action} />
+                        <HeroAction key={`${idx}-${action.actionName}`} heroAction={action} />
                         ))}
                 </div>
             </div>
