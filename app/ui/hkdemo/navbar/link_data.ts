@@ -40,11 +40,7 @@ export const links : mainLink[] = [
                 href: "/hk/rnd/ipr_list"
             },
             {
-                name: "면허",
-                href: "/hk/rnd/licences"
-            },
-            {
-                name: "R&D",
+                name: "연구개발",
                 href: "/hk/rnd/rnds"
             }
         ]

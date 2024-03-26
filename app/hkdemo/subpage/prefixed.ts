@@ -19,4 +19,14 @@ export const enum CONTENT_URL{
     PR_CI = `${IMG_PREFIX}cis.png`,
     CONTACT_LOCATION = `${IMG_PREFIX}location.png`,
     CONTACT_QUERY= `${IMG_PREFIX}query.png`,
+
+}
+
+const CONTENT_IMG_PREFIX = '/hkdemo/content';
+
+export const enum CONTENT_IMG_URL{
+    PATENT1 = `${CONTENT_IMG_PREFIX}/patent/patent1.png`,
+    PATENT2 = `${CONTENT_IMG_PREFIX}/patent/patent2.png`,
+    PATENT3 = `${CONTENT_IMG_PREFIX}/patent/patent3.png`,
+    PATENT4 = `${CONTENT_IMG_PREFIX}/patent/patent4.png`,
 }

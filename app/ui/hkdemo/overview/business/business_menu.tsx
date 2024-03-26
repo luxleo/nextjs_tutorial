@@ -32,7 +32,7 @@ const businessMenus = [
     {
         iconName: '관리',
         menu: '건설관리',
-        departments:['감리사업부']
+        departments:['건설사업관리부']
     }
 ]
 

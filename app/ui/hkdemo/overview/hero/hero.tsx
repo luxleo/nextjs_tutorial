@@ -12,7 +12,7 @@ import {IconContext} from "react-icons";
 import Link from "next/link";
 
 const heroImageUrlPrefix = '/hkdemo/hero_images/';
-const heroImageUrls = ['city1.jpg', 'road1.jpg', 'water1.jpg'];
+const heroImageUrls = ['water1.jpg','port2.jpg', 'road1.jpg'];
 
 type heroAction = {
     actionName: string;

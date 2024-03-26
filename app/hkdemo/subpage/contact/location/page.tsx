@@ -49,12 +49,13 @@ export default function Page() {
     },[currentLocation])
 
     return (
-        <section className={'w-full'}>
+        <section className={'w-full pb-10 sm:pb-20'}>
             <Suspense>
                 <SectionTitle title={'오시는 길'}/>
             </Suspense>
             <div className={'w-full flex flex-col'}>
-                <div className={'w-full flex'}>
+                <div className={'w-full flex justify-center'}>
+                    <div className={'w-[70%] flex'}>
                     {locationData.map(locationInfo => (
                         <div key={locationInfo.locationName} className={'grow basis-0'} onClick={() => {
                             setCurrentLocation(locationInfo);
@@ -62,6 +63,7 @@ export default function Page() {
                             <LocationControllerHeader locationInfo={locationInfo} currentLocation={currentLocation}/>
                         </div>
                     ))}
+                    </div>
                 </div>
                 <div ref={mapRef} className={'w-full h-[30vh] sm:h-[50vh]'}>
 
@@ -79,7 +81,7 @@ function LocationControllerHeader({locationInfo,currentLocation}:{
     currentLocation: locationInfo;
 }){
     return (
-        <div className={clsx('w-full flex justify-center items-center text-lg sm:text-2xl py-2 sm:py-6 text-white',{
+        <div className={clsx('w-full flex justify-center items-center text-lg sm:text-xl py-2 sm:py-4 text-white',{
             'bg-neutral-300': locationInfo.locationName !== currentLocation.locationName,
             'bg-red-500' : locationInfo.locationName === currentLocation.locationName
         })}>

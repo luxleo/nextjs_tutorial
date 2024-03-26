@@ -8,10 +8,6 @@ export default function Page() {
     return (
         <div className={"min-h-screen w-full flex flex-col justify-center items-center"}>
             <Hero/>
-            <FullContainer>
-                <Companyinfo content={companyInfoContent}/>
-            </FullContainer>
-
         </div>
     );
 };
