@@ -20,7 +20,7 @@ export default function PageHeader(){
 
 
     return (
-        <section className={'relative w-full flex flex-col h-[300px] sm:h-[400px] lg:h-[550px]'}>
+        <section className={'relative w-full flex flex-col h-[300px] sm:h-[300px] lg:h-[450px]'}>
             <PageNavbarBackgroundImage imageURL={imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName?.toString()} subLinkName={subLinkName?.toString()} mainLink={currentLink}/>
         </section>
