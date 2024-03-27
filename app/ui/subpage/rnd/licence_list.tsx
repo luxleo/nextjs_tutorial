@@ -5,17 +5,19 @@ import {Dispatch, SetStateAction, useState} from "react";
 import clsx from "clsx";
 
 const pageSize = 6;
-function getPagedLicences(pageNum: number) : LicenceInfo[] {
+function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
+    if(flag) return licences;
     return licences.slice((pageNum - 1) * pageSize, pageNum * pageSize);
 }
 export default function LicenceList() {
-    const [pagedLicences, setPagedLicences] = useState(getPagedLicences(1));
+    const flag = true;
+    const [pagedLicences, setPagedLicences] = useState(getPagedLicences(1,flag));
 
     return (
         <div className={'w-full'}>
             <div className={'w-full flex flex-col items-center'}>
                 <LicenceListContainer pagedLicences={pagedLicences}/>
-                <PaginationContainer setPagedLicences={setPagedLicences}/>
+                <PaginationContainer setPagedLicences={setPagedLicences} flag={flag}/>
             </div>
         </div>
     );
@@ -52,8 +54,9 @@ function LicenceListContainer({pagedLicences}:{
     );
 }
 
-function PaginationContainer({setPagedLicences}: {
+function PaginationContainer({setPagedLicences,flag}: {
     setPagedLicences: Dispatch<SetStateAction<LicenceInfo[]>>;
+    flag: boolean;
 }) {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const totalSize = licences.length;
@@ -62,7 +65,9 @@ function PaginationContainer({setPagedLicences}: {
     const pageArray = Array.from({length: totalPage}, (v, i) => i + 1);
 
     return (
-        <div className={'flex gap-1 mt-6 sm:hover:cursor-pointer'}>
+        <div className={clsx('flex gap-1 mt-6 sm:hover:cursor-pointer',{
+            'hidden' : flag
+        })}>
             {pageArray.map(pageNum => (
                 <div key={`${pageNum}-pg`} className={clsx('w-7 h-7  text-sm flex items-center justify-center font-light',
                     {
@@ -70,7 +75,7 @@ function PaginationContainer({setPagedLicences}: {
                         'bg-neutral-200 text-neutral-600': currentPage != pageNum
                     })}
                      onClick={()=>{
-                         setPagedLicences(getPagedLicences(pageNum));
+                         setPagedLicences(getPagedLicences(pageNum,flag));
                          setCurrentPage(pageNum);
                      }}
                 >

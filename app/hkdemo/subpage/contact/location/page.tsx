@@ -33,7 +33,7 @@ export default function Page() {
 // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
 
-            var iwContent = `<div class="whitespace-nowrap" style="padding:5px;"> 주) ${currentLocation.locationName} <br><a href="https://map.kakao.com/link/map/주) 에이치케이이앤씨,${pos.x},${pos.y}" class="mr-2" style="color:red" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/주) 에이치케이이앤씨,${pos.x},${pos.y}" style="color:red" target="_blank">길찾기</a> </div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var iwContent = `<div class="whitespace-nowrap" style="padding:15px;"> <a href="https://map.kakao.com/link/map/주) ${currentLocation.locationName},${pos.x},${pos.y}" class="ml-2" style="cursor:pointer;" target="_blank">주) ${currentLocation.locationName}</a></div>`, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 iwPosition = new window.kakao.maps.LatLng(pos.x, pos.y); //인포윈도우 표시 위치입니다
 
 // 인포윈도우를 생성합니다
@@ -49,7 +49,7 @@ export default function Page() {
     },[currentLocation])
 
     return (
-        <section className={'w-full pb-10 sm:pb-20'}>
+        <section className={'w-full pb-10 sm:pb-20 px-[5%] sm:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={'오시는 길'}/>
             </Suspense>

@@ -28,7 +28,7 @@ export default function HomeNavBar({responsiveBackground}:{
         }
     }
     return (
-        <div className={clsx("relative hidden md:flex w-full px-[10%] py-2 text-sm shadow-md group",
+        <div className={clsx("relative hidden md:flex w-full px-[10%] py-5 text-sm shadow-md group",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
                 'text-white bg-neutral-900 bg-opacity-10 hover:bg-white hover:bg-opacity-100': responsiveBackground == 'default'
@@ -97,7 +97,7 @@ function NavMainLink({link,responsiveStyle}:
 
     return (
         <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
-            <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl font-bold text-inherit hover:text-inherit',
+            <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
                 {
                     'text-neutral-600' : responsiveStyle=='scroll-downed',
                     'text-white group-hover:text-black' : responsiveStyle=='default'

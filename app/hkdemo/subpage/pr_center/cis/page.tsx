@@ -6,7 +6,7 @@ import {Suspense} from "react";
 export default function Page() {
 
     return (
-        <section className={'w-full'}>
+        <section className={'w-full px-[5%] sm:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={'CI 자료'}/>
             </Suspense>

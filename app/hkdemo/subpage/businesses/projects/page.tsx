@@ -6,7 +6,7 @@ import ProjectsContainer from "@/app/ui/subpage/businesses/project/project_conte
 export default function Page() {
 
     return (
-        <section className={'w-full'}>
+        <section className={'w-full px-[5%] sm:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={null}/>
             </Suspense>

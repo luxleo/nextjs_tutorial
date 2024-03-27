@@ -10,14 +10,14 @@ export const enum CONTENT_URL{
     PROJECTS1 = `${IMG_PREFIX}projects1.png`,
     PROJECTS2 = `${IMG_PREFIX}projects2.png`,
     DOMAINS_DOMAINS = `${IMG_PREFIX}domains_domains.png`,
+    DOMAINS_DOMAINS2 = `${IMG_PREFIX}domains_domains2.png`,
     DOMAINS_INFO = `${IMG_PREFIX}domains_info.png`,
+    DOMAINS_INFO2 = `${IMG_PREFIX}domains_info2.png`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
-    RND_LICENCES = `${IMG_PREFIX}licences.png`,
-    RND_IPRLIST = `${IMG_PREFIX}ipr_list.png`,
+    DOMAINS_PROJECTS2 = `${IMG_PREFIX}domains_projects2.png`,
     RND_RESEARCH = `${IMG_PREFIX}research.png`,
     RND_RESEARCH_ASSIGNMENT = `${IMG_PREFIX}research_assignment.png`,
     PR_CI = `${IMG_PREFIX}cis.png`,
-    CONTACT_LOCATION = `${IMG_PREFIX}location.png`,
     CONTACT_QUERY= `${IMG_PREFIX}query.png`,
 
 }

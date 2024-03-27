@@ -8,16 +8,11 @@ import LicenceList from "@/app/ui/subpage/rnd/licence_list";
 export default function Page() {
 
     return (
-        <section className={'w-full pb-20'}>
+        <section className={'w-full pb-20 px-[5%] sm:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={'특허목록'}/>
             </Suspense>
             <IPRCardContainer/>
-
-            <Suspense>
-                <SectionTitle title={'업·면허 등록 현황'}/>
-            </Suspense>
-            <LicenceList/>
         </section>
     )
 };
