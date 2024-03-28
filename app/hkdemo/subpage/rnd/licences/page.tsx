@@ -1,6 +1,6 @@
 import {Suspense} from "react";
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
-import LicenceList from "@/app/ui/subpage/rnd/licence_list";
+import LicenceList from "@/app/ui/subpage/rnd/licence/licence_list";
 
 export default function Page(){
     return (

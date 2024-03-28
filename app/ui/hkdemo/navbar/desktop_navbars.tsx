@@ -99,7 +99,7 @@ function NavMainLink({link,responsiveStyle}:
         <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
             <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
                 {
-                    'text-neutral-600' : responsiveStyle=='scroll-downed',
+                    'text-black' : responsiveStyle=='scroll-downed',
                     'text-white group-hover:text-black' : responsiveStyle=='default'
                 })}>
                 <span id={`span-${link.name}`}

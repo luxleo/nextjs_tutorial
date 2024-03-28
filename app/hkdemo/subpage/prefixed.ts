@@ -15,8 +15,6 @@ export const enum CONTENT_URL{
     DOMAINS_INFO2 = `${IMG_PREFIX}domains_info2.png`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
     DOMAINS_PROJECTS2 = `${IMG_PREFIX}domains_projects2.png`,
-    RND_RESEARCH = `${IMG_PREFIX}research.png`,
-    RND_RESEARCH_ASSIGNMENT = `${IMG_PREFIX}research_assignment.png`,
     PR_CI = `${IMG_PREFIX}cis.png`,
     CONTACT_QUERY= `${IMG_PREFIX}query.png`,
 
@@ -29,4 +27,5 @@ export const enum CONTENT_IMG_URL{
     PATENT2 = `${CONTENT_IMG_PREFIX}/patent/patent2.png`,
     PATENT3 = `${CONTENT_IMG_PREFIX}/patent/patent3.png`,
     PATENT4 = `${CONTENT_IMG_PREFIX}/patent/patent4.png`,
+    BROCHURE_COVER = `${CONTENT_IMG_PREFIX}/brochure/brochure_cover.png`,
 }

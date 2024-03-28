@@ -36,12 +36,12 @@ export const links : mainLink[] = [
         name: "기술개발",
         sub_link:[
             {
-                name: "지적재산권",
-                href: "/hk/rnd/ipr_list"
-            },
-            {
                 name: "업·면허등록 현황",
                 href: "/hk/rnd/licences"
+            },
+            {
+                name: "지적재산권",
+                href: "/hk/rnd/ipr_list"
             },
             {
                 name: "연구개발",
