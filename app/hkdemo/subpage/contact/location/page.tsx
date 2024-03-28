@@ -14,7 +14,7 @@ export default function Page() {
 
     //LEARN: 기존 카카오 api이용하다가 그냥 포스 바뀔때 마다 새롭게 렌더링하도록하였다
     useEffect(()=>{
-        window.kakao.maps.load(() => {
+        window.kakao?.maps?.load(() => {
             const pos = currentLocation.pos;
             const options = {
                 //지도를 생성할 때 필요한 기본 옵션
