@@ -13,6 +13,8 @@ export default function Page() {
     const [mapLoaded, setMapLoaded] = useState<boolean>(false);
     const [currentLocation, setCurrentLocation] = useState<locationInfo>(locationData[0]);
 
+
+    //LEARN: 최상단 레이아웃에 구현했었는데 자꾸 로드 하지 못하는 문제가 발생 => 그래서 로드시에 해결하고 플래그 신호를 주어 변경하도록 하였음.
     useEffect(() => {
         const $script = document.createElement("script");
         $script.src = '//dapi.kakao.com/v2/maps/sdk.js?appkey=5cdc9e5bc1a550b285e02c4f77d5cd5f&autoload=false&libraries=services';
@@ -92,7 +94,7 @@ function LocationControllerHeader({locationInfo,currentLocation}:{
     return (
         <div className={clsx('w-full flex justify-center items-center text-lg sm:text-xl py-2 sm:py-4 text-white',{
             'bg-neutral-300': locationInfo.locationName !== currentLocation.locationName,
-            'bg-red-500' : locationInfo.locationName === currentLocation.locationName
+            'bg-red-600' : locationInfo.locationName === currentLocation.locationName
         })}>
             {locationInfo.locationName}
         </div>
@@ -104,7 +106,7 @@ function AddressContainer({locationInfo}:{
 }) {
     return (
         <div className={'w-full flex flex-col'}>
-            <div className={'text-lg sm:text-2xl pt-2 sm:pt-4 sm:font-semibold'}>
+            <div className={'text-lg sm:text-2xl pt-10 sm:pt-20 sm:font-semibold'}>
                 주소
             </div>
             <div className={'text-xs sm:text-lg mt-2 sm:mt-4'}>

@@ -41,7 +41,7 @@ const patents : patentInfo[] = [
 export default function IPRCardContainer() {
     return (
         <div className={'w-full flex justify-center'}>
-        <div className={'w-full sm:w-[70%] flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-x-8 sm:gap-y-20'}>
+        <div className={'w-full sm:w-[70%] flex flex-col sm:grid sm:grid-cols-2 gap-2 gap-y-20 sm:gap-x-8'}>
             {patents.map((patent, idx)=>(
                 <IPRCard key={`patent-${idx}`} imgURL={patent.img_url} description={patent.description} enrollNumber={patent.enroll_number} enrollDate={patent.enroll_date}/>
             ))}
