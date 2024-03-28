@@ -10,10 +10,19 @@ import {locationData, locationInfo} from "@/app/lib/hk/data";
 
 export default function Page() {
     const mapRef = useRef<HTMLDivElement>(null);
+    const [mapLoaded, setMapLoaded] = useState<boolean>(false);
     const [currentLocation, setCurrentLocation] = useState<locationInfo>(locationData[0]);
+
+    useEffect(() => {
+        const $script = document.createElement("script");
+        $script.src = '//dapi.kakao.com/v2/maps/sdk.js?appkey=5cdc9e5bc1a550b285e02c4f77d5cd5f&autoload=false&libraries=services';
+        $script.addEventListener("load", () => setMapLoaded(true));
+        document.head.appendChild($script);
+    }, []);
 
     //LEARN: 기존 카카오 api이용하다가 그냥 포스 바뀔때 마다 새롭게 렌더링하도록하였다
     useEffect(()=>{
+        if(!mapLoaded) return;
         window.kakao?.maps?.load(() => {
             const pos = currentLocation.pos;
             const options = {
@@ -46,7 +55,7 @@ export default function Page() {
             infowindow.open(map, marker);
 
         });
-    },[currentLocation])
+    },[mapLoaded,currentLocation])
 
     return (
         <section className={'w-full pb-10 sm:pb-20 px-[5%] sm:px-[10%]'}>
