@@ -56,7 +56,7 @@ export default function Hero() {
     })
 
     return (
-        <section className={'h-screen w-full'}>
+        <section id={'index1'} className={'h-[100vh] w-full'}>
             <div className={'relative w-full h-full overflow-hidden'}>
                 {heroImageUrls.map((url,idx) => (
                     <HeroImageContainer key={idx} idx={idx} currentIdx={heroIdx} imageURL={`${heroImageUrlPrefix}${url}`}/>
@@ -108,16 +108,8 @@ function HeroTextContainer({props}:
                 </div>
             </div>
 
-            {/* footer section */}
-            <div className={'grow flex items-end justify-center'}>
-                <div className={'bounce-icon'} >
-                    <IconContext.Provider value={{color:'white', size:'3rem'}}>
-                        <BsArrowDown />
-                    </IconContext.Provider>
-                </div>
-                <div className={'text-lg'}>
-                    scroll down
-                </div>
+             {/*footer section */}
+            <div className={'grow'}>
             </div>
         </div>
     )

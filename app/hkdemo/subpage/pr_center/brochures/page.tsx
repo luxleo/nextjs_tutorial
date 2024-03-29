@@ -17,7 +17,7 @@ export default function Page() {
                     <div className={'sm:text-2xl'}>
                     HK E&C 브로슈어
                     </div>
-                    <div className={'px-2 rounded-sm py-2 bg-neutral-200 text-black text-sm font-light'}>
+                    <div className={'px-2 rounded-sm py-2 bg-neutral-200 text-black text-sm font-light hover:bg-neutral-400'}>
                         <a href={'/hkdemo/content/brochure/00_HK E&C(2023년)지명원수정230925.pdf'} download>
                             <div className={'flex items-center gap-1'}>
                                 <MdOutlineSimCardDownload/> 다운로드

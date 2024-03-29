@@ -16,6 +16,7 @@ import {useEffect, useState} from "react";
 // TODO: onMouseLeave event로 hkdemo 컴포넌트 이탈시 참조중인 메인 메뉴 초기화 하기
 // TODO: useState로 대분류 메뉴 => 소분류 메뉴 구분하기
 // TODO: 모바일 / pc 완전히 구분해서 만들기
+// TODO: zustand 등을 이용해서 스크롤 이벤트를 전역으로 관리하여 랜딩페이지에서도 가능하게 하자.
 
 export default function NavBar() {
     const [scrollPosition, setScrollPosition] = useState<number>(0);
