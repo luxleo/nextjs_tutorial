@@ -1,7 +1,5 @@
 'use client';
 import Hero from "@/app/ui/hkdemo/overview/hero/hero";
-import Companyinfo from "@/app/ui/hkdemo/overview/company_info/companyinfo";
-import FullContainer from "@/app/ui/hkdemo/container/full_container";
 import {Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState} from "react";
 import '../hk_global.css';
 import {IconContext} from "react-icons";
