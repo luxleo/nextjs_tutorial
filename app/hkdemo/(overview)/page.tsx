@@ -11,13 +11,16 @@ export default function Page() {
     // 쓰로틀링 조절 변수
     let scrollThrottler : any = null;
     const outerDivRef = useRef<HTMLDivElement | null>(null);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [globalHeight, setGlobalHeight] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
     const [isInit, setIsInit] = useState<boolean>(false);
+
 
     useEffect(() => {
         const wheelHandler = (e : WheelEvent) => {
             const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
             const DIVIDER_HEIGHT = 1;
+            setGlobalHeight(pageHeight);
             e.preventDefault();
             if(!scrollThrottler){
                 scrollThrottler = setTimeout(function () {
@@ -109,15 +112,16 @@ export default function Page() {
         };
         const outerDivRefCurrent = outerDivRef.current;
         outerDivRefCurrent?.addEventListener("wheel", wheelHandler);
-        setIsInit(true);
+        setCurrentPage(1);
+
         return () => {
             outerDivRefCurrent?.removeEventListener("wheel", wheelHandler);
         };
-    }, []);
+    }, [isInit]);
     return (
         <div id={'indexContainer'} ref={outerDivRef}
              className={"relative h-[100vh] overflow-y-scroll w-full justify-center items-center"}>
-            <Dots currentPage={currentPage} contentPointer={outerDivRef} setCurrentPage={setCurrentPage}/>
+            <Dots currentPage={currentPage} contentPointer={outerDivRef} setCurrentPage={setCurrentPage} pageHeight={globalHeight}/>
             <Hero/>
             <div className={'w-full h-[1px] bg-neutral-400'}></div>
             <div id={'index2'} className={'w-full h-[100vh] bg-neutral-400'}>
@@ -148,13 +152,13 @@ export default function Page() {
     )
 };
 
-const Dot = ({ num, currentPage,contentPointer,setCurrentPage }:{
+const Dot = ({ num, currentPage,contentPointer,setCurrentPage,pageHeight }:{
+    pageHeight: number;
     currentPage : number;
     num : number;
     contentPointer: MutableRefObject<HTMLDivElement| null>;
     setCurrentPage : Dispatch<SetStateAction<number>>;
 }) => {
-    const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
     const DIVIDER_HEIGHT = 1;
     return (
         <div
@@ -184,10 +188,11 @@ const Dot = ({ num, currentPage,contentPointer,setCurrentPage }:{
     );
 };
 
-const Dots = ({ currentPage,contentPointer, setCurrentPage }:{
+const Dots = ({ currentPage,contentPointer, setCurrentPage,pageHeight }:{
     currentPage : number;
     contentPointer: MutableRefObject<HTMLDivElement | null>;
     setCurrentPage : Dispatch<SetStateAction<number>>;
+    pageHeight: number;
 }) => {
     return (
         <div style={{ position: "fixed", top: "50%", right: 100 }} className={'z-10 p-4 hidden sm:block'}>
@@ -204,28 +209,28 @@ const Dots = ({ currentPage,contentPointer, setCurrentPage }:{
                     'text-white' : currentPage !== 1,
                     'text-red-700' : currentPage === 1,
                 })}><Dot num={1} currentPage={currentPage} contentPointer={contentPointer}
-                                             setCurrentPage={setCurrentPage}/> HK ENC
+                                             setCurrentPage={setCurrentPage} pageHeight={pageHeight}/> HK ENC
                 </div>
                 <div className={clsx('flex gap-2 text-sm',{
                     'text-white' : currentPage !== 2,
                     'text-red-700' : currentPage === 2,
                 })}>
                     <Dot num={2} currentPage={currentPage} contentPointer={contentPointer}
-                         setCurrentPage={setCurrentPage}/> BUSINESSES
+                         setCurrentPage={setCurrentPage} pageHeight={pageHeight}/> BUSINESSES
                 </div>
                 <div className={clsx('flex gap-2 text-sm',{
                     'text-white' : currentPage !== 3,
                     'text-red-700' : currentPage === 3,
                 })}>
                     <Dot num={3} currentPage={currentPage} contentPointer={contentPointer}
-                         setCurrentPage={setCurrentPage}/> R&D
+                         setCurrentPage={setCurrentPage} pageHeight={pageHeight}/> R&D
                 </div>
                 <div className={clsx('flex gap-2 text-sm',{
                     'text-white' : currentPage !== 4,
                     'text-red-700' : currentPage === 4,
                 })}>
                     <Dot num={4} currentPage={currentPage} contentPointer={contentPointer}
-                         setCurrentPage={setCurrentPage}/> PR CENTER
+                         setCurrentPage={setCurrentPage} pageHeight={pageHeight}/> PR CENTER
                 </div>
             </div>
         </div>
