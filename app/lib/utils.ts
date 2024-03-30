@@ -1,5 +1,20 @@
 import { Revenue } from './definitions';
 
+export const throttling = (throttleTimePerMs = 500) => {
+  let timer: NodeJS.Timer | null = null;
+
+  const throttleFunc = (callbackFunc: () => void) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer = null;
+      }, throttleTimePerMs);
+      callbackFunc();
+    }
+  };
+
+  return throttleFunc;
+};
+
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
     style: 'currency',

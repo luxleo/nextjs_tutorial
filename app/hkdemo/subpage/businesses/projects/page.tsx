@@ -1,6 +1,5 @@
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import {Suspense} from "react";
-import FilterNavBar from "@/app/ui/subpage/businesses/project/filter_bar";
 import ProjectsContainer from "@/app/ui/subpage/businesses/project/project_content";
 
 export default function Page() {
