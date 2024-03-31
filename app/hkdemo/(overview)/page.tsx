@@ -262,14 +262,14 @@ function SectionContainer(data : linkForLandingPage){
             </div>
             <div className={'w-full flex justify-center gap-3 mt-10 sm:mt-20'}>
                 {data.sub_link.map((item) => (
-                    <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center px-20 py-2 border-2 text-xl text-white hover:text-black hover:bg-white text-center'}>
+                    <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center border-2 text-sm sm:text-xl text-white hover:text-black hover:bg-white text-center'}>
                         <Link href={{
                             pathname: item.href,
                             query: {
                                 mainLinkName: item.mainLinkName,
                                 subLinkName: item.name
                             }
-                        }}>
+                        }} className={'w-full h-full flex justify-center items-center px-6 sm:px-20 py-2'}>
                             {item.name}
                         </Link>
                     </div>
