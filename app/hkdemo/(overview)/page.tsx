@@ -7,6 +7,10 @@ import {BsArrowDown} from "react-icons/bs";
 import clsx from "clsx";
 import {WheelEvent} from "react";
 import {throttling} from "@/app/lib/utils";
+import Image from "next/image";
+import {linkForLandingPage} from "@/app/ui/hkdemo/navbar/link_types";
+import Link from "next/link";
+import {linksForLandingPage} from "@/app/ui/hkdemo/navbar/link_data";
 
 
 export default function Page() {
@@ -130,18 +134,14 @@ export default function Page() {
             <Dots currentPage={currentPage} contentPointer={outerDivRef} setCurrentPage={setCurrentPage}
                   pageHeight={globalHeight}/>
             <Hero/>
-            <div className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
-            <div id={'index2'} className={'w-full h-[100vh] bg-neutral-400'}>
-                <SectionContainer title={'Business'}/>
-            </div>
-            <div className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
-            <div id={'index3'} className={'w-full h-[100vh] bg-neutral-500'}>
-                <SectionContainer title={'R&D'}/>
-            </div>
-            <div className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
-            <div id={'index4'} className={'w-full h-[100vh] bg-neutral-600'}>
-                <SectionContainer title={'PR CENTER'}/>
-            </div>
+            {linksForLandingPage.map(data => (
+                <>
+                    <div key={data.title} className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
+                    <div id={'index2'} className={'w-full h-[100vh]'}>
+                        <SectionContainer title={data.title} description={data.description} sub_link={data.sub_link} bg_URL={data.bg_URL}/>
+                    </div>
+                </>
+            ))}
 
             <div className={clsx('sticky hidden bottom-1 sm:flex flex-col items-center justify-end', {
                 'hidden': currentPage === 5
@@ -243,20 +243,38 @@ const Dots = ({ currentPage,contentPointer, setCurrentPage,pageHeight }:{
     );
 };
 
-function SectionContainer({title}:{
-    title:string;
-}){
+function SectionContainer(data : linkForLandingPage){
     return (
-        <div className={'w-full h-full flex flex-col justify-center items-center'}>
-            <div className={'text-3xl text-white'}>
-                {title}
+        <div className={'w-full relative h-full flex flex-col justify-center items-center'}>
+            <Image src={data.bg_URL} alt={'hero image'}
+                   fill
+                   sizes={'100vw'}
+                   style={{
+                       objectFit: 'cover'
+                   }}
+                   className={'absolute top-0 left-0 -z-10 brightness-75'}
+            />
+            <div className={'text-5xl font-semibold text-white'}>
+                {data.title}
+            </div>
+            <div className={'w-1/2 text-2xl mt-10 sm:mt-14 text-center text-white font-semibold'}>
+                {data.description}
             </div>
             <div className={'w-full flex justify-center gap-3 mt-10 sm:mt-20'}>
-                <div className={'rounded-full bg-white w-20 h-20 text-center'}>링크1</div>
-                <div className={'rounded-full bg-white w-20 h-20 text-center'}>링크2</div>
-                <div className={'rounded-full bg-white w-20 h-20 text-center'}>링크3</div>
-                <div className={'rounded-full bg-white w-20 h-20 text-center'}>링크4</div>
+                {data.sub_link.map((item) => (
+                    <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center px-20 py-2 border-2 text-xl text-white hover:text-black hover:bg-white text-center'}>
+                        <Link href={{
+                            pathname: item.href,
+                            query: {
+                                mainLinkName: item.mainLinkName,
+                                subLinkName: item.name
+                            }
+                        }}>
+                            {item.name}
+                        </Link>
+                    </div>
+                ))}
             </div>
         </div>
-    )
+    );
 }

@@ -9,3 +9,13 @@ export type subLink = {
 
 // subpage link types
 export type pageMainLink = mainLink & {imageURL: string};
+
+export type linkForLandingPage = {
+    title:
+        | 'BUSINESS'
+        | 'R&D'
+        | 'PR CENTER';
+    description: string;
+    sub_link  : (subLink & {mainLinkName: string;})[];
+    bg_URL: string;
+}
