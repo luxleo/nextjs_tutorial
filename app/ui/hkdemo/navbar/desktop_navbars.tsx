@@ -96,21 +96,37 @@ function NavMainLink({link,responsiveStyle}:
     }
 
     return (
-        <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
-            <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
-                {
-                    'text-black' : responsiveStyle=='scroll-downed',
-                    'text-white group-hover:text-black' : responsiveStyle=='default'
-                })}>
+        <>
+            {link.href === undefined ?
+                <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
+                <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
+                    {
+                        'text-black': responsiveStyle == 'scroll-downed',
+                        'text-white group-hover:text-black': responsiveStyle == 'default'
+                    })}>
                 <span id={`span-${link.name}`}
                       className={'link_hover'}>{link.name}</span>
-            </p>
-        </div>
+                </p>
+                </div> :
+                <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
+                    <Link href={link.href}>
+                        <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
+                            {
+                                'text-black': responsiveStyle == 'scroll-downed',
+                                'text-white group-hover:text-black': responsiveStyle == 'default'
+                            })}>
+                <span id={`span-${link.name}`}
+                      className={'link_hover'}>{link.name}</span>
+                        </p>
+                    </Link>
+                </div>
+            }
+        </>
     );
 }
 
 //LEARN: 링크로 연결된 컴포넌트에 동적 랜더링을 위해서 searchParam을 이용한다.
-function NavSubLink({link,mainLinkName}: {
+function NavSubLink({link, mainLinkName}: {
     link: subLink;
     mainLinkName: string
 }) {

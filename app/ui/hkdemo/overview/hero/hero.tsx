@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { RxExternalLink } from "react-icons/rx";
-import { BsArrowDown } from "react-icons/bs";
 
 import './hero_style.css';
 import {HeroTextContainerProp} from "@/app/ui/hkdemo/overview/hero/definitions";
@@ -94,38 +93,43 @@ function HeroTextContainer({props}:
             <div className={'grow'}></div>
 
             {/* text section */}
-            <div className={'grow text-4xl text-inherit flex flex-col justify-center gap-6'}>
+            <div className={'grow text-4xl font-semibold sm:font-bold text-inherit flex flex-col justify-center gap-6'}>
                 <h1 className={'text-inherit'}>
-                    {props.heading}
+                    <span className={'text-red-700'}>H</span>uman <span className={'text-red-700'}>K</span>orea
+                    Technology
                 </h1>
                 <h2 className={'text-inherit text-2xl'}>
                     {props.subheading}
                 </h2>
                 <div className={'flex gap-3'}>
-                    {heroActions.map((action,idx) => (
-                        <HeroAction key={`${idx}-${action.actionName}`} heroAction={action} />
-                        ))}
+                    {heroActions.map((action, idx) => (
+                        <HeroAction key={`${idx}-${action.actionName}`} heroAction={action}/>
+                    ))}
+                </div>
+                <div className={'w-[300px] py-3 rounded-md flex-col items-start text-sm font-light hover:border-2 hover:font-bold'}>
+                    <div>Tel) 000-0000-0000</div>
+                    <div>Email) 0000@gmail.com</div>
                 </div>
             </div>
 
-             {/*footer section */}
+            {/*footer section */}
             <div className={'grow'}>
             </div>
         </div>
     )
 }
 
-function HeroAction({heroAction}:{
+function HeroAction({heroAction}: {
     heroAction: heroAction;
-}){
+}) {
     return (
-        <div className={'p-1 md:p-2 border-white border-[1px]'}>
+        <div className={'p-1 md:p-2 border-white border-[1px] hover:bg-white hover:text-black'}>
             <Link href={heroAction.href} className={'flex items-center gap-1 md:gap-2'}>
             <h3 className={'text-inherit text-[1rem] md:text-lg'}>
                 {heroAction.actionName}
             </h3>
             <div>
-                <IconContext.Provider value={{color:'white', size:'1rem'}}>
+                <IconContext.Provider value={{ size:'1rem'}}>
                     <RxExternalLink/>
                 </IconContext.Provider>
             </div>

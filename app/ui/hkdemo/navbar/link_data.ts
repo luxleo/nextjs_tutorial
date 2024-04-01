@@ -63,17 +63,8 @@ export const links : mainLink[] = [
         ]
     },
     {
-        name: "Contact Us",
-        sub_link:[
-            {
-                name: "오시는 길",
-                href: "/hk/contact/location"
-            },
-            {
-                name: "문의메일",
-                href: "/hk/contact/mail"
-            },
-        ]
+        name: "오시는 길",
+        href: "/hk/location"
     },
 ]
 

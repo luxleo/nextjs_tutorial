@@ -175,9 +175,9 @@ const Dot = ({ num, currentPage,contentPointer,setCurrentPage,pageHeight,content
 }) => {
     const DIVIDER_HEIGHT = 1;
     return (
-        <div className={clsx('flex gap-2 text-sm', {
+        <div className={clsx('flex gap-2 text-sm cursor-pointer', {
             'text-white': currentPage !== num,
-            'text-red-700': currentPage === num,
+            'text-red-700 font-bold': currentPage === num,
         })}
              onClick={() => {
                  setCurrentPage(num);
@@ -263,7 +263,7 @@ function SectionContainer(data : linkForLandingPage){
             <div className={'text-5xl font-semibold text-white'}>
                 {data.title}
             </div>
-            <div className={'w-1/2 text-2xl mt-10 sm:mt-14 text-center text-white font-semibold'}>
+            <div className={'w-[90%] sm:w-1/2 text-xl sm:text-2xl mt-10 sm:mt-14 text-center text-white font-semibold'}>
                 {data.description}
             </div>
             <div className={'w-full flex justify-center gap-3 mt-10 sm:mt-20'}>

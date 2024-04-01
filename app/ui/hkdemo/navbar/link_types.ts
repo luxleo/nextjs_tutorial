@@ -1,6 +1,7 @@
 export type mainLink = {
     name: string;
     sub_link?: subLink[];
+    href?: string;
 }
 export type subLink = {
     name: string;
