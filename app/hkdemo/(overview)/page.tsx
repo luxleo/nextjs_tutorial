@@ -108,7 +108,7 @@ export default function Page() {
     useEffect(() => {
         function preventDefaultWheel (e : any) {
             e.preventDefault();
-            if(window.scrollY > 0){
+            if(window.scrollY === (document.body.scrollHeight - window.innerHeight)){
                 window.scrollTo({
                     top: 0,
                     left: 0,
