@@ -1,5 +1,4 @@
 import NavBar from "@/app/ui/hkdemo/navbar/navbar";
-import Script from "next/script";
 import Footer from "@/app/ui/hkdemo/footer/footer";
 
 declare global {

@@ -18,6 +18,8 @@ export default function Page() {
     const outerDivRef = useRef<HTMLDivElement | null>(null);
     const [globalHeight, setGlobalHeight] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
+    const [currentWindowBottom, setCurrentWindowBottom] = useState<number>(0);
+
 
     const wheelHandler = (e : WheelEvent<HTMLDivElement>) => {
         const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
@@ -33,7 +35,6 @@ export default function Page() {
             // 스크롤 내릴 때
             if (scrollTop >= 0 && scrollTop < pageHeight) {
                 //현재 1페이지
-                console.log("현재 2페이지, down");
                 outerDivRef.current?.scrollTo({
                     top: (pageHeight+DIVIDER_HEIGHT),
                     left: 0,
@@ -42,7 +43,6 @@ export default function Page() {
                 setCurrentPage(2);
             } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 2) {
                 //현재 2페이지
-                console.log("현재 3페이지, down");
                 outerDivRef.current?.scrollTo({
                     top: (pageHeight+DIVIDER_HEIGHT)*2,
                     left: 0,
@@ -51,7 +51,6 @@ export default function Page() {
                 setCurrentPage(3);
             } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 3) {
                 // 현재 3페이지
-                console.log("현재 4페이지, down");
                 outerDivRef.current?.scrollTo({
                     top: (pageHeight+DIVIDER_HEIGHT)*3,
                     left: 0,
@@ -60,19 +59,18 @@ export default function Page() {
                 setCurrentPage(4);
             } else {
                 // 현재 4페이지
-                console.log("현재 4페이지, deep down");
                 window.scrollTo({
                     top: document.body.scrollHeight,
                     left: 0,
                     behavior: "smooth",
                 });
                 setCurrentPage(5);
+                setCurrentWindowBottom(1);
             }
         } else {
             // 스크롤 올릴 때
             if (scrollTop >= 0 && scrollTop <= pageHeight + DIVIDER_HEIGHT) {
                 //현재 1페이지
-                console.log("현재 1페이지, up");
                 outerDivRef.current?.scrollTo({
                     top: 0,
                     left: 0,
@@ -81,7 +79,6 @@ export default function Page() {
                 setCurrentPage(1);
             } else if (scrollTop >= pageHeight && scrollTop <= (pageHeight + DIVIDER_HEIGHT) * 2) {
                 //현재 2페이지
-                console.log("현재 2페이지, up");
                 outerDivRef.current?.scrollTo({
                     top: (pageHeight + DIVIDER_HEIGHT),
                     left: 0,
@@ -90,7 +87,6 @@ export default function Page() {
                 setCurrentPage(2);
             } else if (scrollTop >= pageHeight && scrollTop <= (pageHeight + DIVIDER_HEIGHT) * 3 && window.scrollY == 0) {
                 // 현재 3페이지
-                console.log("현재 3페이지, up");
                 outerDivRef.current?.scrollTo({
                     top: (pageHeight + DIVIDER_HEIGHT) * 2,
                     left: 0,
@@ -98,7 +94,6 @@ export default function Page() {
                 });
                 setCurrentPage(3);
             } else {
-                console.log("현재 4페이지, deep up");
                 window.scrollTo({
                     top: 0,
                     left: 0,
@@ -113,20 +108,31 @@ export default function Page() {
     useEffect(() => {
         function preventDefaultWheel (e : any) {
             e.preventDefault();
+            if(window.scrollY > 0){
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                });
+                setCurrentPage(4);
+            }
         }
+
 
         setGlobalHeight(window.innerHeight);
         window.addEventListener('wheel', preventDefaultWheel, {
             passive: false,
         });
 
+
         return () => {
             window.removeEventListener('wheel',preventDefaultWheel);
         };
     }, []);
+
     return (
         <div id={'indexContainer'} ref={outerDivRef}
-             className={"relative sm:h-[100vh] overflow-y-scroll w-full justify-center items-center"}
+             className={"relative h-[100vh] overflow-y-scroll w-full justify-center items-center"}
              onWheel={(e) => {
                  throttleWheelHandler(()=>wheelHandler(e));
              }}
@@ -135,12 +141,12 @@ export default function Page() {
                   pageHeight={globalHeight}/>
             <Hero/>
             {linksForLandingPage.map(data => (
-                <>
-                    <div key={data.title} className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
+                <div key={data.title}>
+                    <div className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
                     <div id={'index2'} className={'w-full h-[100vh]'}>
                         <SectionContainer title={data.title} description={data.description} sub_link={data.sub_link} bg_URL={data.bg_URL}/>
                     </div>
-                </>
+                </div>
             ))}
 
             <div className={clsx('sticky hidden bottom-1 sm:flex flex-col items-center justify-end', {
