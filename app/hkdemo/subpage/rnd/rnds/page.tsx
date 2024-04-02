@@ -12,13 +12,13 @@ export default function Page() {
             <Suspense>
                 <SectionTitle title={'연구'}/>
             </Suspense>
-            <div className={'mt-14 w-full flex flex-col items-start'}>
+            <div className={'mt-5 sm:mt-14 w-full flex flex-col items-start'}>
                 <ResearchList/>
             </div>
             <Suspense>
                 <SectionTitle title={'연구과제'}/>
             </Suspense>
-            <div className={'mt-14 w-full flex flex-col items-start'}>
+            <div className={'mt-5 sm:mt-14 w-full flex flex-col items-start'}>
                 <ResearchProjectList/>
             </div>
         </section>

@@ -33,6 +33,26 @@ function ResearchProjectListContainer(){
                 ))}
                 </tbody>
             </table>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden mb-10'}>
+                {researchProjects.map(project => (
+                    <div key={`${project.no}-sm-licence`}
+                         className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
+                        <div className={'text-lg'}>
+                            {project.researchName}
+                        </div>
+                        <div className={'mt-2 flex flex-col gap-1'}>
+                            <div className={'text-neutral-600'}>
+                                {`발주처 ${project.ProjectOwner}`}
+                            </div>
+                            <div className={'flex text-xs gap-2 text-neutral-500'}>
+                                <div>
+                                    {project.note}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

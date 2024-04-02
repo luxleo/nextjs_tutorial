@@ -44,7 +44,6 @@ export function PhoneNavBar({responsiveStlye}:{
                     {
                         'shadow-xl' : !isPopup
                     }
-
                 ) }
                      onClick={() => {
                          setIsPopUp(!isPopup);
@@ -93,22 +92,41 @@ function MainNavLink({mainLink,setIsPopUp}:{
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     return (
-        <div className={"flex flex-col items-start justify-center pl-4 pb-3 text-neutral-50 text-[1.3rem] font-semibold"}
-        onClick={()=>{
-            setIsFocused(!isFocused);
-        }}>
-            <div className={'relative'}>
-                <span className={clsx('link_hover_mobile',{
-                    'active_link_hover' : isFocused
-                })}>
-                    {mainLink.name}
-                </span>
-            </div>
-            <ul className={'pl-6 mt-3 overflow-x-hidden'}>
-            {isFocused && mainLink.sub_link?.map((subLink) => (
-                <SubNavLink key={subLink.name} subLink={subLink} mainLink={mainLink} setIsPopUp={setIsPopUp}/>
-            ))}
-            </ul>
+        <div
+            className={"flex flex-col items-start justify-center pl-4 pb-3 text-neutral-50 text-[1.3rem] font-semibold"}
+            onClick={() => {
+                setIsFocused(!isFocused);
+            }}>
+            {mainLink.href === undefined ?
+                <>
+                    <div className={'relative'}>
+                        <span className={clsx('link_hover_mobile', {
+                            'active_link_hover': isFocused
+                        })}>
+                            {mainLink.name}
+                        </span>
+                    </div>
+                    <ul className={'pl-6 mt-3 overflow-x-hidden'}>
+                        {isFocused && mainLink.sub_link?.map((subLink) => (
+                            <SubNavLink key={subLink.name} subLink={subLink} mainLink={mainLink}
+                                        setIsPopUp={setIsPopUp}/>
+                        ))}
+                    </ul>
+                </>
+                :
+                <>
+                    <Link href={mainLink.href}>
+                        <div className={'relative'} onClick={() => setIsPopUp(false)}>
+                            <span className={clsx('link_hover_mobile', {
+                                'active_link_hover': isFocused
+                            })}>
+                                {mainLink.name}
+                            </span>
+                        </div>
+                    </Link>
+                </>
+            }
+
         </div>
     );
 }

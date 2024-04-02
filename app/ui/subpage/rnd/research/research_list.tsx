@@ -37,6 +37,29 @@ function ResearchListContainer({researches}:{
                 ))}
                 </tbody>
             </table>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden'}>
+                {researches.map(research => (
+                    <div key={`${research.no}-sm-licence`}
+                         className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
+                        <div className={'text-lg'}>
+                            {research.researchName}
+                        </div>
+                        <div className={'mt-2 flex flex-col gap-1'}>
+                            <div className={'text-neutral-600'}>
+                                {research.publishedBy}
+                            </div>
+                            <div className={'flex text-xs gap-2 text-neutral-500'}>
+                                <div>
+                                    {`${research.identificationType} | ${research.identification}`}
+                                </div>
+                                <div>
+                                    {research.enrollDate}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

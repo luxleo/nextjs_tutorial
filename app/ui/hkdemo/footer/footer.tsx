@@ -3,7 +3,7 @@ import {locationData} from "@/app/lib/hk/data";
 
 export default function Footer() {
     return (
-        <div id={'root-footer'} className={'w-full flex flex-col sm:flex-row h-[30vh] sm:h-[25vh] bg-neutral-800 items-center sm:px-[5%] sm:text-sm'}>
+        <div id={'root-footer'} className={'w-full flex flex-col sm:flex-row h-[25vh] sm:h-[15vh] bg-neutral-800 items-center sm:px-[5%] sm:text-sm'}>
             <div className={'grow order-2 sm:order-1 sm:basis-0 flex text-xs sm:text-sm flex-col text-neutral-300 sm:items-start sm:justify-start'}>
                 <div>Addr) {`${locationData[0].streetAddress} ${locationData[0].buildingInfo}`}</div>
                 <div>Tel) 000-0000-0000</div>

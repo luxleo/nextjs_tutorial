@@ -28,7 +28,7 @@ export default function HomeNavBar({responsiveBackground}:{
         }
     }
     return (
-        <div className={clsx("relative hidden md:flex w-full px-[10%] py-5 text-sm shadow-md group",
+        <div className={clsx("relative hidden sm:flex w-full px-[10%] py-5 text-sm shadow-md group",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
                 'text-white bg-neutral-900 bg-opacity-10 hover:bg-white hover:bg-opacity-100': responsiveBackground == 'default'
@@ -41,7 +41,7 @@ export default function HomeNavBar({responsiveBackground}:{
                  removeUnderLines();
              }}>
             {/*left side*/}
-            <section className={`grow-[0.2] flex basis-0 justify-start w-[calc(150px+3.4vw)]`}>
+            <section className={`sm:grow-[0.2] flex basis-0 justify-start w-[calc(150px+3.4vw)]`}>
                 <div className={'relative md:w-full w-[18vw] flex items-center'}>
                     <Link href={"/hk"}>
                         <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}

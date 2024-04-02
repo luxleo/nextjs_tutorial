@@ -18,8 +18,6 @@ export default function Page() {
     const outerDivRef = useRef<HTMLDivElement | null>(null);
     const [globalHeight, setGlobalHeight] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [currentWindowBottom, setCurrentWindowBottom] = useState<number>(0);
-
 
     const wheelHandler = (e : WheelEvent<HTMLDivElement>) => {
         const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
@@ -40,7 +38,9 @@ export default function Page() {
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('i called 1');
                 setCurrentPage(2);
+                console.log(currentPage);
             } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 2) {
                 //현재 2페이지
                 outerDivRef.current?.scrollTo({
@@ -48,7 +48,9 @@ export default function Page() {
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('i called 2');
                 setCurrentPage(3);
+                console.log(currentPage);
             } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 3) {
                 // 현재 3페이지
                 outerDivRef.current?.scrollTo({
@@ -56,17 +58,19 @@ export default function Page() {
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('i called 3');
                 setCurrentPage(4);
-            } else {
-                // 현재 4페이지
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    left: 0,
-                    behavior: "smooth",
-                });
-                setCurrentPage(5);
-                setCurrentWindowBottom(1);
-            }
+                console.log(currentPage);
+            } //else {
+            //     // 현재 4페이지
+            //     window.scrollTo({
+            //         top: document.body.scrollHeight,
+            //         left: 0,
+            //         behavior: "smooth",
+            //     });
+            //     setCurrentPage(5);
+            //     setCurrentWindowBottom(1);
+            // }
         } else {
             // 스크롤 올릴 때
             if (scrollTop >= 0 && scrollTop <= pageHeight + DIVIDER_HEIGHT) {
@@ -93,14 +97,15 @@ export default function Page() {
                     behavior: "smooth",
                 });
                 setCurrentPage(3);
-            } else {
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: "smooth",
-                });
-                setCurrentPage(4);
             }
+            // } else {
+            //     window.scrollTo({
+            //         top: 0,
+            //         left: 0,
+            //         behavior: "smooth",
+            //     });
+            //     setCurrentPage(4);
+            // }
         }
     }
     const throttleWheelHandler = useMemo(() => throttling(600), []);
@@ -108,14 +113,15 @@ export default function Page() {
     useEffect(() => {
         function preventDefaultWheel (e : any) {
             e.preventDefault();
-            if(window.scrollY === (document.body.scrollHeight - window.innerHeight)){
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: "smooth",
-                });
-                setCurrentPage(4);
-            }
+            // footer가 화면에 렌더링 되면서 필요없어졌다.
+            // if(window.scrollY === (document.body.scrollHeight - window.innerHeight)){
+            //     window.scrollTo({
+            //         top: 0,
+            //         left: 0,
+            //         behavior: "smooth",
+            //     });
+            //     setCurrentPage(4);
+            // }
         }
 
 
@@ -132,7 +138,7 @@ export default function Page() {
 
     return (
         <div id={'indexContainer'} ref={outerDivRef}
-             className={"relative h-[100vh] overflow-y-scroll w-full justify-center items-center"}
+             className={"relative h-[85vh] overflow-y-scroll w-full justify-center items-center"}
              onWheel={(e) => {
                  throttleWheelHandler(()=>wheelHandler(e));
              }}
@@ -150,7 +156,7 @@ export default function Page() {
             ))}
 
             <div className={clsx('sticky hidden bottom-1 sm:flex flex-col items-center justify-end', {
-                'hidden': currentPage === 5
+                'sm:hidden': currentPage === 4
             })}>
                 <div className={'bounce-icon'}>
                     <IconContext.Provider value={{color: 'white', size: '1.5rem'}}>
@@ -275,7 +281,7 @@ function SectionContainer(data : linkForLandingPage){
                                 mainLinkName: item.mainLinkName,
                                 subLinkName: item.name
                             }
-                        }} className={'w-full h-full flex justify-center items-center px-6 sm:px-20 py-2'}>
+                        }} className={'w-full h-full flex justify-center items-center px-5 sm:px-20 py-2'}>
                             {item.name}
                         </Link>
                     </div>

@@ -50,11 +50,35 @@ function LicenceListContainer({pagedLicences}:{
                 ))}
                 </tbody>
             </table>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden'}>
+                {pagedLicences.map(licence => (
+                    <div key={`${licence.no}-sm-licence`}
+                         className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
+                        <div className={'text-lg'}>
+                            {licence.licenceName}
+                        </div>
+                        <div className={'flex flex-col gap-1'}>
+                            <div className={'text-neutral-600'}>
+                                {licence.publishedBy}
+                            </div>
+                            <div className={'flex text-xs gap-2 text-neutral-500'}>
+                                <div>
+                                    {licence.enrollNumber}
+                                </div>
+                                <div>
+                                    {licence.enrollDate}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
         </div>
     );
 }
 
-function PaginationContainer({setPagedLicences,flag}: {
+function PaginationContainer({setPagedLicences, flag}: {
     setPagedLicences: Dispatch<SetStateAction<LicenceInfo[]>>;
     flag: boolean;
 }) {
