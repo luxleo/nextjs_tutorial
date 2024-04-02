@@ -73,6 +73,9 @@ function DomainInfoContainer({currentDepartment}:{
                        height={435}
                        className={'w-full mb-10'}
                 />
+            <div className={'text-2xl sm:text-3xl mb-5 w-1/3 sm:w-1/5 border-b-2 border-b-red-700 pb-2'}>
+                {currentDepartment}
+            </div>
                 <div className={'sm:text-xl flex'}>
                     {content.domains_description}
                 </div>
@@ -84,7 +87,6 @@ function DomainInfoContainer({currentDepartment}:{
                        height={399}
                        className={'w-full mb-20'}
                 />
-
                 <Suspense>
                    <SectionTitle title={'부서 주요실적'}/>
                 </Suspense>
