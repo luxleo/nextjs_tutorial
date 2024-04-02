@@ -28,7 +28,8 @@ export default function HomeNavBar({responsiveBackground}:{
         }
     }
     return (
-        <div className={clsx("relative hidden sm:flex w-full px-[10%] py-5 text-sm shadow-md group",
+        // LEARN: important -> 속성을 최우선순위로 둔다.
+        <div className={clsx("relative sm:!flex hidden w-full h-[10vh] px-[10%] py-5 text-sm shadow-md group",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
                 'text-white bg-neutral-900 bg-opacity-10 hover:bg-white hover:bg-opacity-100': responsiveBackground == 'default'

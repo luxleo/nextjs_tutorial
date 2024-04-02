@@ -64,7 +64,7 @@ function PageNavbar({mainLink,subLinkName}:{
                     <div key={sublink.name} className={clsx('grow h-[3rem] text-md sm:h-[4rem] sm:text-xl lg:h-[5rem] lg:text-xl font-light',
                         {
                             'bg-neutral-900 bg-opacity-60 text-white' : sublink.name != subLinkName,
-                            'bg-red-700 bg-opacity-100 text-white': sublink.name == subLinkName
+                            'bg-red-600 bg-opacity-100 text-white': sublink.name == subLinkName
                         })}>
                         <Link href={{
                             pathname: sublink.href,

@@ -28,7 +28,7 @@ function LicenceListContainer({pagedLicences}:{
 }) {
     return (
         <div className={'w-[90%] flex justify-center items-center'}>
-            <table className={'hidden sm:table w-full'}>
+            <table className={'hidden sm:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>
                     <th scope={'col'} className={'w-[8%] pb-4'}>번호</th>

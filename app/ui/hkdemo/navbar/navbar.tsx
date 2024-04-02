@@ -32,12 +32,12 @@ export default function NavBar() {
         };
     }, []);
     return (
-        <header className={'w-full fixed z-40'}>
+        <div className={'w-full fixed z-10'}>
             {/* PC 용 드랍다운 hkdemo */}
                 <HomeNavBar responsiveBackground={scrollPosition >50 ? 'scroll-downed' : 'default'}/>
             {/*  모바일 용 dropdown hkdemo*/}
                 <PhoneNavBar responsiveStlye={scrollPosition >50 ? 'scroll-downed' : 'default'}/>
-        </header>
+        </div>
 
     );
 };

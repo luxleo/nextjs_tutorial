@@ -15,7 +15,7 @@ export const enum CONTENT_URL{
     DOMAINS_INFO2 = `${IMG_PREFIX}domains_info2.jpg`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
     DOMAINS_PROJECTS2 = `${IMG_PREFIX}domains_projects2.png`,
-    PR_CI = `${IMG_PREFIX}cis.png`,
+    PR_CI = `${IMG_PREFIX}hk_ci_logo.png`,
     CONTACT_QUERY= `${IMG_PREFIX}query.png`,
 
 }

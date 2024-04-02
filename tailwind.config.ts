@@ -17,7 +17,14 @@ const config: Config = {
           500: '#0070F3',
           600: '#2F6FEB',
         },
+        "hkred" : "#ed1a2e",
+        'hkcyan' : '#47b5e0',
+        'hkivory' : '#d9e0d4',
+        'hkdarkblue' : '#15325c'
       },
+      fontFamily:{
+        dotum: ['var(--font-dotum)']
+      }
     },
     keyframes: {
       shimmer: {
@@ -27,6 +34,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('autoprefixer')],
 };
 export default config;

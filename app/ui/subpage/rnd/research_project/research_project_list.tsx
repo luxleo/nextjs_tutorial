@@ -11,7 +11,7 @@ export default function ResearchProjectList(){
 function ResearchProjectListContainer(){
     return (
         <div className={'w-[90%] flex justify-start items-center'}>
-            <table className={'hidden sm:table w-full'}>
+            <table className={'hidden sm:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>
                     <th scope={'col'} className={'w-[5%] pb-4'}>번호</th>
