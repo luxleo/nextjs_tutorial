@@ -28,7 +28,7 @@ export default function HomeNavBar({responsiveBackground}:{
         }
     }
     return (
-        // LEARN: important -> 속성을 최우선순위로 둔다.
+        // LEARN: important -> 속성을 최우선순위로 둔다. tailwind css 에서는 !으로 important를 설정한다.
         <div className={clsx("relative sm:!flex hidden w-full h-[10vh] px-[10%] py-5 text-sm shadow-md group",
             {
                 'bg-white': responsiveBackground == 'scroll-downed',
