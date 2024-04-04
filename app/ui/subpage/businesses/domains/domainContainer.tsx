@@ -193,7 +193,7 @@ function DepartmentProejectCard({project}:{
                 />
             </div>
             <div className={'flex flex-col aspect-[3/1]'}>
-                <div className={'text-lg text-black font-semibold pb-2 h-[60%]'}>
+                <div className={'text-lg text-black font-semibold sm:h-[50%]'}>
                     {project.name}
                 </div>
                 <div className={'text-sm text-neutral-600 pb-1'}>
