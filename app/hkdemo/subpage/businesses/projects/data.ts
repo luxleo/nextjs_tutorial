@@ -58,7 +58,16 @@ export const projects: departmentProject[] = [
         projectOwnerType: '관',
     },
     {
-        name: '해운대~송정해수욕장간 연안정비사업 감독권한대행 등 건설사업관리용역',
+        name: '해운대 송정해수욕장간 연안정비사업 감독권한대행 등 건설사업관리용역(다릿돌전망대,해운대구청)',
+        startYear: '2020',
+        projectOwner: '부산광역시 해운대구청',
+        hasImage: true,
+        imageURL: '',
+        departments: ['건설사업관리부'],
+        projectOwnerType: '관',
+    },
+    {
+        name: '해운대 송정해수욕장간 연안정비사업 감독권한대행 등 건설사업관리용역(해월전망대,해운대구청)',
         startYear: '2020',
         projectOwner: '부산광역시 해운대구청',
         hasImage: true,

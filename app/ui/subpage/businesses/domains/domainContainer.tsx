@@ -78,11 +78,13 @@ function DomainInfoContainer({currentDepartment}:{
         <div className={'w-full mb-10 sm:mb-20'}>
             {
                 content.infoImageURL !== undefined ?
+                    <div className={'w-full relative aspect-[3/1] mb-10'}>
                     <Image src={content.infoImageURL as string} alt={'ORGANIZATION'}
-                           width={1227}
-                           height={435}
-                           className={'w-full mb-10'}
+                           fill
+                           sizes={'100vw'}
+                           className={'w-full object-cover'}
                     />
+                    </div>
                     :
                     <div className={'w-full text-3xl flex justify-center items-center aspect-[3/1] border-2 mb-10'}>No Image</div>
             }
@@ -168,6 +170,10 @@ function DepartmentProjectsContainer({projects}:{
         <div className={'w-full grid grid-cols-1 sm:grid-cols-4 sm:gap-x-8 gap-y-14 sm:gap-y-20'}>
             {projects.map((project, idx)=>{
                 project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
+
+
+
+
                 return (
                 <div key={`${idx}-project`} className={'w-full'}>
                     <DepartmentProejectCard project={project}/>
@@ -193,7 +199,7 @@ function DepartmentProejectCard({project}:{
                 />
             </div>
             <div className={'flex flex-col aspect-[3/1]'}>
-                <div className={'text-lg text-black font-semibold sm:h-[50%]'}>
+                <div className={'text-lg text-black font-semibold sm:h-[60%]'}>
                     {project.name}
                 </div>
                 <div className={'text-sm text-neutral-600 pb-1'}>
