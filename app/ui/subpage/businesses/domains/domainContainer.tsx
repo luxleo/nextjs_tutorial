@@ -13,19 +13,31 @@ import clsx from "clsx";
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import Image from "next/image";
 import {PROJECT_IMG_PREFIX} from "@/app/hkdemo/subpage/businesses/projects/data";
-
-
-
-export default function DomainMenuWrapper({domains}:{
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
+export default function DomainMenuWrapper({domains,currentDomain, currentDepartment, departmentInfo}:{
     domains: domain[];
+    currentDomain: domain;
+    currentDepartment: string;
+    departmentInfo: departmentInfo;
 }){
-    const [currentDomain, setCurrentDomain] = useState<domain>(domains[0]);
+    // const [currentDomain, setCurrentDomain] = useState<domain>(domains[0]);
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const {replace} = useRouter();
+    function onClickHandler(domainName: string){
+        const params = new URLSearchParams(searchParams);
+        params.set('currentDomain', domainName);
+        params.delete('currentDepartment');
+
+        replace(`${pathname}?${params.toString()}`)
+
+    }
     return (
         <div className={''}>
             <div className={'w-full flex justify-center bg-neutral-100'}>
                 <div className={'w-[60%] sm:w-[50%] flex justify-between overflow-x-scroll sm:overflow-x-clip gap-3'}>
                 {domains.map(domain => (
-                    <div key={domain.menu} onClick={() => setCurrentDomain(domain)}
+                    <div key={domain.menu} onClick={() => onClickHandler(domain.menu)}
                          className={clsx('whitespace-nowrap text-center text-xl py-6 sm:py-8 hover:cursor-pointer', {
                              'text-neutral-900 border-b-red-500 border-b-4': domain === currentDomain
                          })}>
@@ -38,19 +50,34 @@ export default function DomainMenuWrapper({domains}:{
                 <div className={'mt-16 sm:mt-20 w-full flex justify-center text-3xl sm:font-extrabold'}>
                     {currentDomain.menu}
                 </div>
-                <DomainDepartmentNavBar departments={currentDomain.departments}/>
+                <DomainDepartmentNavBar departments={currentDomain.departments} currentDomain={currentDomain} currentDepartment={currentDepartment} departmentInfo={departmentInfo}/>
             </div>
         </div>
     )
 }
 
-function DomainDepartmentNavBar({departments}: {
+function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,departmentInfo}: {
     departments: string[];
+    currentDomain: domain;
+    currentDepartment: string;
+    departmentInfo: departmentInfo;
 }) {
-    const [currentDepartment, setCurrentDepartment] = useState<string>(departments[0]);
-    useEffect(()=>{
-        setCurrentDepartment(departments[0])
-    },[departments])
+    //const [currentDepartment, setCurrentDepartment] = useState<string>(departments[0]);
+
+    //useEffect(()=>{
+    //    setCurrentDepartment(departments[0])
+    //},[departments])
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const {replace} = useRouter();
+    function onClickHandler(departmentName: string){
+        const params = new URLSearchParams(searchParams);
+        params.set('currentDomain', currentDomain.menu);
+        params.set('currentDepartment', departmentName);
+
+        replace(`${pathname}?${params.toString()}`)
+
+    }
     return (
         <div className={'w-full flex flex-col items-center mt-6 sm:mt-10'}>
             <div className={'w-full flex sm:justify-center sm:gap-0 overflow-x-scroll sm:overflow-x-hidden'}>
@@ -59,21 +86,22 @@ function DomainDepartmentNavBar({departments}: {
                         'text-white bg-red-600': department === currentDepartment,
                         'sm:hover:bg-neutral-100': department !== currentDepartment
                     })}
-                         onClick={() => setCurrentDepartment(department)}
+                         onClick={() => onClickHandler(department)}
                     >
                         {department}
                     </div>
                 ))}
             </div>
-            <DomainInfoContainer currentDepartment={currentDepartment}/>
+            <DomainInfoContainer currentDepartment={currentDepartment} departmentInfo={departmentInfo}/>
         </div>
     );
 }
 
-function DomainInfoContainer({currentDepartment}:{
+function DomainInfoContainer({currentDepartment, departmentInfo}:{
     currentDepartment: string;
+    departmentInfo: departmentInfo;
 }) {
-    const content = getDepartmentInfo(currentDepartment);
+    const content = departmentInfo;
     return (
         <div className={'w-full mb-10 sm:mb-20'}>
             {
@@ -88,7 +116,6 @@ function DomainInfoContainer({currentDepartment}:{
                     :
                     <div className={'w-full text-3xl flex justify-center items-center aspect-[3/1] border-2 mb-10'}>No Image</div>
             }
-
             <div className={'text-2xl sm:text-3xl mb-5 w-1/2 sm:w-1/5 border-b-2 border-b-red-700 pb-2'}>
                 {content.name}
             </div>
@@ -119,7 +146,7 @@ function DomainInfoContainer({currentDepartment}:{
                            height={793}
                            className={'w-full mb-20'}/>
                     :
-                    <DepartmentProjectsContainer projects={content.projects as departmentProject[]}/>
+                    <DepartmentProjectsContainer projects={content.projects as departmentProject[]} currentDepartment={currentDepartment}/>
             }
         </div>
     );
@@ -163,20 +190,17 @@ function DepartmentBusinessDomain({departmentDomain}:{
     )
 }
 
-function DepartmentProjectsContainer({projects}:{
+function DepartmentProjectsContainer({projects, currentDepartment}:{
     projects: departmentProject[];
+    currentDepartment: string;
 }){
     return(
         <div className={'w-full grid grid-cols-1 sm:grid-cols-4 sm:gap-x-8 gap-y-14 sm:gap-y-20'}>
             {projects.map((project, idx)=>{
-                project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
-
-
-
-
+                //project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
                 return (
                 <div key={`${idx}-project`} className={'w-full'}>
-                    <DepartmentProejectCard project={project}/>
+                    <DepartmentProejectCard project={project} currentDepartment={currentDepartment}/>
                 </div>
                 );
             })}
@@ -184,14 +208,16 @@ function DepartmentProjectsContainer({projects}:{
     )
 }
 
-function DepartmentProejectCard({project}:{
+function DepartmentProejectCard({project, currentDepartment}:{
     project: departmentProject;
+    currentDepartment: string;
 }){
+    //TODO: process.env로 로컬과 원격 환경 image src 관리해주기
     return (
         <div className={'w-full flex flex-col'}>
             <div className={'relative aspect-square'}>
                 <Image
-                    src={project.imageURL as string} alt={"project image"}
+                    src={`${PROJECT_IMG_PREFIX}/${project.imageURL[currentDepartment]}`} alt={"project image"}
                     fill
                     sizes={'100vw'}
                     style={{objectFit: 'cover'}}
@@ -206,7 +232,7 @@ function DepartmentProejectCard({project}:{
                     {project.projectOwner}
                 </div>
                 <div className={'text-sm text-neutral-500'}>
-                    {project.startYear}
+                    {project.startDate.split('.')[0]}
                 </div>
             </div>
 

@@ -24,8 +24,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
         if (term) {
             params.set('query', term);
         } else {
-
-
             params.delete('query');
         }
         replace(`${pathName}?${params.toString()}`);
