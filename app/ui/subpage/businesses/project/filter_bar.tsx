@@ -93,7 +93,7 @@ const filter_buttons :business_category[] = [
         category_id: 4,
         domains: [
             {
-                domain_name: '감리사업부',
+                domain_name: '건설사업관리부',
                 domain_id: 401
             },
         ]
