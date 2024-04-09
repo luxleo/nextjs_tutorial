@@ -1,6 +1,6 @@
 import {departmentProject} from "@/app/lib/hk/domainsData";
 
-const LOCAL_PREFIX = process.env.TEMP_JSON_DATA
+const LOCAL_PREFIX = process.env.NEXT_PUBLIC_TEMP_JSON_DATA
 
 const LOCAL_CORPORATE_PROJECT_PATH = 'hk_projects_corporate.json';
 const LOCAL_INSTITUTION_PROJECT_PATH = 'hk_projects_institution.json';
