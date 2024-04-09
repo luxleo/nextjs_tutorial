@@ -1842,10 +1842,14 @@
         "name": "부산항대교 하부 친수공간 조성사업 실시설계용역",
         "startDate": "2020.12.24",
         "projectOwner": "부산광역시 영도구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "조경부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "조경부": "부산항대교 하부 친수공간 조성사업 실시설계용역-조경부.jpg"
+        }
     },
     {
         "name": "해운대 송정해수욕장간 연안정비사업 감독권한대행 등 건설사업관리용역(다릿돌전망대,해운대구청)",
@@ -3855,7 +3859,9 @@
         "name": "삼어로 일원 방음시설 설치사업 실시설계용역",
         "startDate": "2023.03.03.",
         "projectOwner": "부산광역시 해운대구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "조경부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3956,7 +3962,9 @@
         "name": "서원안락 자연재해위험개선지구 정비사업 기본 및 실시설계용역(1차)",
         "startDate": "2023.03.29.",
         "projectOwner": "부산광역시 동래구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "조경부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4277,7 +4285,9 @@
         "name": "2023년 동천 주변 보행데크 설치사업 실시설계용역",
         "startDate": "2023.07.25.",
         "projectOwner": "부산광역시 동구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "조경부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}

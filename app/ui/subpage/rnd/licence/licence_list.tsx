@@ -73,7 +73,6 @@ function LicenceListContainer({pagedLicences}:{
                     </div>
                 ))}
             </div>
-
         </div>
     );
 }

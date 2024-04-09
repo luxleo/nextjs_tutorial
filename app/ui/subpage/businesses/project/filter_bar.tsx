@@ -1,6 +1,8 @@
 'use client';
 
-import React, {Dispatch, SetStateAction, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect, useState} from "react";
+import {departmentProject} from "@/app/lib/hk/domainsData";
+import {tempFetchProjectWithinDepartments} from "@/public/hkdemo/data/projects";
 
 export type business_category = {
     category_name: string;
@@ -11,6 +13,16 @@ export type business_category = {
 export type business_domain = {
     domain_name: string;
     domain_id: number;
+}
+
+const getDomainNameFromDomainId = (domainIds : string[])=>{
+    const result = [];
+    for (const category of filter_buttons) {
+        for (const domain of category.domains) {
+            if(domainIds.includes(domain.domain_id+'')) result.push(domain.domain_name);
+        }
+    }
+    return result;
 }
 
 const filter_buttons :business_category[] = [
@@ -90,11 +102,24 @@ const filter_buttons :business_category[] = [
 
 //LEARN: 체크박스에 포커스시 생기는 테두리 => focus:ring-0로 제거한다.
 
-export default function FilterNavBar({setToggleImage}:{
-    setToggleImage : Dispatch<SetStateAction<boolean>>
+export default function FilterNavBar({setToggleImage, setProjects}:{
+    setToggleImage: Dispatch<SetStateAction<boolean>>;
+    setProjects: Dispatch<SetStateAction<departmentProject[]>>;
 }) {
     const [categoryCheckBoxes, setCategoryCheckBoxes] = useState<string[]>([]);
     const [domainCheckBoxes, setDomainCheckBoxes] = useState<string[]>([]);
+    const [goodToUpdateDomainCheckBoxes, setGoodToUpdateDomainCheckBoxes] = useState<boolean>(false);
+    //TODO: useCallback으로 최적화 해야함 24.04.09
+    const updateAndGetProjects = async (domainNames : string[])=>{
+        await tempFetchProjectWithinDepartments(domainNames)
+            .then(res => {
+                setProjects(res);
+            });
+    }
+    useEffect(() => {
+        const domainNames = getDomainNameFromDomainId(domainCheckBoxes);
+        updateAndGetProjects(domainNames);
+    }, [domainCheckBoxes.length]);
     return (
         <div className={'w-full flex flex-col'}>
             <div className={'text-lg font-semibold text-red-600'}>
@@ -153,6 +178,7 @@ function CategoryCheckbox({
             const targetCategory = filter_buttons.filter(category => category.category_id + '' === categoryId)[0];
             const temp = [...prev];
             if (flag) {
+                // toggle 이미 포함되어있는 경우 하위의 모든 도메인 제거한다.
                 targetCategory.domains.forEach(domain => {
                     const index = temp.indexOf(domain.domain_id + '');
                     if (index > -1) {

@@ -1958,6 +1958,7 @@
         "startDate": "2023.02.03.",
         "projectOwner": "범양건영㈜",
         "involvedDepartments": [
+            "조경부",
             "교통계획부"
         ],
         "projectOwnerType": "사",
@@ -2107,7 +2108,9 @@
         "name": "온천천 연결데크 조성사업 실시설계용역",
         "startDate": "2023.08.25.",
         "projectOwner": "㈜유화엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "조경부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}

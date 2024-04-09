@@ -66,7 +66,7 @@ const domains: domain[] = [
     }
 ];
 
-const implementedDomainsName = ['건설사업관리부','교통계획부'];
+const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부'];
 const implementedDomains = [
 
 ]
