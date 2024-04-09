@@ -14,6 +14,7 @@ import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import Image from "next/image";
 import {PROJECT_IMG_PREFIX} from "@/app/hkdemo/subpage/businesses/projects/data";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {CONTENT_URL} from "@/app/hkdemo/subpage/prefixed";
 export default function DomainMenuWrapper({domains,currentDomain, currentDepartment, departmentInfo}:{
     domains: domain[];
     currentDomain: domain;
@@ -107,23 +108,29 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
             {
                 content.infoImageURL !== undefined ?
                     <div className={'w-full relative aspect-[3/1] mb-10'}>
-                    <Image src={content.infoImageURL as string} alt={'ORGANIZATION'}
-                           fill
-                           sizes={'100vw'}
-                           className={'w-full object-cover'}
-                    />
+                        <Image src={content.infoImageURL as string} alt={'ORGANIZATION'}
+                               fill
+                               sizes={'100vw'}
+                               className={'w-full object-cover'}
+                        />
                     </div>
                     :
-                    <div className={'w-full text-3xl flex justify-center items-center aspect-[3/1] border-2 mb-10'}>No Image</div>
+                    <div className={'w-full relative aspect-[3/1] mb-10'}>
+                        <Image src={CONTENT_URL.DOMAINS_INFO} alt={'ORGANIZATION'}
+                               fill
+                               sizes={'100vw'}
+                               className={'w-full object-cover'}
+                        />
+                    </div>
             }
             <div className={'text-2xl sm:text-3xl mb-5 w-1/2 sm:w-1/5 border-b-2 border-b-red-700 pb-2'}>
                 {content.name}
             </div>
-                <div className={'sm:text-xl flex'}>
-                    {content.description}
-                </div>
-                <Suspense>
-                    <SectionTitle title={'부서 사업영역'}/>
+            <div className={'sm:text-xl flex'}>
+                {content.description}
+            </div>
+            <Suspense>
+                <SectionTitle title={'부서 사업영역'}/>
                 </Suspense>
             {
                 !content.isImplemented?
@@ -199,7 +206,7 @@ function DepartmentProjectsContainer({projects, currentDepartment}:{
             {projects.map((project, idx)=>{
                 //project.imageURL = `${PROJECT_IMG_PREFIX}/${project.name}.jpg`;
                 return (
-                <div key={`${idx}-project`} className={'w-full'}>
+                <div key={`${idx}-${project.name}`} className={'w-full'}>
                     <DepartmentProejectCard project={project} currentDepartment={currentDepartment}/>
                 </div>
                 );
