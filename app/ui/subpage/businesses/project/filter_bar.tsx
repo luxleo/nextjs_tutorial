@@ -108,7 +108,6 @@ export default function FilterNavBar({setToggleImage, setProjects}:{
 }) {
     const [categoryCheckBoxes, setCategoryCheckBoxes] = useState<string[]>([]);
     const [domainCheckBoxes, setDomainCheckBoxes] = useState<string[]>([]);
-    const [goodToUpdateDomainCheckBoxes, setGoodToUpdateDomainCheckBoxes] = useState<boolean>(false);
     //TODO: useCallback으로 최적화 해야함 24.04.09
     const updateAndGetProjects = async (domainNames : string[])=>{
         await tempFetchProjectWithinDepartments(domainNames)
@@ -121,7 +120,7 @@ export default function FilterNavBar({setToggleImage, setProjects}:{
         updateAndGetProjects(domainNames);
     }, [domainCheckBoxes.length]);
     return (
-        <div className={'w-full flex flex-col'}>
+        <div className={'w-full hidden sm:flex flex-col'}>
             <div className={'text-lg font-semibold text-red-600'}>
                 프로젝트 분류
             </div>

@@ -44,7 +44,6 @@ export const departmentInfos: departmentInfo[] = [
                 ]
             }
         ],
-        // TODO: projects 부서별로 가저오도록 해야함
         projects: projects,
         isImplemented : true
     },
@@ -90,7 +89,6 @@ export const departmentInfos: departmentInfo[] = [
                 ]
             }
         ],
-        // TODO: projects 부서별로 가저오도록 해야함
         projects: projects,
         isImplemented : true
     },
@@ -141,7 +139,48 @@ export const departmentInfos: departmentInfo[] = [
                 ]
             }
         ],
-        // TODO: projects 부서별로 가저오도록 해야함
+        projects: projects,
+        isImplemented : true
+    },
+    {
+        name: '수자원부',
+        description: '수자원 전반에 걸친 업무(치수, 이수, 하천환경 및 방재사업)를 수행하고 있습니다.',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/수자원부_main.bmp`,
+        domains: [
+            {
+                name: '치수 및 이수분야',
+                actions: [
+                    '하천기본계획',
+                    '하천정비사업',
+                    '소하천정비종합계획',
+                ]
+            },
+            {
+                name: '하천환경 분야',
+                actions: [
+                    '하천환경 관리계획',
+                    '하천환경 정비사업',
+                    '생태하천 조성 및 복원사업',
+                ]
+            },
+            {
+                name: '방재분야',
+                actions: [
+                    '자연재해저감종합계획',
+                    '재해영향평가',
+                    '재해복구사업 분석평가',
+                    '자연재해위험지구 정비사업',
+                    '우수유출저감시설'
+                ]
+            },
+            {
+                name: '기타',
+                actions: [
+                    '침수 모델링',
+                    '하천 및 하천환경 조사',
+                ]
+            }
+        ],
         projects: projects,
         isImplemented : true
     },

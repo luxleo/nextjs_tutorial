@@ -1107,7 +1107,9 @@
         "name": "수다천 하천기본계획 수립 및 하천시설관리대장작성 용역",
         "startDate": "2021.05.04",
         "projectOwner": "(주)대신종합기술",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1116,7 +1118,9 @@
         "name": "광령천2지구 자연재해위험개선지구 신규지정 타당성조사 및 기본계획수립 용역",
         "startDate": "2021.05.03",
         "projectOwner": "주식회사 이도",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1134,7 +1138,9 @@
         "name": "두모지구 자연재해위험개선지구 지정에 따른 타당성조사 및 기본계획 용역 시행",
         "startDate": "2021.05.03",
         "projectOwner": "주식회사 이도",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1188,7 +1194,9 @@
         "name": "신당천 하천기본계획수립 및 실시설계 용역",
         "startDate": "2021.06.22",
         "projectOwner": "경호엔지니어링건축사사무소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1352,7 +1360,9 @@
         "name": "인보천 등 6개소 하천기본계획용역(하천시설관리대장 작성 및 전산화)",
         "startDate": "2021.09.08",
         "projectOwner": "한신엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1478,7 +1488,9 @@
         "name": "소토지구 자연재해위험개선지구 정비사업 타당성조사 및 기본계획 수립 용역 인력지원",
         "startDate": "22.01.12.",
         "projectOwner": "㈜ 이도",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1597,7 +1609,9 @@
         "name": "우수관로검토",
         "startDate": null,
         "projectOwner": "한양",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1651,7 +1665,9 @@
         "name": "우수관로 매설깊이 변경에 대한 적정성 검토의견서",
         "startDate": "22.04.",
         "projectOwner": "한양건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1696,7 +1712,9 @@
         "name": "금곡도시첨단산업단지내 공장설립에 따른 소규모재해영향평가",
         "startDate": "22.07.29",
         "projectOwner": "금곡벤처밸리",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}

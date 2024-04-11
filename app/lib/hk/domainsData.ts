@@ -66,7 +66,7 @@ const domains: domain[] = [
     }
 ];
 
-const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부'];
+const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부','수자원부'];
 const implementedDomains = [
 
 ]
@@ -92,6 +92,7 @@ export function getDepartmentInfo(currentDepartment: string) : departmentInfo {
     }
 
     const targetDepartment = departmentInfos.filter(info => info.name === currentDepartment)[0];
+    //TODO: public json data 에서 불러 오도록 하고, 이미지는 해당 부서의 이미지 있는지 조회하기 
     const targetProject = projects.filter(project => project.involvedDepartments.includes(currentDepartment) && project.hasImage);
 
     targetDepartment.projects = targetProject;

@@ -107,11 +107,12 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
         <div className={'w-full mb-10 sm:mb-20'}>
             {
                 content.infoImageURL !== undefined ?
-                    <div className={'w-full relative aspect-[3/1] mb-10'}>
+                    <div className={'w-full relative aspect-square sm:aspect-[3/1] mb-10'}>
                         <Image src={content.infoImageURL as string} alt={'ORGANIZATION'}
                                fill
                                sizes={'100vw'}
                                className={'w-full object-cover'}
+                               priority
                         />
                     </div>
                     :

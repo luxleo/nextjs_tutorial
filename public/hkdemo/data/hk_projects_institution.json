@@ -2392,7 +2392,9 @@
         "name": "해양로 일원 침수우려지 정비사업 실시설계용역",
         "startDate": "2021.08.27.",
         "projectOwner": "영도구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2428,7 +2430,9 @@
         "name": "2021년 소하천정비종합계획(변경)용역",
         "startDate": "2021.09.09",
         "projectOwner": "사상구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2446,7 +2450,9 @@
         "name": "철마도시농업공원 조성사업 소규모재해영향평가 용역",
         "startDate": "2021.09.14",
         "projectOwner": "기장군청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2590,7 +2596,9 @@
         "name": "경기도 00지구 훼손지복구사업 재해영향성검토 용역",
         "startDate": "2022.01.26.",
         "projectOwner": "LH",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2653,7 +2661,9 @@
         "name": "온천천 침수대비 종합정비계획 수립 용역",
         "startDate": "2022.02.08.",
         "projectOwner": "금정구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2969,7 +2979,9 @@
         "name": "어촌정주어항(길천항) 지정 및 어항개발계획 수립 용역",
         "startDate": "2022.04.04.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3005,7 +3017,9 @@
         "name": "신도브래뉴아파트 일원 침수원인분석 및 대처방안 기본계획수립 용역",
         "startDate": "2022.04.13.",
         "projectOwner": "부산광역시 영도구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3023,7 +3037,9 @@
         "name": "대연천 소하천 정비 종합계획(변경) 수립용역",
         "startDate": "2022.04.20.",
         "projectOwner": "부산광역시 남구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3032,10 +3048,14 @@
         "name": "부산광역시 자연재해저감 종합계획수립 용역",
         "startDate": "2022.04.26.",
         "projectOwner": "부산광역시",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "수자원부": "부산광역시 자연재해저감 종합계획수립 용역-수자원부.jpg"
+        }
     },
     {
         "name": "부산도시철도 토목시설물 정밀안전점검 용역(3구간)",
@@ -3077,7 +3097,9 @@
         "name": "서부천 생태하천 복원사업 하천기본계획(변경) 및 실시설계용역",
         "startDate": "2022.05.04.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3095,10 +3117,14 @@
         "name": "2022년 소하천정비종합계획 수립용역(흠수천,회룡천,병산천)",
         "startDate": "2022.05.18.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "수자원부": "2022년 소하천정비종합계획 수립용역(흠수천,회룡천,병산천)-수자원부.jpg"
+        }
     },
     {
         "name": "대티로17번길 일원 도로확장공사 도시관리계획(도로)결정(변경) 및 실시설계용역",
@@ -3342,7 +3368,9 @@
         "name": "보덕포 공유수면매립 및 정비사업 소규모 재해영향평가용역",
         "startDate": "2022.09.30.",
         "projectOwner": "부산광역시 사하구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3472,7 +3500,9 @@
         "name": "죽성천 하천기본계획(변경) 타당성검토 용역",
         "startDate": "2022.12.02.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3499,10 +3529,14 @@
         "name": "대저1 자연재해위험개선지구 정비사업 분석평가용역",
         "startDate": "2022.12.13.",
         "projectOwner": "부산광역시 강서구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "수자원부": "대저1 자연재해위험개선지구 정비사업 분석평가용역-수자원부.jpg"
+        }
     },
     {
         "name": "구덕초등학교 앞 육교 경관개선사업 실시설계용역",
@@ -3580,7 +3614,9 @@
         "name": "501여단 예비군훈련대개편 재해영향평가용역",
         "startDate": "2023.01.10.",
         "projectOwner": "제 6755부대",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3670,7 +3706,9 @@
         "name": "용소천 외 1개소 하천기본계획수립 및 하천시설관리대장작성용역",
         "startDate": "2023.01.17.",
         "projectOwner": "경상남도",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3814,7 +3852,9 @@
         "name": "자연재해위험개선지구(죽전지구) 타당성조사 및 기본계획 용역",
         "startDate": "2023.02.23.",
         "projectOwner": "경상남도 의령군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3832,7 +3872,9 @@
         "name": "부산우체국교차로 일원 하수도정비대책 수립 및 기본설계용역",
         "startDate": "2023.02.21.",
         "projectOwner": "부산광역시 중구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4054,7 +4096,9 @@
         "name": "부평관사 BTL사업 재해영향성검토 용역",
         "startDate": "2023.04.19.",
         "projectOwner": "제2291부대",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4202,10 +4246,27 @@
         "name": "온천천 대심도 빗물 터널 사전타당성 용역",
         "startDate": "2023.06.15",
         "projectOwner": "부산광역시 ",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "수자원부": "온천천 대심도 빗물 터널 사전타당성 용역-수자원부.jpg"
+        }
+    },
+    {
+        "name": "대산천 외 2개소 하천기본계획수립 및 하천시설관리대장작성용역",
+        "startDate": "2023.01.17.",
+        "projectOwner": "경상남도",
+        "involvedDepartments": [
+            "수자원부"
+        ],
+        "projectOwnerType": "관",
+        "hasImage": false,
+        "imageURL": {
+            "수자원부": "대산천 외 2개소 하천기본계획수립 및 하천시설관리대장작성용역-수자원부.jpg"
+        }
     },
     {
         "name": "부산광역시 북구 신청사 건립 도시관리계획 결정 용역",
@@ -4267,7 +4328,9 @@
         "name": "보수천 주변 하천환경 조사 용역",
         "startDate": "2023.07.10.",
         "projectOwner": "부산광역시",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4323,7 +4386,9 @@
         "name": "아시아선수촌공원 재정비사업 소규모 재해영향평가 용역",
         "startDate": "2023.07.31.",
         "projectOwner": "부산광역시 해운대구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4341,10 +4406,14 @@
         "name": "부산광역시 북구 신청사 건립 재해영향성검토 용역",
         "startDate": "2023.08.04.",
         "projectOwner": "부산광역시 북구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "수자원부": "부산광역시 북구 신청사 건립 재해영향성검토 용역-수자원부.jpg"
+        }
     },
     {
         "name": "지구단위계획구역(금성동) 교통영향평가(변경심의) 용역",
@@ -4368,7 +4437,9 @@
         "name": "온천천 보도교 설치사업 실시설계용역",
         "startDate": "2023.08.23.",
         "projectOwner": "부산광역시 동래구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4386,7 +4457,9 @@
         "name": "회동상수원보호구역 관리대책 수립 용역",
         "startDate": "2023.09.07.",
         "projectOwner": "부산광역시 상수도사업본부",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4458,7 +4531,9 @@
         "name": "안락·서원 자연재해위험개선지구 지정(변경) 용역",
         "startDate": "2023.10.31.",
         "projectOwner": "부산광역시 동래구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4541,7 +4616,9 @@
         "name": "좌광천 하천기본계획 변경 타당성 검토용역",
         "startDate": "2023.12.04.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "수자원부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}

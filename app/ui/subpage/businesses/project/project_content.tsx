@@ -16,7 +16,7 @@ export default function ProjectsContainer({initialProjects}:{
     const [projects, setProjects] = useState<departmentProject[]>(initialProjects);
     return (
         <div className={'w-full flex gap-10'}>
-            <div className={'whitespace-nowrap'}>
+            <div className={'whitespace-nowrap hidden sm:block'}>
                 <FilterNavBar setToggleImage={setToggleImage} setProjects={setProjects}/>
             </div>
             <div className={'grow basis-0 h-[100vh] overflow-y-scroll'}>
@@ -48,7 +48,7 @@ function ProjectContainer({projects}:{
     projects: departmentProject[];
 }) {
     return (
-        <div className={'w-[90%] flex justify-center items-center'}>
+        <div className={'w-full sm:w-[90%] flex justify-center items-center'}>
             <table className={'hidden sm:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>

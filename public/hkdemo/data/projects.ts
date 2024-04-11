@@ -9,7 +9,9 @@ const LOCAL_PREFIX = process.env.NEXT_PUBLIC_TEMP_JSON_DATA
 const LOCAL_CORPORATE_PROJECT_PATH = 'hk_projects_corporate.json';
 const LOCAL_INSTITUTION_PROJECT_PATH = 'hk_projects_institution.json';
 
+
 export async function getLocalDepartmentProject(departmentName : string): Promise<departmentProject[]>{
+    //TODO: 파일을 그대로 요청하면 파일이 응답에 파일 전체가 반환되므로 API서버를 이용하여 응답을 내려줘야함
     let institutionData : departmentProject[] =  await fetch(`${LOCAL_PREFIX}/${LOCAL_INSTITUTION_PROJECT_PATH}`)
         .then(res => res.json())
         .then((json : departmentProject[]) => json.filter(data => data.involvedDepartments.includes(departmentName) && data.imageURL[departmentName] !== undefined));
@@ -27,6 +29,10 @@ export async function tempFetchInitialProjects(){
     return institutionData.concat(corporateData);
 }
 
+/**
+ * project 섹션에서 필터링시 해당하는 부서들의 프로젝트 가져오는 함수
+ * @param departments : string[] -> 0개 이상의 프로젝트를 담은 배열
+ */
 export async function tempFetchProjectWithinDepartments(departments: string[]) {
     if (departments.length > 0) {
         let institutionData: departmentProject[] = await fetch(`${LOCAL_PREFIX}/${LOCAL_INSTITUTION_PROJECT_PATH}`)
