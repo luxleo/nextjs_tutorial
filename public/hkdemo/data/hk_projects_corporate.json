@@ -3,7 +3,9 @@
         "name": "밀양울산1공구",
         "startDate": null,
         "projectOwner": null,
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -156,7 +158,9 @@
         "name": "정보화지하차도 배수펌프장 재해복구공사 변경 구조검토용역",
         "startDate": "2019.04.15.",
         "projectOwner": "대운종합건설㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -165,7 +169,9 @@
         "name": "지방도1040호선(연산~장암) 도로확장포장공사",
         "startDate": null,
         "projectOwner": null,
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -282,7 +288,9 @@
         "name": "풍력발전 기초구조검토",
         "startDate": null,
         "projectOwner": null,
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -309,7 +317,9 @@
         "name": "회야댐~울산공업용수도 간 비상연계관로 설치사업",
         "startDate": null,
         "projectOwner": "에에치씨이엔씨",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -365,16 +375,22 @@
         "name": "가시설 3차원 해석",
         "startDate": "2019.07.26.",
         "projectOwner": "㈜씨엘건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "가시설 3차원 해석-구조부.jpg"
+        }
     },
     {
         "name": "을숙도 장림고개간 오수맨홀 구조검토",
         "startDate": "2019.08.19.",
         "projectOwner": "㈜동림건업",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -383,7 +399,9 @@
         "name": "모라동 철로변 도로개설공사 변경설계용역",
         "startDate": "2019.10.07.",
         "projectOwner": "㈜경덕건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -392,7 +410,9 @@
         "name": "양정동 제척지일운 하수관로 차집시설 구조설계",
         "startDate": "2019.08.13.",
         "projectOwner": "㈜유신,㈜선일",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -486,7 +506,9 @@
         "name": "사천시 옹벽검토",
         "startDate": "2019.12.19.",
         "projectOwner": "㈜창미이엔지",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -504,7 +526,9 @@
         "name": "우암초등학교 앞 육교승강기 설치공사",
         "startDate": null,
         "projectOwner": null,
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -513,7 +537,9 @@
         "name": "목교 구조계산",
         "startDate": null,
         "projectOwner": "㈜부흥테크",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -522,7 +548,9 @@
         "name": "남해 다이어트 보물섬 조성사업내 교대2개소 구조검토용역",
         "startDate": "2019.12.10.",
         "projectOwner": "동남건설㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -540,7 +568,9 @@
         "name": "동읍~한림간 방음벽 설치",
         "startDate": null,
         "projectOwner": "씨티씨",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -549,7 +579,9 @@
         "name": "엘리베이터 기초 옹벽",
         "startDate": null,
         "projectOwner": "㈜한림",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -558,7 +590,9 @@
         "name": "사천시 시도1호선 죽림교",
         "startDate": null,
         "projectOwner": "㈜창미이엔지",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -567,7 +601,9 @@
         "name": "도시철도 양산선(노포~북정) 2공구 건설공사 설계도서 검토용역",
         "startDate": "2020.01.01.",
         "projectOwner": "㈜대우건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -648,7 +684,9 @@
         "name": "지하차도 구조물 소화전함 구조검토 용역",
         "startDate": "2020.04.",
         "projectOwner": "㈜한양",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -702,7 +740,9 @@
         "name": "중간말뚝 비틀림 발생에 따른 단면 보강검토",
         "startDate": null,
         "projectOwner": "㈜한양",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -720,7 +760,9 @@
         "name": "말흠천 정비공사 (BOX교 신설)",
         "startDate": "2020.07.06.",
         "projectOwner": "㈜아주엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -729,7 +771,9 @@
         "name": "부산 만덕(5) 주거환경개선사업지구 만덕중 측면 기존우수맨홀 구조안전성검토",
         "startDate": "2020.07.29.",
         "projectOwner": "㈜우미건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -747,7 +791,9 @@
         "name": "풍력발전 기초구조검토",
         "startDate": null,
         "projectOwner": "회덕",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -765,7 +811,9 @@
         "name": "평정소하천 정비사업 조사측량 및 실시설계용역",
         "startDate": "2020.08.06.",
         "projectOwner": "㈜부림기술",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -774,7 +822,9 @@
         "name": "표지판검토",
         "startDate": null,
         "projectOwner": "건영기술",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -783,7 +833,9 @@
         "name": "주남산단 교량 설계변경",
         "startDate": null,
         "projectOwner": "우성이엔지",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -810,7 +862,9 @@
         "name": "해운대구 노후화관로 정비공사(반송동일원) 3차 재송동긴급 복구 구간 수로BOX 설계",
         "startDate": null,
         "projectOwner": "㈜재흥건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -819,7 +873,9 @@
         "name": "사회공원 방음벽",
         "startDate": "2020.09.22.",
         "projectOwner": "선명산업",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -882,7 +938,9 @@
         "name": "을릉도 현장 설계변경",
         "startDate": null,
         "projectOwner": "울릉도일주도로2",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -900,7 +958,9 @@
         "name": "국대도~사업지간 도로개설 및 확장공사 실시설계",
         "startDate": null,
         "projectOwner": "(주)고도건설산업",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -918,7 +978,9 @@
         "name": "을숙도대교~장림고개간 지하차도 건설공사 기본 및 실시설계용역",
         "startDate": "2020.12.",
         "projectOwner": "㈜한양건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -927,7 +989,9 @@
         "name": "혈수천 소주8교 교량신설",
         "startDate": null,
         "projectOwner": "천진",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -954,7 +1018,9 @@
         "name": "사상~하단선 1공구 501정거장 안정성 검토용역",
         "startDate": "2021.01.25",
         "projectOwner": "SK건설㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -963,16 +1029,22 @@
         "name": "남항대교 강교도장 보수공사 실시설계용역",
         "startDate": null,
         "projectOwner": "씨티씨",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "남항대교 강교도장 보수공사 실시설계용역-구조부.jpg"
+        }
     },
     {
         "name": "ECO교량 관매달리기 부재 구조검토용역",
         "startDate": "2021.01.29",
         "projectOwner": "주식회사 제이피엠",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -981,7 +1053,9 @@
         "name": "제주ECO교량 가스관에 대한 안전성 검토",
         "startDate": null,
         "projectOwner": "성지건설개발주식회사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -990,7 +1064,9 @@
         "name": "천곡지구 일반하천 정비사업 RC라멘교(L=20m) 실시설계",
         "startDate": "2021.01.26",
         "projectOwner": "리안엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1017,7 +1093,9 @@
         "name": "장흥교 설계용역",
         "startDate": "2021.11.03",
         "projectOwner": "디엘이앤씨 주식회사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1035,7 +1113,9 @@
         "name": "언양반송~삼동상작간 도로개설공사 중골못교 교각1개소 변경설계",
         "startDate": "2021.03.04",
         "projectOwner": "(주)대득건설",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1053,7 +1133,9 @@
         "name": "포항 용산지구 박스교량 설계 용역",
         "startDate": "2021.06.23",
         "projectOwner": "주식회사 에이원엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1149,16 +1231,22 @@
         "name": "BUSWAAY LUKOIL-SUPPORT 구조해석 의뢰건",
         "startDate": null,
         "projectOwner": "현대산전주식회사 부산공장",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "BUSWAAY LUKOIL-SUPPORT 구조해석 의뢰건-구조부.jpg"
+        }
     },
     {
         "name": "방음벽 지주의 적정높이 선정에 따른 의견서 작성",
         "startDate": "2021.06",
         "projectOwner": "주식회사 성안이엠피",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1167,7 +1255,9 @@
         "name": "인천항 영종도 준설토투기장 진입도로 및 상수도인입 공사 비계구조검토",
         "startDate": "2021.06.10",
         "projectOwner": "신원건설㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1176,7 +1266,9 @@
         "name": "망미교 외 4개소(구서고가교, 학장1교, 영락교, 범5호교) 내진성능 보강공사 실시설계용역",
         "startDate": "2021.06.08",
         "projectOwner": "한진개발공사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1250,7 +1342,9 @@
         "name": "중리지구 지방하천 정비사업 실시설계 중 중리2BOX교 교대2개소",
         "startDate": "2021.06.22",
         "projectOwner": "㈜성환이앤씨",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1288,7 +1382,9 @@
         "name": "인천항 영종도 준설토투기장 진입도로및 상수도인입 공사 논골2교 까지발 구조검토",
         "startDate": "2021.08",
         "projectOwner": "신원건설㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1306,7 +1402,9 @@
         "name": "논골2교 교량유지 점검시설  구조검토",
         "startDate": null,
         "projectOwner": "우경",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1315,7 +1413,9 @@
         "name": "논골2교 점검시설 출입계단 구조검토",
         "startDate": null,
         "projectOwner": "우경",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1389,7 +1489,9 @@
         "name": "양산 회야강 하천재해예방사업 실시설계용역",
         "startDate": "2021.05.06.",
         "projectOwner": null,
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1434,7 +1536,9 @@
         "name": "금곡도시첨단산업단지 실시계획 변경 승인 용역",
         "startDate": "2021.11.22",
         "projectOwner": "(주)금곡벤처밸리",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1470,7 +1574,9 @@
         "name": "황강용주지구하천환경정비사업실시설계용역(1) 실시설계)",
         "startDate": "22.01.06.",
         "projectOwner": "㈜ 삼안",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1620,7 +1726,9 @@
         "name": "제주시 어음 풍력 발전 사업 기초 구조물 설계 용역",
         "startDate": "22.04.19",
         "projectOwner": "㈜다성 기술단",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1768,7 +1876,9 @@
         "name": "부산 양공부두 크레인 고박장치 설치에 따른 안전성검토",
         "startDate": "22.09.20.",
         "projectOwner": "위드건설산업",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1777,7 +1887,9 @@
         "name": "녹산대교(P2) 교량인상 안정성 검토",
         "startDate": "22.09.",
         "projectOwner": "이화기술단",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1786,7 +1898,9 @@
         "name": "부산-거제간 연결도로 교량 내진보강 실시설계용역",
         "startDate": "22.10.11.",
         "projectOwner": "한국인프라관리",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -1987,7 +2101,9 @@
         "name": "기장레우스시티 구역외 보도육교 설치공사 실시설계용역",
         "startDate": "2023.02.03.",
         "projectOwner": "범양건영㈜",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -2117,7 +2233,9 @@
         "name": "부산항 신항 남컨 항만배후단지 진입도로 건설공사 (교량 방음벽 실시설계 및 안정성검토, 경관심의)",
         "startDate": "2023.08.09",
         "projectOwner": "현대엔지니어링",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}
@@ -2127,7 +2245,8 @@
         "startDate": "2023.08.25.",
         "projectOwner": "㈜유화엔지니어링",
         "involvedDepartments": [
-            "조경부"
+            "조경부",
+            "구조부"
         ],
         "projectOwnerType": "사",
         "hasImage": false,
@@ -2184,7 +2303,9 @@
         "name": "소교량(송정3호교) 보수공사 새들 강종변경에 따른 구조검토용역",
         "startDate": "2023.10.04.",
         "projectOwner": "㈜백천개발",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "사",
         "hasImage": false,
         "imageURL": {}

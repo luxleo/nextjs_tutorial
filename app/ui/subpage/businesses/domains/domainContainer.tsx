@@ -240,7 +240,7 @@ function DepartmentProejectCard({project, currentDepartment}:{
                     {project.projectOwner}
                 </div>
                 <div className={'text-sm text-neutral-500'}>
-                    {project.startDate.split('.')[0]}
+                    {project.startDate?.split('.')[0]}
                 </div>
             </div>
 

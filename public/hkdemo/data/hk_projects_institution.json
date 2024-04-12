@@ -3,7 +3,9 @@
         "name": "수영하수소화조 시설개선공사 실시설계용역",
         "startDate": "2017.10.16",
         "projectOwner": "부산광역시 건설본부",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -12,7 +14,9 @@
         "name": "지사교 상수관로 관매달기 설치공사",
         "startDate": "2017.10.19",
         "projectOwner": "부산광역시 상하수도사업본부",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -21,7 +25,9 @@
         "name": "매설배관 내진성능평가용역",
         "startDate": "2017.11.08",
         "projectOwner": "한국석유공사 평택지사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -30,7 +36,9 @@
         "name": "거제지사 원유배관 내진성능평가용역",
         "startDate": "2017.11.10",
         "projectOwner": "한국석유공사 거제지사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -75,7 +83,9 @@
         "name": "주례동 철도 횡단육교 연결 엘리베이터 설치 실시설계용역",
         "startDate": "2018.01.08",
         "projectOwner": "부산광역시 사상구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -219,7 +229,9 @@
         "name": "남항 항만시설물(계류시설)내진보강 실시설계용역",
         "startDate": "2018.05.08",
         "projectOwner": "부산광역시 남항관리사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -228,7 +240,9 @@
         "name": "신호 맨홀펌프장 정비공사 실시설계용역",
         "startDate": "2018.05.15",
         "projectOwner": "부산환경공단 서부시설사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -264,7 +278,9 @@
         "name": "동남권 방사선 의과학 일반산업단지 가압장 실시설계용역",
         "startDate": "2018.06.22",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -282,7 +298,9 @@
         "name": "주례동 참소망연합의원 앞 육교철거 후 횡단보도 설치공사 실시설계용역",
         "startDate": "2018.07.12",
         "projectOwner": "부산광역시 사상구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -291,7 +309,9 @@
         "name": "하수도정비 중점관리지역(호텔하늘아래 주변) 펌프장 실시설계용역",
         "startDate": "2018.07.25",
         "projectOwner": "부산광역시 동래구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -309,7 +329,9 @@
         "name": "눌차가교 정밀안전진단용역",
         "startDate": "2018.08.01",
         "projectOwner": "부산광역시 강서구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -464,7 +486,9 @@
         "name": "회동수원지 댐 보수공사 실시설계용역",
         "startDate": "2019.01.07",
         "projectOwner": "부산광역시 상수도사업본부",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -482,7 +506,9 @@
         "name": "엄궁동 산15-37번지일원 재난예방 복구공사 실시설계용역",
         "startDate": "2019.01.10",
         "projectOwner": "부산광역시 사상구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -617,7 +643,9 @@
         "name": "별천지어린이공원 재해복구사업 실시설계 용역",
         "startDate": "2019.02.21",
         "projectOwner": "부산광역시 해운대구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -635,7 +663,9 @@
         "name": "삼락천 수질개선 및 유지용수 확보 사업 실시설계용역",
         "startDate": "2019.02.27",
         "projectOwner": "부산광역시 사상구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -644,7 +674,9 @@
         "name": "구포동 장선복지관 일원 옹벽 보수보강공사 실시설계용역",
         "startDate": "2019.03.04",
         "projectOwner": "부산광역시 북구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -671,7 +703,9 @@
         "name": "눌차가교 상수도관 설치공사 실시설계용역",
         "startDate": "2019.03.21",
         "projectOwner": "부산광역시 상수도사업본부 강서사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -765,7 +799,9 @@
         "name": "교량(독산2교) 하중 안전검토",
         "startDate": "2019.05.13",
         "projectOwner": "한국전력공사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -864,7 +900,9 @@
         "name": "일광 이동마을 지구단위계획도로(소2-577호선) 개설공사 실시설계용역",
         "startDate": "2019.06.24",
         "projectOwner": "부산광역시 기장군청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -936,7 +974,9 @@
         "name": "단지 내 토목시설물 내진설계지침 개선 연구용역",
         "startDate": "2019.09.09",
         "projectOwner": "한국토지주택공사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1048,7 +1088,9 @@
         "name": "하수관로신설(확충)사업 [동삼동 감지해변 일원] 기본 및 실시설계용역",
         "startDate": "2019.12.27",
         "projectOwner": "부산광역시 영도구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1333,7 +1375,9 @@
         "name": "체육공원 조명시설 구조검토 용역",
         "startDate": "2020.03.03",
         "projectOwner": "환경공단 정관사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1342,10 +1386,14 @@
         "name": "광안대교 신축이음장치 보수공사 실시설계용역",
         "startDate": "2020.03.05",
         "projectOwner": "부산시설공단",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "광안대교 신축이음장치 보수공사 실시설계용역-구조부.jpg"
+        }
     },
     {
         "name": "2020년 보행환경 개선 실시설계용역(3권역)",
@@ -1396,7 +1444,9 @@
         "name": "위례 신도시 조성4공구 보도 및 어린이보호구역 난간 구조안정성검토 용역",
         "startDate": "2020.03.17",
         "projectOwner": "한국토지주택공사 위례사업본부",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1568,7 +1618,9 @@
         "name": "00창 크레인 태풍 방호장치 교체 설계용역",
         "startDate": "2020.05.15",
         "projectOwner": "해군정비창",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1676,7 +1728,9 @@
         "name": "올림픽공원 일원 보행환경개선사업 실시설계용역",
         "startDate": "2020.07.27",
         "projectOwner": "부산광역시 해운대구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1694,7 +1748,9 @@
         "name": "사인물 구조 안정성 검토 용역",
         "startDate": "2020.08.04",
         "projectOwner": "(재)부산디자인진흥원",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1775,7 +1831,9 @@
         "name": "국제물류(1-2단계) 공공시설물 관리청 요청사항 설계용역",
         "startDate": "2020.10.22",
         "projectOwner": "부산도시공사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1881,7 +1939,9 @@
         "name": "부산대역 온천천 횡단 인도교(어울마당) 보수공사 실시설계용역",
         "startDate": "2021.01.18",
         "projectOwner": "금정구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1890,7 +1950,9 @@
         "name": "괴정1교 기존시설물 내진보강공사 실시설계용역",
         "startDate": "2021.01.18",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1899,7 +1961,9 @@
         "name": "둔치2호교 보수, 보강공사 실시설계용역",
         "startDate": "2021.01.18",
         "projectOwner": "강서구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -1935,7 +1999,9 @@
         "name": "만덕동 만덕고갯길 진입도로 정비공사 실시설계용역",
         "startDate": "2021.01.25",
         "projectOwner": "북구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2011,7 +2077,9 @@
         "name": "일광천 산책로 조성공사(2차) 실시설계용역",
         "startDate": "2021.02.17",
         "projectOwner": "기장군청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2092,7 +2160,9 @@
         "name": "모라동 백양터널 입구 일원 방음벽 정비공사 실시설계용역",
         "startDate": "2021.03.23",
         "projectOwner": " 사상구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2235,10 +2305,14 @@
         "name": "부산진구 당감지하차도 내진성능평가용역",
         "startDate": "2021.06.07",
         "projectOwner": "부산진구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "부산진구 당감지하차도 내진성능평가용역-구조부.jpg"
+        }
     },
     {
         "name": "연구장비 공동활용시설 구축 교통영향평가(약식)용역",
@@ -2273,10 +2347,14 @@
         "name": "무릉2양배수장 보강공사 세부설계 용역",
         "startDate": "2021.07.02",
         "projectOwner": "한국농어촌공사 경남지역본부 함안지사",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "무릉2양배수장 보강공사 세부설계 용역-구조부.jpg"
+        }
     },
     {
         "name": "매설배관 건전성 확보공사 설계안전성검토 용역",
@@ -2354,7 +2432,9 @@
         "name": "산성교 정밀안전점검 및 보수보강 실시설계용역",
         "startDate": "2021.07.29",
         "projectOwner": "금정구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2383,7 +2463,9 @@
         "name": "남항대교 경관개선 사업 실시설계 용역",
         "startDate": "2021.08.24",
         "projectOwner": "부산시설공단",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2542,7 +2624,9 @@
         "name": "하수관로신설(확충)사업 [동삼동 감지해변 일원] 설계안전성 검토",
         "startDate": "2021.12.06",
         "projectOwner": "영도구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2690,7 +2774,9 @@
         "name": "부산진구 개금지하차도 내진성능평가 용역",
         "startDate": "2022.02.11.",
         "projectOwner": "부산진구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2739,7 +2825,9 @@
         "name": "형진교 외 1개소 보수보강공사 실시설계용역",
         "startDate": "2022.02.18.",
         "projectOwner": "기장군청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -2775,7 +2863,9 @@
         "name": "금곡과선교 외 1개교 내진성능 보강공사 실시설계용역",
         "startDate": "2022.02.28.",
         "projectOwner": "북구청",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3028,7 +3118,9 @@
         "name": "괴정1교(상행선) 기존시설물 내진보강공사 감리용역",
         "startDate": "2022.04.14.",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3265,16 +3357,22 @@
         "name": "시민공원 관수용 저류탱크 교체공사 실시설계용역",
         "startDate": "2022.07.28.",
         "projectOwner": "부산시설공단",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "시민공원 관수용 저류탱크 교체공사 실시설계용역-구조부.jpg"
+        }
     },
     {
         "name": "망미교 내진성능 보강공사 기술감리용역",
         "startDate": "2022.07.28.",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3337,7 +3435,9 @@
         "name": "환경공원체육시설 조명탑구조검토용역",
         "startDate": "2022.09.16.",
         "projectOwner": "부산환경공단 영도사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3359,7 +3459,9 @@
         "name": "소교량(송정3호교) 보수공사 실시설계용역",
         "startDate": "2022.10.04.",
         "projectOwner": "부산광역시 해운대구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3473,7 +3575,9 @@
         "name": "온천천 일원 침수대비 홍수방어벽 정비사업 실시설계용역",
         "startDate": "2022.11.14.",
         "projectOwner": "부산광역시 금정구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3542,7 +3646,9 @@
         "name": "구덕초등학교 앞 육교 경관개선사업 실시설계용역",
         "startDate": "2022.12.16.",
         "projectOwner": "부산광역시 서구",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3789,7 +3895,9 @@
         "name": "녹산대교 보수공사(2차) 실시설계용역",
         "startDate": "2023.02.08.",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -3902,7 +4010,8 @@
         "startDate": "2023.03.03.",
         "projectOwner": "부산광역시 해운대구",
         "involvedDepartments": [
-            "조경부"
+            "조경부",
+            "구조부"
         ],
         "projectOwnerType": "관",
         "hasImage": false,
@@ -3995,7 +4104,9 @@
         "name": "구서고가교 내진성능 보강공사 기술감리 용역",
         "startDate": "2023.03.24.",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4087,10 +4198,14 @@
         "name": "덕천1육교 내진성능 보강공사 실시설계용역",
         "startDate": "2023.04.14.",
         "projectOwner": "부산광역시 건설안전시험사업소",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
-        "imageURL": {}
+        "imageURL": {
+            "구조부": "덕천1육교 내진성능 보강공사 실시설계용역-구조부.jpg"
+        }
     },
     {
         "name": "부평관사 BTL사업 재해영향성검토 용역",
@@ -4301,7 +4416,9 @@
         "name": "상곡교 내진성능평가 용역",
         "startDate": "2023.07.07.",
         "projectOwner": "부산광역시 기장군",
-        "involvedDepartments": [],
+        "involvedDepartments": [
+            "구조부"
+        ],
         "projectOwnerType": "관",
         "hasImage": false,
         "imageURL": {}
@@ -4438,7 +4555,8 @@
         "startDate": "2023.08.23.",
         "projectOwner": "부산광역시 동래구",
         "involvedDepartments": [
-            "수자원부"
+            "수자원부",
+            "구조부"
         ],
         "projectOwnerType": "관",
         "hasImage": false,
