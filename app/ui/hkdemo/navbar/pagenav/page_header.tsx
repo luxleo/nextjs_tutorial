@@ -52,7 +52,7 @@ function PageNavbarWrapper({mainLinkName, subLinkName,mainLink}:{
 
 function PageNavbar({mainLink,subLinkName}:{
     mainLink: mainLink;
-    subLinkName: string | undefined
+    subLinkName: string | undefined;
 }) {
     return (
         <div className={'relative flex flex-col h-full items-center w-full'}>

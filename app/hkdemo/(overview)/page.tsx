@@ -138,7 +138,7 @@ export default function Page() {
 
     return (
         <div id={'indexContainer'} ref={outerDivRef}
-             className={"relative h-[85vh] overflow-y-scroll w-full justify-center items-center"}
+             className={"relative sm:h-[85vh] sm:overflow-y-scroll w-full justify-center items-center"}
              onWheel={(e) => {
                  throttleWheelHandler(()=>wheelHandler(e));
              }}

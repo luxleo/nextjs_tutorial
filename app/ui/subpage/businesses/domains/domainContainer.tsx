@@ -6,8 +6,6 @@ import {
     departmentInfo,
     departmentProject,
     domain,
-    getDepartmentInfo,
-    getDomains
 } from "@/app/lib/hk/domainsData";
 import clsx from "clsx";
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";

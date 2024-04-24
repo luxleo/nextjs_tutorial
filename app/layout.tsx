@@ -4,8 +4,8 @@ import {Metadata} from "next";
 
 export const metadata : Metadata = {
   title: {
-    template: "%s | donghan dashboard",
-    default: "donghan dashboard"
+    template: "%s | HK E&C",
+    default: "HK E&C"
   },
   description: "next js tutorial project",
 }

@@ -116,8 +116,8 @@ function NavMainLink({link,responsiveStyle}:
                                 'text-black': responsiveStyle == 'scroll-downed',
                                 'text-white group-hover:text-black': responsiveStyle == 'default'
                             })}>
-                <span id={`span-${link.name}`}
-                      className={'link_hover'}>{link.name}</span>
+                        <span id={`span-${link.name}`}
+                            className={'link_hover'}>{link.name}</span>
                         </p>
                     </Link>
                 </div>
