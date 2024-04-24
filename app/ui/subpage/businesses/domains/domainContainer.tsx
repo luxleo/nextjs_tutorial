@@ -34,7 +34,7 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
     return (
         <div className={''}>
             <div className={'w-full flex justify-center bg-neutral-100'}>
-                <div className={'w-[60%] md:w-[50%] flex justify-between overflow-x-scroll md:overflow-x-clip gap-3'}>
+                <div className={'w-[80%] md:w-[50%] flex justify-between overflow-x-scroll md:overflow-x-clip gap-3'}>
                 {domains.map(domain => (
                     <div key={domain.menu} onClick={() => onClickHandler(domain.menu)}
                          className={clsx('whitespace-nowrap text-center text-xl py-6 md:py-8 hover:cursor-pointer', {
@@ -46,7 +46,7 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
                 </div>
             </div>
             <div className={'px-[5%] md:px-[10%]'}>
-                <div className={'mt-16 md:mt-20 w-full flex justify-center text-3xl md:font-extrabold'}>
+                <div className={'mt-10 md:mt-20 w-full flex justify-center text-2xl md:text-3xl md:font-extrabold'}>
                     {currentDomain.menu}
                 </div>
                 <DomainDepartmentNavBar departments={currentDomain.departments} currentDomain={currentDomain} currentDepartment={currentDepartment} departmentInfo={departmentInfo}/>
@@ -79,9 +79,9 @@ function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,dep
     }
     return (
         <div className={'w-full flex flex-col items-center mt-6 md:mt-10'}>
-            <div className={'w-full flex justify-center md:gap-0 overflow-x-scroll md:overflow-x-hidden'}>
+            <div className={'w-full flex md:justify-center md:gap-0 overflow-x-scroll md:overflow-x-hidden'}>
                 {departments.map(department => (
-                    <div key={department} className={clsx('text-black font-semibold whitespace-nowrap text-lg px-8 py-4', {
+                    <div key={department} className={clsx('text-black font-semibold whitespace-nowrap text-sm md:text-lg px-8 py-4', {
                         'text-white bg-red-600': department === currentDepartment,
                         'md:hover:bg-neutral-100': department !== currentDepartment
                     })}
@@ -89,7 +89,7 @@ function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,dep
                     >
                         {department}
                     </div>
-                ))}
+                    ))}
             </div>
             <DomainInfoContainer currentDepartment={currentDepartment} departmentInfo={departmentInfo}/>
         </div>
