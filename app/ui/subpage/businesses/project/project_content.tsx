@@ -16,7 +16,7 @@ export default function ProjectsContainer({initialProjects}:{
     const [projects, setProjects] = useState<departmentProject[]>(initialProjects);
     return (
         <div className={'w-full flex gap-10'}>
-            <div className={'whitespace-nowrap hidden sm:block'}>
+            <div className={'whitespace-nowrap hidden md:block'}>
                 <FilterNavBar setToggleImage={setToggleImage} setProjects={setProjects}/>
             </div>
             <div className={'grow basis-0 h-[100vh] overflow-y-scroll'}>
@@ -48,8 +48,8 @@ function ProjectContainer({projects}:{
     projects: departmentProject[];
 }) {
     return (
-        <div className={'w-full sm:w-[90%] flex justify-center items-center'}>
-            <table className={'hidden sm:!table w-full'}>
+        <div className={'w-full md:w-[90%] flex justify-center items-center'}>
+            <table className={'hidden md:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>
                     <th scope={'col'} className={'w-[8%] pb-4'}>번호</th>
@@ -69,7 +69,7 @@ function ProjectContainer({projects}:{
                 ))}
                 </tbody>
             </table>
-            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden'}>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start md:hidden'}>
                 {projects.map((project,idx) => (
                     <div key={`${idx}-${project.name}`}
                          className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>

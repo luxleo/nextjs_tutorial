@@ -60,7 +60,7 @@ export default function Page() {
     },[mapLoaded,currentLocation])
 
     return (
-        <section className={'w-full pb-10 sm:pb-20 px-[5%] sm:px-[10%]'}>
+        <section className={'w-full pb-10 md:pb-20 px-[5%] md:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={'오시는 길'}/>
             </Suspense>
@@ -76,7 +76,7 @@ export default function Page() {
                     ))}
                     </div>
                 </div>
-                <div ref={mapRef} className={'w-full h-[30vh] sm:h-[50vh]'}>
+                <div ref={mapRef} className={'w-full h-[30vh] md:h-[50vh]'}>
 
                 </div>
                 <div className={'w-full flex'}>
@@ -92,7 +92,7 @@ function LocationControllerHeader({locationInfo,currentLocation}:{
     currentLocation: locationInfo;
 }){
     return (
-        <div className={clsx('w-full flex justify-center items-center text-lg sm:text-xl py-2 sm:py-4 text-white',{
+        <div className={clsx('w-full flex justify-center items-center text-lg md:text-xl py-2 md:py-4 text-white',{
             'bg-neutral-300': locationInfo.locationName !== currentLocation.locationName,
             'bg-red-600' : locationInfo.locationName === currentLocation.locationName
         })}>
@@ -106,10 +106,10 @@ function AddressContainer({locationInfo}:{
 }) {
     return (
         <div className={'w-full flex flex-col'}>
-            <div className={'text-lg sm:text-2xl pt-10 sm:pt-20 sm:font-semibold'}>
+            <div className={'text-lg md:text-2xl pt-10 md:pt-20 md:font-semibold'}>
                 주소
             </div>
-            <div className={'text-xs sm:text-lg mt-2 sm:mt-4'}>
+            <div className={'text-sm md:text-lg mt-2 md:mt-4'}>
                 {locationInfo.streetAddress} <span>{locationInfo.buildingInfo}</span>
             </div>
         </div>

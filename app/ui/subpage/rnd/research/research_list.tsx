@@ -13,7 +13,7 @@ function ResearchListContainer({researches}:{
 }) {
     return (
         <div className={'w-[90%] flex justify-center items-center'}>
-            <table className={'hidden sm:!table w-full'}>
+            <table className={'hidden md:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>
                     <th scope={'col'} className={'w-[5%] pb-4'}>번호</th>
@@ -37,7 +37,7 @@ function ResearchListContainer({researches}:{
                 ))}
                 </tbody>
             </table>
-            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden'}>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start md:hidden'}>
                 {researches.map(research => (
                     <div key={`${research.no}-sm-licence`}
                          className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>

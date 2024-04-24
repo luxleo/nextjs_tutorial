@@ -6,26 +6,26 @@ import {Suspense} from "react";
 export default function Page() {
 
     return (
-        <section className={'w-full px-[5%] sm:px-[10%]'}>
+        <section className={'w-full px-[5%] md:px-[10%]'}>
             <Suspense>
                 <SectionTitle title={'CI 자료'}/>
             </Suspense>
-            <div className={'w-full grid grid-cols-1 sm:grid-cols-3 sm:gap-y-[15rem]'}>
+            <div className={'w-full grid grid-cols-1 md:grid-cols-3 md:gap-y-[15rem]'}>
                 {/*symbol mark section*/}
-                <div className={'text-4xl sm:text-5xl'}>
-                    <div className={'border-b-2 sm:max-w-[20vw] border-red-700 pb-2'}>
+                <div className={'text-4xl md:text-5xl'}>
+                    <div className={'border-b-2 md:max-w-[20vw] border-red-700 pb-2'}>
                         Symbol Mark
                     </div>
                 </div>
-                <div className={'w-full flex flex-col mt-10 sm:mt-0 mb-20 sm:mb-0 items-start sm:col-span-2'}>
-                    <div className={'w-[40vw] sm:w-[20vw]'}>
+                <div className={'w-full flex flex-col mt-10 md:mt-0 mb-20 md:mb-0 items-start md:col-span-2'}>
+                    <div className={'w-[40vw] md:w-[20vw]'}>
                         <Image src={CONTENT_URL.PR_CI} alt={'ORGANIZATION'}
                                width={1277}
                                height={872}
                                className={'w-full'}
                         />
                     </div>
-                    <div className={'w-full mt-6 sm:mt-10 sm:text-xl'}>
+                    <div className={'w-full mt-6 md:mt-10 md:text-xl'}>
                         <span className={'text-hkred font-bold'}>HK</span>의 새로운 CI는 건설엔지니어링 전문기업으로서의 전문성을 표현하기 위하여 건설을
                         통해 만들고자 하는
                         유연한 대처의 곡선과 진취성을 의미하는 직선으로 구성되어 있습니다. 이와 더불어 Human korea를 의마하는 H | K 알파벳과 열정의
@@ -35,12 +35,12 @@ export default function Page() {
                     </div>
                 </div>
                 {/*footer color section*/}
-                <div className={'text-4xl sm:text-5xl'}>
-                    <div className={'border-b-2 sm:max-w-[20vw] border-red-700 pb-2'}>
+                <div className={'text-4xl md:text-5xl'}>
+                    <div className={'border-b-2 md:max-w-[20vw] border-red-700 pb-2'}>
                         Color System
                     </div>
                 </div>
-                <div className={'w-full flex flex-col mt-10 sm:mt-0 items-start sm:col-span-2'}>
+                <div className={'w-full flex flex-col mt-10 md:mt-0 items-start md:col-span-2'}>
                     <div className={'flex flex-col w-full'}>
                         <div className={'flex items-center w-full text-3xl'}>
                             Main Color

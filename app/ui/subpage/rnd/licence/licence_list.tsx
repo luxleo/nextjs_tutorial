@@ -28,7 +28,7 @@ function LicenceListContainer({pagedLicences}:{
 }) {
     return (
         <div className={'w-[90%] flex justify-center items-center'}>
-            <table className={'hidden sm:!table w-full'}>
+            <table className={'hidden md:!table w-full'}>
                 <thead className={'pb-10'}>
                 <tr className={'border-b-2'}>
                     <th scope={'col'} className={'w-[8%] pb-4'}>번호</th>
@@ -50,7 +50,7 @@ function LicenceListContainer({pagedLicences}:{
                 ))}
                 </tbody>
             </table>
-            <div className={'w-full flex flex-col gap-5 justify-center items-start sm:hidden'}>
+            <div className={'w-full flex flex-col gap-5 justify-center items-start md:hidden'}>
                 {pagedLicences.map(licence => (
                     <div key={`${licence.no}-sm-licence`}
                          className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
@@ -88,7 +88,7 @@ function PaginationContainer({setPagedLicences, flag}: {
     const pageArray = Array.from({length: totalPage}, (v, i) => i + 1);
 
     return (
-        <div className={clsx('flex gap-1 mt-6 sm:hover:cursor-pointer',{
+        <div className={clsx('flex gap-1 mt-6 md:hover:cursor-pointer',{
             'hidden' : flag
         })}>
             {pageArray.map(pageNum => (

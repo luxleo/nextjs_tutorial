@@ -138,7 +138,7 @@ export default function Page() {
 
     return (
         <div id={'indexContainer'} ref={outerDivRef}
-             className={"relative sm:h-[85vh] sm:overflow-y-scroll w-full justify-center items-center"}
+             className={"relative md:h-[85vh] md:overflow-y-scroll w-full justify-center items-center"}
              onWheel={(e) => {
                  throttleWheelHandler(()=>wheelHandler(e));
              }}
@@ -148,15 +148,15 @@ export default function Page() {
             <Hero/>
             {linksForLandingPage.map(data => (
                 <div key={data.title}>
-                    <div className={'w-full hidden sm:block h-[1px] bg-neutral-400'}></div>
+                    <div className={'w-full hidden md:block h-[1px] bg-neutral-400'}></div>
                     <div id={'index2'} className={'w-full h-[100vh]'}>
                         <SectionContainer title={data.title} description={data.description} sub_link={data.sub_link} bg_URL={data.bg_URL}/>
                     </div>
                 </div>
             ))}
 
-            <div className={clsx('sticky hidden bottom-1 sm:flex flex-col items-center justify-end', {
-                'sm:hidden': currentPage === 4
+            <div className={clsx('sticky hidden bottom-1 md:flex flex-col items-center justify-end', {
+                'md:hidden': currentPage === 4
             })}>
                 <div className={'bounce-icon'}>
                     <IconContext.Provider value={{color: 'white', size: '1.5rem'}}>
@@ -232,7 +232,7 @@ const Dots = ({ currentPage,contentPointer, setCurrentPage,pageHeight }:{
     pageHeight: number;
 }) => {
     return (
-        <div style={{ position: "fixed", top: "50%", right: 100 }} className={'z-10 p-4 hidden sm:block'}>
+        <div style={{ position: "fixed", top: "50%", right: 100 }} className={'z-10 p-4 hidden md:block'}>
             <div
                 style={{
                     display: "flex",
@@ -269,19 +269,19 @@ function SectionContainer(data : linkForLandingPage){
             <div className={'text-5xl font-semibold text-white'}>
                 {data.title}
             </div>
-            <div className={'w-[90%] sm:w-1/2 text-xl sm:text-2xl mt-10 sm:mt-14 text-center text-white font-semibold'}>
+            <div className={'w-[90%] md:w-1/2 text-xl md:text-2xl mt-10 md:mt-14 text-center text-white font-semibold'}>
                 {data.description}
             </div>
-            <div className={'w-full flex justify-center gap-3 mt-10 sm:mt-20'}>
+            <div className={'w-full flex justify-center gap-3 mt-10 md:mt-20'}>
                 {data.sub_link.map((item) => (
-                    <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center border-2 text-sm sm:text-xl text-white hover:text-black hover:bg-white text-center'}>
+                    <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center border-2 text-sm md:text-xl text-white hover:text-black hover:bg-white text-center'}>
                         <Link href={{
                             pathname: item.href,
                             query: {
                                 mainLinkName: item.mainLinkName,
                                 subLinkName: item.name
                             }
-                        }} className={'w-full h-full flex justify-center items-center px-5 sm:px-20 py-2'}>
+                        }} className={'w-full h-full flex justify-center items-center px-5 md:px-20 py-2'}>
                             {item.name}
                         </Link>
                     </div>

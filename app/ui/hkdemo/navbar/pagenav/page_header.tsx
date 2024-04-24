@@ -23,7 +23,7 @@ export default function PageHeader(){
         console.log(imageURL);
     }, []);
     return (
-        <section className={'relative w-full flex flex-col h-[300px] sm:h-[300px] lg:h-[450px]'}>
+        <section className={'relative w-full flex flex-col h-[300px] md:h-[300px] lg:h-[450px]'}>
             <PageNavbarBackgroundImage imageURL={pathname.split('/').includes('location')? `${imageURLPrefix}contact.jpg` : imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName?.toString()} subLinkName={subLinkName?.toString()} mainLink={currentLink}/>
         </section>
@@ -56,12 +56,12 @@ function PageNavbar({mainLink,subLinkName}:{
 }) {
     return (
         <div className={'relative flex flex-col h-full items-center w-full'}>
-            <div className={'text-2xl sm:text-3xl lg:text-5xl text-white'}>
+            <div className={'text-2xl md:text-3xl lg:text-5xl text-white'}>
                 {mainLink?.name}
             </div>
-            <div className={'absolute bottom-0 flex w-full sm:w-[90%]'}>
+            <div className={'absolute bottom-0 flex w-full md:w-[90%]'}>
                 {mainLink?.sub_link?.map(sublink=>(
-                    <div key={sublink.name} className={clsx('grow h-[3rem] text-md sm:h-[4rem] sm:text-xl lg:h-[5rem] lg:text-xl font-light',
+                    <div key={sublink.name} className={clsx('grow h-[3rem] text-md md:h-[4rem] md:text-xl lg:h-[5rem] lg:text-xl font-light',
                         {
                             'bg-neutral-900 bg-opacity-60 text-white' : sublink.name != subLinkName,
                             'bg-red-600 bg-opacity-100 text-white': sublink.name == subLinkName
