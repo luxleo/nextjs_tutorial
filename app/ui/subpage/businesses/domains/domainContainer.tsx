@@ -46,6 +46,8 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
                 </div>
             </div>
             <div className={'px-[5%] md:px-[10%]'}>
+
+
                 <div className={'mt-10 md:mt-20 w-full flex justify-center text-2xl md:text-3xl md:font-extrabold'}>
                     {currentDomain.menu}
                 </div>

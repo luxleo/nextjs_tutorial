@@ -16,15 +16,23 @@ export default function PageHeader(){
     const subLinkName = searchParams.get('subLinkName');
 
     const imageURLPrefix = '/hkdemo/subpage_images/';
-    const imageURL = `${imageURLPrefix}${pathname.split('/')[2]}.jpg`;
+    const imageURL = `${imageURLPrefix}${findImageURL(pathname)}.jpg`;
     const currentLink = findMainLinkWithName(mainLinkName as string);
+
+    function findImageURL(rawURL: string) {
+        const splitURL = rawURL.split('/');
+        if (splitURL.length > 3) {
+            return splitURL[splitURL.length - 2];
+        }
+        return splitURL[splitURL.length - 1];
+    }
 
     useEffect(() => {
         console.log(imageURL);
     }, []);
     return (
         <section className={'relative w-full flex flex-col h-[300px] md:h-[300px] lg:h-[450px]'}>
-            <PageNavbarBackgroundImage imageURL={pathname.split('/').includes('location')? `${imageURLPrefix}contact.jpg` : imageURL}/>
+            <PageNavbarBackgroundImage imageURL={imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName?.toString()} subLinkName={subLinkName?.toString()} mainLink={currentLink}/>
         </section>
     );

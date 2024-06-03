@@ -9,7 +9,10 @@ const nextConfig = {
             },{
                 source: "/hk/:path*",
                 destination: "/hkdemo/subpage/:path*"
-            },
+            },{
+                source: "/hk-app/:path*",
+                destination: "/hkdemo/applications/:path*"
+            }
         ]
     }
 };

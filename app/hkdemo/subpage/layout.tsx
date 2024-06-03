@@ -1,7 +1,7 @@
 import {ReactNode, Suspense} from "react";
 import PageHeader from "@/app/ui/hkdemo/navbar/pagenav/page_header";
 
-export default function Layout({children}:
+export default async function Layout({children}:
                                    {
                                        children: ReactNode
                                    }){

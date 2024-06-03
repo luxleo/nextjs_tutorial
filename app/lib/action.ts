@@ -43,13 +43,13 @@ export async function createInvoice(prevState: State,formData: FormData) {
         status: formData.get('status')
     }
     // 만일 필드가 많은 경우에는 entries로 할당 받는다.
-    //const rawFormData1 = Object.fromEntries(formData.entries());
+    // const rawFormData1 = Object.fromEntries(formData.entries());
     console.log(rawFormData);
-    //console.log(rawFormData1);
+    // console.log(rawFormData1);
 
-    //const {customerId, amount, status} = CreateInvoice.parse(rawFormData);
+    // const {customerId, amount, status} = CreateInvoice.parse(rawFormData);
 
-    //safeParse() will return an object containing either a success or error field.
+    // safeParse() will return an object containing either a success or error field.
     // This will help handle validation more gracefully without having put this logic inside the try/catch block.
     const validatedFields = CreateInvoice.safeParse({
         customerId: formData.get('customerId'),
@@ -80,7 +80,7 @@ export async function updateInvoice(id: string, formData : FormData){
     const amountInCents = amount * 100;
     await sql`
             UPDATE invoices
-            SET customer_id=${customerId}, amount=${amount},status=${status}
+            SET customer_id=${customerId}, amount=${amountInCents},status=${status}
             WHERE id=${id}
         `;
     revalidatePath('/dashboard/invoices');

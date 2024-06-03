@@ -12,10 +12,10 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
+        'hk-blue': {
+          200: '#2589FE',
+          300: '#0070F3',
+          600: '#232f3e',
         },
         "hkred" : "#ed1a2e",
         'hkcyan' : '#47b5e0',
