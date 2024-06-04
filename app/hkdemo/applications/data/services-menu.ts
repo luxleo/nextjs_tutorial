@@ -14,7 +14,7 @@ export const dummyServiceMenu: serviceMenu[] = [
     {
         menuName: '비계',
         subMenus:[
-            {name: '쌍줄강관비계',href: '/hk-app/tools/scaffolding/double-pipe-scaffolding',isActive: true},
+            {name: '강관비계',href: '/hk-app/tools/scaffolding/pipe-scaffolding',isActive: true},
             {name: '시스템비계',href: '/hk-app/tools/scaffolding/system-scaffolding',isActive: false},
             {name: '해체비계',href: '/hk-app/tools',isActive: false},
         ]

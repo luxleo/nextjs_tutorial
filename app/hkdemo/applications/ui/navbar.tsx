@@ -15,6 +15,7 @@ export type appMenuState = {
 export type appMenuAction = {
     setCurrentMenu : (menu: serviceMenu) => void
     setIsOn: () => void
+    updateCurrentMenuWithName: (menuName: string) => void
 }
 
 const initialAppMenuState : appMenuState = {
@@ -26,7 +27,10 @@ const initialAppMenuState : appMenuState = {
 export const useAppMenuStore = create<appMenuAction & appMenuState>((set, get) => ({
     ...initialAppMenuState,
     setCurrentMenu: (menu: serviceMenu) => set((state) => ({currentMenu: menu})),
-    setIsOn: () => set((state) => ({isOn: !state.isOn}))
+    setIsOn: () => set((state) => ({isOn: !state.isOn})),
+    updateCurrentMenuWithName: (menuName) => set((state) => ({
+        currentMenu: state.menus.filter(el => el.menuName === menuName)[0]
+    }))
 }));
 
 export default function AppNavBar() {
@@ -68,13 +72,14 @@ function ServiceMenuContainer() {
     const router = useRouter();
     return (
         <div className={'fixed top-[calc(10vh+40px)] left-0 flex min-w-[500px]  border-t-[1px] border-neutral-500'}>
-            <div className={'flex flex-col gap-y-2 basis-0 grow-[1] bg-hk-blue-600 overflow-y-scroll px-4 py-8 text-lg font-bold'}>
+            <div
+                className={'flex flex-col gap-y-2 basis-0 grow-[1] bg-hk-blue-600 overflow-y-scroll px-4 py-8 text-lg font-bold'}>
                 {menus.map((el, idx) => (
                     <div key={`${el.menuName}-${idx}`} onClick={() => setCurrentMenu(el)}
-                    className={clsx('select-none hover:cursor-pointer',{
-                        'text-orange-500': currentMenu.menuName === el.menuName,
-                        'hover:text-orange-500': currentMenu.menuName !== el.menuName
-                    })}>
+                         className={clsx('select-none hover:cursor-pointer', {
+                             'text-orange-500': currentMenu.menuName === el.menuName,
+                             'hover:text-orange-500': currentMenu.menuName !== el.menuName
+                         })}>
                         {el.menuName}
                     </div>
                 ))}
@@ -90,18 +95,20 @@ function ServiceMenuContainer() {
                 </div>
                 <div className={'flex flex-col gap-y-3'}>
                     {currentMenu.subMenus?.map((el, idx) => (
-                        <div key={`${idx}-${el.name}`} className={clsx('text-lg select-none group relative inline-flex',{
-                            'hover:cursor-pointer hover:text-orange-500': el.isActive,
-                            'text-neutral-400': !el.isActive
-                        })}
-                             onClick={()=>{
-                                if(!el.isActive) return;
+                        <div key={`${idx}-${el.name}`}
+                             className={clsx('text-lg select-none group relative inline-flex', {
+                                 'hover:cursor-pointer hover:text-orange-500': el.isActive,
+                                 'text-neutral-400': !el.isActive
+                             })}
+                             onClick={() => {
+                                 if (!el.isActive) return;
                                  setIsNavOn();
                                  router.push(el.href);
                              }}
                         >
                             {el.name}
-                            {!el.isActive && <span className={'group-hover:flex hidden ml-2 text-sm border-neutral-400 border-2 items-center justify-center px-1'}>준비중</span>}
+                            {!el.isActive && <span
+                                className={'group-hover:flex hidden ml-2 text-sm border-neutral-400 border-2 items-center justify-center px-1'}>준비중</span>}
                         </div>
                     ))}
                 </div>
