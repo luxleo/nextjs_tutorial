@@ -1,3 +1,7 @@
+<a href="https://github.com/devxb/gitanimals">
+  <img src="https://render.gitanimals.org/lines/luxleo?pet-id=1" width="1000" height="120"/>
+</a>
+
 # chap 1
 # chap 2
 # chap 3 - optimizing fonts and image

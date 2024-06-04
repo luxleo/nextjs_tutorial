@@ -3,6 +3,8 @@ import React from "react";
 import {create} from "zustand";
 import {dummyServiceMenu, serviceMenu} from "@/app/hkdemo/applications/data/services-menu";
 import {clsx} from "clsx";
+import {useRouter} from "next/navigation";
+import { RxCross2 } from "react-icons/rx";
 
 export type appMenuState = {
     menus: serviceMenu[];
@@ -61,8 +63,9 @@ export default function AppNavBar() {
 function ServiceMenuContainer() {
     const menus = useAppMenuStore(state => state.menus);
     const currentMenu = useAppMenuStore(state => state.currentMenu);
+    const setIsNavOn = useAppMenuStore(state => state.setIsOn);
     const setCurrentMenu = useAppMenuStore(state => state.setCurrentMenu);
-
+    const router = useRouter();
     return (
         <div className={'fixed top-[calc(10vh+40px)] left-0 flex min-w-[500px]  border-t-[1px] border-neutral-500'}>
             <div className={'flex flex-col gap-y-2 basis-0 grow-[1] bg-hk-blue-600 overflow-y-scroll px-4 py-8 text-lg font-bold'}>
@@ -77,16 +80,28 @@ function ServiceMenuContainer() {
                 ))}
             </div>
             <div className={'grow-[2] basis-0 flex flex-col gap-y-7 bg-hk-blue-600 overflow-y-scroll px-4 py-8'}>
-                <div className={'font-bold text-2xl'}>
-                    {currentMenu.menuName}
+                <div className={'flex justify-between text-2xl font-bold'}>
+                    <div className={''}>
+                        {currentMenu.menuName}
+                    </div>
+                    <div className={'hover:cursor-pointer hover:shadow-inner select-none'} onClick={setIsNavOn}>
+                        <RxCross2/>
+                    </div>
                 </div>
                 <div className={'flex flex-col gap-y-3'}>
                     {currentMenu.subMenus?.map((el, idx) => (
-                        <div key={`${idx}-${el.name}`} className={clsx('text-lg select-none',{
+                        <div key={`${idx}-${el.name}`} className={clsx('text-lg select-none group relative inline-flex',{
                             'hover:cursor-pointer hover:text-orange-500': el.isActive,
                             'text-neutral-400': !el.isActive
-                        })}>
+                        })}
+                             onClick={()=>{
+                                if(!el.isActive) return;
+                                 setIsNavOn();
+                                 router.push(el.href);
+                             }}
+                        >
                             {el.name}
+                            {!el.isActive && <span className={'group-hover:flex hidden ml-2 text-sm border-neutral-400 border-2 items-center justify-center px-1'}>준비중</span>}
                         </div>
                     ))}
                 </div>

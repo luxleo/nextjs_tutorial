@@ -12,7 +12,7 @@ export default function Layout({children}:{
         <div className={'w-full'}>
             <div className={'w-full h-[10vh] bg-black'}></div>
             <AppNavBar/>
-            <div className={'w-full'} onClick={()=>{
+            <div className={'w-full mt-[40px]'} onClick={()=>{
                 if(!isNavOn) return;
                 setIsNavOn();
             }}>
