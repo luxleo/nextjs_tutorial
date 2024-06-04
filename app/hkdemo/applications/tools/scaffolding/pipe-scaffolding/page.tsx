@@ -18,7 +18,7 @@ export default function Page() {
                     <div className={'w-full flex flex-col gap-y-3'}>
                         <div>
                             <InputLargeTitle title={'고정하중'}/>
-                            <div className={'w-full flex-col flex py-2 gap-y-2'}>
+                            <div className={'w-full flex-col flex gap-y-2'}>
                                 <div>
                                     <label htmlFor={'self-weight'}>강재 자중</label>
                                     <div>
@@ -38,7 +38,7 @@ export default function Page() {
                         </div>
                         <div>
                             <InputLargeTitle title={'작업하중'}/>
-                            <div className={'w-full flex-col flex py-2 gap-y-2'}>
+                            <div className={'w-full flex-col flex gap-y-2'}>
                                 <div>
                                     <input id={'working-load'} name={'working-load'} placeholder={'자중 사용'}
                                            className={'w-[300px]'}/> <span>kN/m<sup>2</sup></span>
@@ -47,7 +47,7 @@ export default function Page() {
                         </div>
                         <div>
                             <InputLargeTitle title={'풍하중'}/>
-                            <div className={'w-full flex py-2 gap-x-2'}>
+                            <div className={'w-full flex gap-x-2'}>
                                 <div>
                                     <input id={'wind-load'} name={'wind-load'} placeholder={'자중 사용'}
                                            className={'w-[300px]'}/> <span>kN/m<sup>2</sup></span>

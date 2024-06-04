@@ -19,8 +19,9 @@ export default function FormContainer({title,children}:{
 export function InputLargeTitle({title}:{
     title: string;
 }) {
+
     return (
-        <div className={'w-full text-lg font-semibold'}>
+        <div className={'w-full text-lg font-semibold my-2'}>
             {title}
         </div>
     )
