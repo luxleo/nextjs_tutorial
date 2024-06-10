@@ -1,4 +1,11 @@
-#scaffolding_type_table th, td{
+/*TODO: 전역적으로 다 import 되는데 안되도록 해야함*/
+#scaffolding_type_table th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 1rem 0;
+}
+
+#scaffolding_type_table td{
     border: 1px solid black;
     border-collapse: collapse;
     padding: 1rem 0;

@@ -22,13 +22,15 @@ export type windLoadValue = {
     defaultVelocity: number;
     surfaceRoughness: 'A' | 'B' | 'C' | 'D';
     terrainType: 'flat land' | 'hill' | 'slope';
-    importanceCoefficient: '특' | '1' | '2' | '3';
+    importanceCoefficient: number;
     panelType: 'on' | 'above';
     panelInfo: {
         width: number;
         length: number;
         height?: number;
-    }
+    };
+    scaffoldingSupportType: 1 | 2 | 3 | 4 | 5 | 6;
+    solidityRatio: number;
 }
 
 function WindLoadForm() {
@@ -39,12 +41,14 @@ function WindLoadForm() {
         defaultVelocity: 0,
         surfaceRoughness: 'A',
         terrainType: 'flat land',
-        importanceCoefficient: '3',
+        importanceCoefficient: 0.6,
         panelType: 'above',
         panelInfo: {
             width: 0,
             length: 0,
-        }
+        },
+        scaffoldingSupportType: 1,
+        solidityRatio: 0.3,
     });
 
     const updateVelocity = useCallback((velocity: number) => {
@@ -71,6 +75,37 @@ function WindLoadForm() {
         })
     }, []);
 
+    const updatePanelWidth = useCallback((value: number) => {
+        setWindLoadValue((draft) => {
+            draft.panelInfo.width = value;
+        })
+    }, []);
+
+    const updatePanelLength = useCallback((value: number) => {
+        setWindLoadValue((draft) => {
+            draft.panelInfo.length = value;
+        })
+    }, []);
+
+    const updatePanelHeight = useCallback((value: number) => {
+        setWindLoadValue((draft) => {
+            draft.panelInfo.height = value;
+        })
+    }, []);
+
+    const updateScaffoldingSupportType = useCallback((value: windLoadValue['scaffoldingSupportType']) => {
+        setWindLoadValue((draft) => {
+            draft.scaffoldingSupportType = value;
+        })
+    }, []);
+
+    const updateSolidityRatio = useCallback((value: number) => {
+        setWindLoadValue((draft) => {
+            draft.solidityRatio = value;
+        })
+    }, []);
+
+
     useEffect(() => {
         setLocationList(windDataList.filter(el => el.cityName.includes(locationSearchWord)));
     }, [locationSearchWord]);
@@ -89,14 +124,19 @@ function WindLoadForm() {
     ];
 
     const panelTypeData: { value: windLoadValue['panelType']; name: string; }[] = [
-        {value: 'on', name: '지면과 공간을 두고 설치'},
-        {value: 'above', name: '지면에 붙여 설치'},
+        {value: 'on', name: '지면에 붙여 설치'},
+        {value: 'above', name: '지면과 공간을 두고 설치'},
     ];
 
     return (
         <div className={'w-[1000px] py-10 px-10 bg-white flex flex-col relative h-[80vh] overflow-y-scroll'}
-             onClick={e => e.stopPropagation()}>
-            <div className={'text-2xl font-semibold mb-5'}>
+             onClick={e => {
+                 e.stopPropagation();
+                 if(isWithLocation) setIsWithLocation(prev => !prev);
+             }
+             }
+        >
+            <div className={'text-2xl font-semibold mb-5 pb-2 border-b-2 border-black'}>
                 풍하중 설정
             </div>
             <div className={'w-full flex flex-col gap-y-12'}>
@@ -112,26 +152,36 @@ function WindLoadForm() {
                         <div>
                             {!isWithLocation ? <button
                                     className={'text-sm bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow'}
-                                    onClick={() => setIsWithLocation(prev => !prev)}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsWithLocation(prev => !prev);
+                                    }
+                                    }
                                 >지역으로
                                     검색하기</button>
                                 :
                                 <div className={'relative'}>
                                     <input type={'search'}
                                            className={'h-[20px]'}
+                                           onClick={(e)=> e.stopPropagation()}
                                            onChange={(event) => setLocationSearchWord(event.target.value)}
                                            placeholder={'지명을 입력하세요'}
                                     />
                                     <div
-                                        className={'absolute top-[20px] flex flex-col max-h-[100px] overflow-y-scroll bg-white border-2 border-t-0 border-black'}>
+                                        className={'absolute top-[24px] flex flex-col max-h-[100px] overflow-y-scroll bg-white border-2 border-t-0 border-black'}>
                                         <div
                                             className={'w-full flex justify-end hover:cursor-pointer hover:text-orange-500'}
-                                            onClick={() => setIsWithLocation(prev => !prev)}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setIsWithLocation(prev => !prev);
+                                            }
+                                            }
                                         ><RxCross2 size={'1.5rem'}/></div>
                                         {locationList?.map((el, idx) => (
                                             <div key={`${idx}-${el.cityName}`}
                                                  className={'select-none hover:bg-neutral-200 hover:cursor-pointer py-1 px-2'}
-                                                 onClick={() => {
+                                                 onClick={(e) => {
+                                                     e.stopPropagation();
                                                      updateVelocity(el.velocity);
                                                      setLocationList(windDataList);
                                                      setIsWithLocation(prev => !prev);
@@ -213,34 +263,94 @@ function WindLoadForm() {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td className={'text-center'}>독립적으로 지지되는 비계</td>
-                            <td className={'text-center'}>정압,부압</td>
-                            <td className={'text-center'}>전 부분</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
-                        </tr>
-                        <tr>
+                        <tr className={'group'} onClick={()=>{
+                            updateScaffoldingSupportType(1);
+                        }}>
                             <td className={'text-center'} rowSpan={5}>구조물에 지지되는 비계</td>
                             <td className={'text-center'} rowSpan={2}>정압</td>
-                            <td className={'text-center'}>상부 2개층</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                            <td className={'text-center select-none'}>상부 2개층</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={1}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(1)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===1}
+                                />
+                            </td>
                         </tr>
-                        <tr>
-                            <td className={'text-center'}>기타 부분</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        <tr className={'group'} onClick={()=>{
+                            updateScaffoldingSupportType(2);
+                        }}>
+                            <td className={'text-center select-none'}>기타 부분</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={2}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(2)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===2}
+                                />
+                            </td>
                         </tr>
-                        <tr>
+                        <tr className={'group'} onClick={()=>{
+                            updateScaffoldingSupportType(3);
+                        }}>
                             <td className={'text-center'} rowSpan={3}>부압</td>
-                            <td className={'text-center'}>개구부 인접부 및 돌출부</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                            <td className={'text-center select-none'}>개구부 인접부 및 돌출부</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={3}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(3)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===3}
+                                />
+                            </td>
                         </tr>
-                        <tr>
-                            <td className={'text-center'}>우각부에서 2스팬 이내</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        <tr className={'group'} onClick={()=>{
+                            updateScaffoldingSupportType(4);
+                        }}>
+                            <td className={'text-center select-none'}>우각부에서 2스팬 이내</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={4}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(4)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===4}
+                                />
+                            </td>
                         </tr>
-                        <tr>
-                            <td className={'text-center'}>기타부분</td>
-                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        <tr className={'group'} onClick={()=>{
+                            updateScaffoldingSupportType(5);
+                        }}>
+                            <td className={'text-center select-none'}>기타부분</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={5}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(5)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===5}
+                                />
+                            </td>
+                        </tr>
+                        <tr className={'group'}  onClick={()=>{
+                            updateScaffoldingSupportType(6);
+                        }}>
+                            <td className={'text-center'}>독립적으로 지지되는 비계</td>
+                            <td className={'text-center'}>정압,부압</td>
+                            <td className={'text-center select-none'}>전 부분</td>
+                            <td className={'text-center group-hover:bg-neutral-100'}>
+                                <input type={"radio"} name={'supportType'} value={6}
+                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                        onChange={(e)=>{
+                                            e.stopPropagation();
+                                            updateScaffoldingSupportType(6)}}
+                                       checked={windLoadValue['scaffoldingSupportType']===6}
+                                />
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -251,7 +361,7 @@ function WindLoadForm() {
                         <div className={'flex flex-col gap-y-4'}>
                             <div className={'flex gap-x-5'}>
                                 {panelTypeData.map((el, idx) => (
-                                    <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center text-sm'}
+                                    <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center'}
                                          onClick={() => updatePanelType(el.value)}
                                     >
                                         <input type={'radio'} name={'panelTypes'} value={el.value}
@@ -269,7 +379,9 @@ function WindLoadForm() {
                                     <label htmlFor={'panel-width'} className={''}>망 또는 패널의 길이 <span
                                         className={'text-lg'}>(l)</span></label>
                                     <div>
-                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-width'}/>
+                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-width'}
+                                               onChange={(e)=> updatePanelWidth(parseFloat(e.target.value))}
+                                        />
                                         <label htmlFor={'panel-width'} className={'ml-2'}>m</label>
                                     </div>
                                 </div>
@@ -277,7 +389,9 @@ function WindLoadForm() {
                                     <label htmlFor={'panel-length'} className={''}>망 또는 패널의 높이 <span
                                         className={'text-lg'}>(h)</span></label>
                                     <div>
-                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}/>
+                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}
+                                               onChange={(e)=> updatePanelLength(parseFloat(e.target.value))}
+                                        />
                                         <label htmlFor={'panel-length'} className={'ml-2'}>m</label>
                                     </div>
                                 </div>
@@ -287,7 +401,9 @@ function WindLoadForm() {
                                             className={'text-lg'}>(T)</span></label>
                                         <div>
                                             <input className={'w-20 h-8'} type={'number'} name={''}
-                                                   id={'panel-height'}/>
+                                                   id={'panel-height'}
+                                                   onChange={(e)=> updatePanelHeight(parseFloat(e.target.value))}
+                                            />
                                             <label htmlFor={'panel-height'} className={'ml-2'}>m</label>
                                         </div>
                                     </div>
@@ -295,15 +411,20 @@ function WindLoadForm() {
                             </div>
                         </div>
                         <div className={''}>
-
+                        {/*TODO: 수치 가이드 그림 채워넣기*/}
                         </div>
                     </div>
                 </div>
                 <div>
                     <InputLargeTitle title={'충실률(Ø)'}/>
                     <div>
-                        <input type={'number'} className={'w-16 h-8'} defaultValue={0.3} onChange={()=>{}}/>
+                        <input type={'number'} className={'w-16 h-8'} defaultValue={0.3} onChange={(e)=> updateSolidityRatio(parseFloat(e.target.value))}/>
                     </div>
+                </div>
+                <div className={'py-4 flex justify-center items-center'}>
+                    <button className={''} onClick={()=>{
+                        alert(JSON.stringify(windLoadValue));
+                    }}>계산하기</button>
                 </div>
             </div>
         </div>
