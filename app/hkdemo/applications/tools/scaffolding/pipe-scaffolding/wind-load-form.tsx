@@ -6,6 +6,8 @@ import {useImmer} from "use-immer";
 import {RxCross2} from "react-icons/rx";
 import {clsx} from "clsx";
 
+import './wind-load-form.css';
+
 export default function WindLoadFormContainer() {
     const toggleModalOn = useWindLoadFormStore(state => state.toggleModalOn);
     return (
@@ -21,6 +23,12 @@ export type windLoadValue = {
     surfaceRoughness: 'A' | 'B' | 'C' | 'D';
     terrainType: 'flat land' | 'hill' | 'slope';
     importanceCoefficient: '특' | '1' | '2' | '3';
+    panelType: 'on' | 'above';
+    panelInfo: {
+        width: number;
+        length: number;
+        height?: number;
+    }
 }
 
 function WindLoadForm() {
@@ -32,6 +40,11 @@ function WindLoadForm() {
         surfaceRoughness: 'A',
         terrainType: 'flat land',
         importanceCoefficient: '3',
+        panelType: 'above',
+        panelInfo: {
+            width: 0,
+            length: 0,
+        }
     });
 
     const updateVelocity = useCallback((velocity: number) => {
@@ -52,6 +65,12 @@ function WindLoadForm() {
         })
     }, []);
 
+    const updatePanelType = useCallback((value: windLoadValue['panelType']) => {
+        setWindLoadValue((draft) => {
+            draft.panelType = value;
+        })
+    }, []);
+
     useEffect(() => {
         setLocationList(windDataList.filter(el => el.cityName.includes(locationSearchWord)));
     }, [locationSearchWord]);
@@ -69,19 +88,26 @@ function WindLoadForm() {
         {value: 'slope', name: '경사지'},
     ];
 
+    const panelTypeData: { value: windLoadValue['panelType']; name: string; }[] = [
+        {value: 'on', name: '지면과 공간을 두고 설치'},
+        {value: 'above', name: '지면에 붙여 설치'},
+    ];
+
     return (
         <div className={'w-[1000px] py-10 px-10 bg-white flex flex-col relative h-[80vh] overflow-y-scroll'}
              onClick={e => e.stopPropagation()}>
             <div className={'text-2xl font-semibold mb-5'}>
                 풍하중 설정
             </div>
-            <div className={'w-full flex flex-col gap-y-4'}>
+            <div className={'w-full flex flex-col gap-y-12'}>
                 <div>
                     <InputLargeTitle title={'기본풍속'}/>
                     <div className={'flex items-center gap-x-3'}>
                         <div>
                             <input className={'text-center'} name={'default-velocity'}
-                                   value={windLoadValue.defaultVelocity}/> <span>m/s</span>
+                                   value={windLoadValue.defaultVelocity}
+                                   onChange={(e)=> updateVelocity(parseFloat(e.target.value))}
+                            /> <span>m/s</span>
                         </div>
                         <div>
                             {!isWithLocation ? <button
@@ -136,14 +162,16 @@ function WindLoadForm() {
                                     <div className={'flex items-center gap-x-1'}>
                                         <input id={`${el.value}-surfaceRoughnessData`}
                                                className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                               type={'radio'} name={'surfaceRoughness'} value={el.value}
+                                               type={'radio'}
+                                               name={'surfaceRoughness'}
+                                               value={el.value}
                                                checked={el.value === windLoadValue.surfaceRoughness}
-                                               onClick={() => updateSurfaceRoughness(el.value)}
+                                               onChange={() => updateSurfaceRoughness(el.value)}
                                         />
                                         <label className={'pb-[0.15rem]'}
                                                htmlFor={`${el.value}-surfaceRoughnessData`}>{el.value}</label>
                                     </div>
-                                    <div className={'whitespace-pre text-sm'}>
+                                    <div className={'whitespace-pre text-sm select-none'}>
                                         {el.description}
                                     </div>
                                 </div>
@@ -163,12 +191,118 @@ function WindLoadForm() {
                                        name={'terrainType'}
                                        id={`${el.value}-terrainData`}
                                        checked={el.value === windLoadValue.terrainType}
-                                       onClick={() => updateTerrainType(el.value)}
+                                       onChange={() => updateTerrainType(el.value)}
                                 />
                                 <label className={'pb-[0.15rem]'}
                                        htmlFor={`${el.value}-terrainData`}>{el.name}</label>
                             </div>
                         ))}
+                    </div>
+                </div>
+                {/*TODO:    중요도 0.6으로 고정해두었는데 추후에 수정해야한다.*/}
+                <div>
+                    {/*TODO: 비계 일때만 해당되는 항목으로 해당되지 않을때를 위하여 전역상태로 조건부 렌더링 해야한다.*/}
+                    <InputLargeTitle title={'비계 지지방법'}/>
+                    <table className={'w-full'} id={'scaffolding_type_table'}>
+                        <thead>
+                        <tr>
+                            <th>비계의 종류</th>
+                            <th>풍력방향</th>
+                            <th>적용부분</th>
+                            <th>선택</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td className={'text-center'}>독립적으로 지지되는 비계</td>
+                            <td className={'text-center'}>정압,부압</td>
+                            <td className={'text-center'}>전 부분</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        <tr>
+                            <td className={'text-center'} rowSpan={5}>구조물에 지지되는 비계</td>
+                            <td className={'text-center'} rowSpan={2}>정압</td>
+                            <td className={'text-center'}>상부 2개층</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        <tr>
+                            <td className={'text-center'}>기타 부분</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        <tr>
+                            <td className={'text-center'} rowSpan={3}>부압</td>
+                            <td className={'text-center'}>개구부 인접부 및 돌출부</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        <tr>
+                            <td className={'text-center'}>우각부에서 2스팬 이내</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        <tr>
+                            <td className={'text-center'}>기타부분</td>
+                            <td className={'text-center'}><input type={"checkbox"}/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <InputLargeTitle title={'보호망 또는 패널'}/>
+                    <div className={'grid grid-cols-2 w-full gap-x-2'}>
+                        <div className={'flex flex-col gap-y-4'}>
+                            <div className={'flex gap-x-5'}>
+                                {panelTypeData.map((el, idx) => (
+                                    <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center text-sm'}
+                                         onClick={() => updatePanelType(el.value)}
+                                    >
+                                        <input type={'radio'} name={'panelTypes'} value={el.value}
+                                               id={`${el.value}-panel`}
+                                               className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                               onChange={() => updatePanelType(el.value)}
+                                               checked={windLoadValue['panelType'] === el.value}
+                                        />
+                                        <label htmlFor={`${el.name}-panel`}>{el.name}</label>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className={'flex flex-col h-36 gap-y-2'}>
+                                <div className={'flex justify-between'}>
+                                    <label htmlFor={'panel-width'} className={''}>망 또는 패널의 길이 <span
+                                        className={'text-lg'}>(l)</span></label>
+                                    <div>
+                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-width'}/>
+                                        <label htmlFor={'panel-width'} className={'ml-2'}>m</label>
+                                    </div>
+                                </div>
+                                <div className={'flex justify-between'}>
+                                    <label htmlFor={'panel-length'} className={''}>망 또는 패널의 높이 <span
+                                        className={'text-lg'}>(h)</span></label>
+                                    <div>
+                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}/>
+                                        <label htmlFor={'panel-length'} className={'ml-2'}>m</label>
+                                    </div>
+                                </div>
+                                {windLoadValue['panelType'] === 'above' &&
+                                    <div className={'flex justify-between'}>
+                                        <label htmlFor={'panel-height'} className={''}>망 또는 패널의 지면으로 부터 높이 <span
+                                            className={'text-lg'}>(T)</span></label>
+                                        <div>
+                                            <input className={'w-20 h-8'} type={'number'} name={''}
+                                                   id={'panel-height'}/>
+                                            <label htmlFor={'panel-height'} className={'ml-2'}>m</label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div className={''}>
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <InputLargeTitle title={'충실률(Ø)'}/>
+                    <div>
+                        <input type={'number'} className={'w-16 h-8'} defaultValue={0.3} onChange={()=>{}}/>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,5 @@
+#scaffolding_type_table th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 1rem 0;
+}

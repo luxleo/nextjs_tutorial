@@ -7,7 +7,6 @@ export default async function Layout({children}:
                                    }){
     return (
         <div className={'w-full min-h-screen'}>
-            {/*TODO: Suspense 처리해주자*/}
             <Suspense fallback={<div>loading...</div>}>
                 <PageHeader/>
             </Suspense>
