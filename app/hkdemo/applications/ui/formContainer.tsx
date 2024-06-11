@@ -21,7 +21,17 @@ export function InputLargeTitle({title}:{
 }) {
 
     return (
-        <div className={'w-full text-lg font-semibold my-2'}>
+        <div className={'w-full text-lg font-semibold bg-neutral-100 px-4 py-4'}>
+            {title}
+        </div>
+    )
+}
+
+export function InputMiddleTitle({title}:{
+    title: string;
+}){
+    return (
+        <div className={'w-full font-semibold my-1'}>
             {title}
         </div>
     )

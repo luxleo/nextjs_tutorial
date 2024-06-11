@@ -1,5 +1,5 @@
 import {useWindLoadFormStore} from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form-store";
-import {InputLargeTitle} from "@/app/hkdemo/applications/ui/formContainer";
+import {InputLargeTitle, InputMiddleTitle} from "@/app/hkdemo/applications/ui/formContainer";
 import {useCallback, useEffect, useState} from "react";
 import {windData, windDataList} from "@/app/hkdemo/applications/data/basic-wind-velocity";
 import {useImmer} from "use-immer";
@@ -7,6 +7,7 @@ import {RxCross2} from "react-icons/rx";
 import {clsx} from "clsx";
 
 import './wind-load-form.css';
+import {calcWindLoad} from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form-action";
 
 export default function WindLoadFormContainer() {
     const toggleModalOn = useWindLoadFormStore(state => state.toggleModalOn);
@@ -29,8 +30,14 @@ export type windLoadValue = {
         length: number;
         height?: number;
     };
+    panelLocation: 'back' | 'front, one-line';
     scaffoldingSupportType: 1 | 2 | 3 | 4 | 5 | 6;
     solidityRatio: number;
+}
+
+export type windLoadResult = {
+    value?: number;
+    isCalculated: boolean;
 }
 
 function WindLoadForm() {
@@ -49,6 +56,10 @@ function WindLoadForm() {
         },
         scaffoldingSupportType: 1,
         solidityRatio: 0.3,
+        panelLocation: 'front, one-line'
+    });
+    const [windLoadResult, setWindLoadResult] = useState<windLoadResult>({
+        isCalculated: false
     });
 
     const updateVelocity = useCallback((velocity: number) => {
@@ -66,6 +77,12 @@ function WindLoadForm() {
     const updateTerrainType = useCallback((value: windLoadValue['terrainType']) => {
         setWindLoadValue((draft) => {
             draft.terrainType = value;
+        })
+    }, []);
+
+    const updatePanelLocation = useCallback((value: windLoadValue['panelLocation']) => {
+        setWindLoadValue((draft) => {
+            draft.panelLocation = value;
         })
     }, []);
 
@@ -105,7 +122,6 @@ function WindLoadForm() {
         })
     }, []);
 
-
     useEffect(() => {
         setLocationList(windDataList.filter(el => el.cityName.includes(locationSearchWord)));
     }, [locationSearchWord]);
@@ -128,11 +144,16 @@ function WindLoadForm() {
         {value: 'above', name: '지면과 공간을 두고 설치'},
     ];
 
+    const panelLocationData: { value: windLoadValue['panelLocation']; name: string;}[] = [
+        {value: 'back', name: '쌍줄비계 후면'},
+        {value: 'front, one-line', name: '쌍줄비계 전면, 외줄비계'},
+    ]
+
     return (
-        <div className={'w-[1000px] py-10 px-10 bg-white flex flex-col relative h-[80vh] overflow-y-scroll'}
+        <div className={'w-[1000px] py-10 px-10 flex flex-col relative h-[80vh] overflow-y-scroll bg-neutral-200'}
              onClick={e => {
                  e.stopPropagation();
-                 if(isWithLocation) setIsWithLocation(prev => !prev);
+                 if (isWithLocation) setIsWithLocation(prev => !prev);
              }
              }
         >
@@ -140,13 +161,13 @@ function WindLoadForm() {
                 풍하중 설정
             </div>
             <div className={'w-full flex flex-col gap-y-12'}>
-                <div>
+                <div className={'bg-white'}>
                     <InputLargeTitle title={'기본풍속'}/>
-                    <div className={'flex items-center gap-x-3'}>
+                    <div className={'flex items-center gap-x-3 px-4 py-5 shadow-sm'}>
                         <div>
                             <input className={'text-center'} name={'default-velocity'}
                                    value={windLoadValue.defaultVelocity}
-                                   onChange={(e)=> updateVelocity(parseFloat(e.target.value))}
+                                   onChange={(e) => updateVelocity(parseFloat(e.target.value))}
                             /> <span>m/s</span>
                         </div>
                         <div>
@@ -163,7 +184,7 @@ function WindLoadForm() {
                                 <div className={'relative'}>
                                     <input type={'search'}
                                            className={'h-[20px]'}
-                                           onClick={(e)=> e.stopPropagation()}
+                                           onClick={(e) => e.stopPropagation()}
                                            onChange={(event) => setLocationSearchWord(event.target.value)}
                                            placeholder={'지명을 입력하세요'}
                                     />
@@ -198,7 +219,7 @@ function WindLoadForm() {
                 </div>
                 <div>
                     <InputLargeTitle title={'지표조도구분'}/>
-                    <div className={'grid grid-cols-2 gap-x-2 gap-y-2'}>
+                    <div className={'grid grid-cols-2 gap-x-2 gap-y-2 px-4 py-5 bg-white shadow-sm'}>
                         {surfaceRoughnessData.map((el, idx) => (
                             <div key={`${el.value}-surfaceRoughness`}
                                  className={clsx('flex px-4 py-2 border rounded-md hover:cursor-pointer', {
@@ -231,7 +252,7 @@ function WindLoadForm() {
                 </div>
                 <div>
                     <InputLargeTitle title={'지형구분'}/>
-                    <div className={'flex gap-x-3'}>
+                    <div className={'flex gap-x-3 px-4 py-5 bg-white shadow-sm'}>
                         {terrainTypeData.map((el, idx) => (
                             <div key={`${el.value}-terrainData`} className={'flex items-center gap-x-1'}
                                  onClick={() => updateTerrainType(el.value)}>
@@ -253,134 +274,149 @@ function WindLoadForm() {
                 <div>
                     {/*TODO: 비계 일때만 해당되는 항목으로 해당되지 않을때를 위하여 전역상태로 조건부 렌더링 해야한다.*/}
                     <InputLargeTitle title={'비계 지지방법'}/>
-                    <table className={'w-full'} id={'scaffolding_type_table'}>
-                        <thead>
-                        <tr>
-                            <th>비계의 종류</th>
-                            <th>풍력방향</th>
-                            <th>적용부분</th>
-                            <th>선택</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr className={'group'} onClick={()=>{
-                            updateScaffoldingSupportType(1);
-                        }}>
-                            <td className={'text-center'} rowSpan={5}>구조물에 지지되는 비계</td>
-                            <td className={'text-center'} rowSpan={2}>정압</td>
-                            <td className={'text-center select-none'}>상부 2개층</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={1}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(1)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===1}
-                                />
-                            </td>
-                        </tr>
-                        <tr className={'group'} onClick={()=>{
-                            updateScaffoldingSupportType(2);
-                        }}>
-                            <td className={'text-center select-none'}>기타 부분</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={2}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(2)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===2}
-                                />
-                            </td>
-                        </tr>
-                        <tr className={'group'} onClick={()=>{
-                            updateScaffoldingSupportType(3);
-                        }}>
-                            <td className={'text-center'} rowSpan={3}>부압</td>
-                            <td className={'text-center select-none'}>개구부 인접부 및 돌출부</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={3}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(3)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===3}
-                                />
-                            </td>
-                        </tr>
-                        <tr className={'group'} onClick={()=>{
-                            updateScaffoldingSupportType(4);
-                        }}>
-                            <td className={'text-center select-none'}>우각부에서 2스팬 이내</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={4}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(4)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===4}
-                                />
-                            </td>
-                        </tr>
-                        <tr className={'group'} onClick={()=>{
-                            updateScaffoldingSupportType(5);
-                        }}>
-                            <td className={'text-center select-none'}>기타부분</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={5}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(5)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===5}
-                                />
-                            </td>
-                        </tr>
-                        <tr className={'group'}  onClick={()=>{
-                            updateScaffoldingSupportType(6);
-                        }}>
-                            <td className={'text-center'}>독립적으로 지지되는 비계</td>
-                            <td className={'text-center'}>정압,부압</td>
-                            <td className={'text-center select-none'}>전 부분</td>
-                            <td className={'text-center group-hover:bg-neutral-100'}>
-                                <input type={"radio"} name={'supportType'} value={6}
-                                       className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                        onChange={(e)=>{
-                                            e.stopPropagation();
-                                            updateScaffoldingSupportType(6)}}
-                                       checked={windLoadValue['scaffoldingSupportType']===6}
-                                />
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div className={'px-4 py-5 bg-white shadow-sm'}>
+                        <table className={'w-full'} id={'scaffolding_type_table'}>
+                            <thead>
+                            <tr>
+                                <th>비계의 종류</th>
+                                <th>풍력방향</th>
+                                <th>적용부분</th>
+                                <th>선택</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(1);
+                            }}>
+                                <td className={'text-center'} rowSpan={5}>구조물에 지지되는 비계</td>
+                                <td className={'text-center'} rowSpan={2}>정압</td>
+                                <td className={'text-center select-none'}>상부 2개층</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={1}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(1)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 1}
+                                    />
+                                </td>
+                            </tr>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(2);
+                            }}>
+                                <td className={'text-center select-none'}>기타 부분</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={2}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(2)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 2}
+                                    />
+                                </td>
+                            </tr>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(3);
+                            }}>
+                                <td className={'text-center'} rowSpan={3}>부압</td>
+                                <td className={'text-center select-none'}>개구부 인접부 및 돌출부</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={3}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(3)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 3}
+                                    />
+                                </td>
+                            </tr>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(4);
+                            }}>
+                                <td className={'text-center select-none'}>우각부에서 2스팬 이내</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={4}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(4)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 4}
+                                    />
+                                </td>
+                            </tr>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(5);
+                            }}>
+                                <td className={'text-center select-none'}>기타부분</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={5}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(5)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 5}
+                                    />
+                                </td>
+                            </tr>
+                            <tr className={'group'} onClick={() => {
+                                updateScaffoldingSupportType(6);
+                            }}>
+                                <td className={'text-center'}>독립적으로 지지되는 비계</td>
+                                <td className={'text-center'}>정압,부압</td>
+                                <td className={'text-center select-none'}>전 부분</td>
+                                <td className={'text-center group-hover:bg-neutral-100'}>
+                                    <input type={"radio"} name={'supportType'} value={6}
+                                           className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                           onChange={(e) => {
+                                               e.stopPropagation();
+                                               updateScaffoldingSupportType(6)
+                                           }}
+                                           checked={windLoadValue['scaffoldingSupportType'] === 6}
+                                    />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div>
                     <InputLargeTitle title={'보호망 또는 패널'}/>
-                    <div className={'grid grid-cols-2 w-full gap-x-2'}>
+                    <div className={'grid grid-cols-2 w-full gap-x-2 px-4 py-5 bg-white shadow-sm'}>
                         <div className={'flex flex-col gap-y-4'}>
+                            <InputMiddleTitle title={'설치치수'}/>
                             <div className={'flex gap-x-5'}>
-                                {panelTypeData.map((el, idx) => (
+                                {panelTypeData.map((el
+                                    , idx) => (
                                     <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center'}
                                          onClick={() => updatePanelType(el.value)}
                                     >
-                                        <input type={'radio'} name={'panelTypes'} value={el.value}
+                                        <input type={'radio'} name={'panelTypes'}
+                                               value={el.value}
                                                id={`${el.value}-panel`}
                                                className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
-                                               onChange={() => updatePanelType(el.value)}
+                                               onChange={(e) => {
+                                                   e.stopPropagation();
+                                                   updatePanelType(el.value)
+                                               }
+                                               }
                                                checked={windLoadValue['panelType'] === el.value}
                                         />
                                         <label htmlFor={`${el.name}-panel`}>{el.name}</label>
                                     </div>
                                 ))}
                             </div>
-                            <div className={'flex flex-col h-36 gap-y-2'}>
+                            <div className={'flex flex-col gap-y-2 h-32'}>
                                 <div className={'flex justify-between'}>
                                     <label htmlFor={'panel-width'} className={''}>망 또는 패널의 길이 <span
                                         className={'text-lg'}>(l)</span></label>
                                     <div>
                                         <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-width'}
-                                               onChange={(e)=> updatePanelWidth(parseFloat(e.target.value))}
+                                               onChange={(e) => updatePanelWidth(parseFloat(e.target.value))}
                                         />
                                         <label htmlFor={'panel-width'} className={'ml-2'}>m</label>
                                     </div>
@@ -390,7 +426,7 @@ function WindLoadForm() {
                                         className={'text-lg'}>(h)</span></label>
                                     <div>
                                         <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}
-                                               onChange={(e)=> updatePanelLength(parseFloat(e.target.value))}
+                                               onChange={(e) => updatePanelLength(parseFloat(e.target.value))}
                                         />
                                         <label htmlFor={'panel-length'} className={'ml-2'}>m</label>
                                     </div>
@@ -402,30 +438,60 @@ function WindLoadForm() {
                                         <div>
                                             <input className={'w-20 h-8'} type={'number'} name={''}
                                                    id={'panel-height'}
-                                                   onChange={(e)=> updatePanelHeight(parseFloat(e.target.value))}
+                                                   onChange={(e) => updatePanelHeight(parseFloat(e.target.value))}
                                             />
                                             <label htmlFor={'panel-height'} className={'ml-2'}>m</label>
                                         </div>
                                     </div>
                                 }
                             </div>
+                            <InputMiddleTitle title={'설치위치'}/>
+                            <div className={'flex gap-x-5'}>
+                                {panelLocationData.map((el
+                                    , idx) => (
+                                    <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center'}
+                                         onClick={() => updatePanelLocation(el.value)}
+                                    >
+                                        <input type={'radio'} name={'panelLocation'} value={el.value}
+                                               id={`${el.value}-panel`}
+                                               className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
+                                               onChange={() => updatePanelLocation(el.value)}
+                                               checked={windLoadValue['panelLocation'] === el.value}
+                                        />
+                                        <label htmlFor={`${el.name}-panel`}>{el.name}</label>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         <div className={''}>
-                        {/*TODO: 수치 가이드 그림 채워넣기*/}
+                            {/*TODO: 수치 가이드 그림 채워넣기*/}
                         </div>
                     </div>
                 </div>
                 <div>
                     <InputLargeTitle title={'충실률(Ø)'}/>
-                    <div>
-                        <input type={'number'} className={'w-16 h-8'} defaultValue={0.3} onChange={(e)=> updateSolidityRatio(parseFloat(e.target.value))}/>
+                    <div className={'px-4 py-5 bg-white shadow-sm'}>
+                        <input type={'number'} className={'w-16 h-8'} defaultValue={0.3}
+                               onChange={(e) => updateSolidityRatio(parseFloat(e.target.value))}/>
                     </div>
                 </div>
                 <div className={'py-4 flex justify-center items-center'}>
-                    <button className={''} onClick={()=>{
-                        alert(JSON.stringify(windLoadValue));
-                    }}>계산하기</button>
+                    <button className={''} onClick={async () => {
+                        const result = await calcWindLoad(windLoadValue);
+
+                        setWindLoadResult(prev => ({...prev, value: result, isCalculated: true}))
+
+                    }}>계산하기
+                    </button>
                 </div>
+                {windLoadResult.isCalculated &&
+                    <div>
+                        <InputLargeTitle title={'계산'}/>
+                        <div className={'px-4 py-5 bg-white shadow-sm flex justify-center items-center'}>
+                            <span className={'text-lg font-bold mr-2 text-neutral-500'}>설계풍하중 : </span>{windLoadResult.value} <span>kN/m<sup>2</sup></span>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     );
