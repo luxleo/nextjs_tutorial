@@ -45,6 +45,7 @@ function getKzt(windLoadValue: windLoadValue) {
 
 /**
  * 거스트 영향계수를 지표조도구분에 따라 반환한다.
+ * KDS 41 10 15 참조하면 나오는데 현재(24.06.11)는 갱신중 / 직접 계산하는 방법도 있음
  * @param windLoadValue
  */
 function getGF(windLoadValue: windLoadValue) {

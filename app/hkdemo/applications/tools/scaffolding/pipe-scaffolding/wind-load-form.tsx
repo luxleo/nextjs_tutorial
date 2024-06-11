@@ -8,6 +8,9 @@ import {clsx} from "clsx";
 
 import './wind-load-form.css';
 import {calcWindLoad} from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form-action";
+import {
+    isWindLoadFormInValid, windLoadFormErrorState,
+} from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form-validation";
 
 export default function WindLoadFormContainer() {
     const toggleModalOn = useWindLoadFormStore(state => state.toggleModalOn);
@@ -61,6 +64,8 @@ function WindLoadForm() {
     const [windLoadResult, setWindLoadResult] = useState<windLoadResult>({
         isCalculated: false
     });
+    const errorInitialState : windLoadFormErrorState = {errors: {}, message: null};
+    const [errorState, setErrorState] = useState<windLoadFormErrorState>(errorInitialState);
 
     const updateVelocity = useCallback((velocity: number) => {
         setWindLoadValue((draft) => {
@@ -164,11 +169,23 @@ function WindLoadForm() {
                 <div className={'bg-white'}>
                     <InputLargeTitle title={'기본풍속'}/>
                     <div className={'flex items-center gap-x-3 px-4 py-5 shadow-sm'}>
-                        <div>
-                            <input className={'text-center'} name={'default-velocity'}
-                                   value={windLoadValue.defaultVelocity}
-                                   onChange={(e) => updateVelocity(parseFloat(e.target.value))}
-                            /> <span>m/s</span>
+                        <div className={'flex flex-col'}>
+                            <div>
+                                <input className={'text-center'} name={'default-velocity'}
+                                       value={windLoadValue.defaultVelocity}
+                                       onChange={(e) => updateVelocity(parseFloat(e.target.value))}
+                                       aria-describedby={'defaultVelocity-error'}
+                                /> <span>m/s</span>
+                            </div>
+                            <div id={'defaultVelocity-error'} aria-live={'polite'} aria-atomic={true}>
+                                {errorState.errors?.defaultVelocity &&
+                                    errorState.errors.defaultVelocity.map((error: string)=> (
+                                        <p className={'mt-2 text-sm text-red-500'} key={error}>
+                                            {error}
+                                        </p>
+                                    ))
+                                }
+                            </div>
                         </div>
                         <div>
                             {!isWithLocation ? <button
@@ -475,24 +492,38 @@ function WindLoadForm() {
                                onChange={(e) => updateSolidityRatio(parseFloat(e.target.value))}/>
                     </div>
                 </div>
-                <div className={'py-4 flex justify-center items-center'}>
-                    <button className={''} onClick={async () => {
-                        const result = await calcWindLoad(windLoadValue);
-
-                        setWindLoadResult(prev => ({...prev, value: result, isCalculated: true}))
-
+                <div className={'flex justify-center items-center'}>
+                    <button className={'px-2 py-2 bg-hkdarkblue rounded-md text-white hover:bg-hk-blue-600'} onClick={async () => {
+                        const invalid = await isWindLoadFormInValid(windLoadValue);
+                        if (invalid) {
+                            setErrorState(invalid);
+                            return;
+                        }
+                        await calcWindLoad(windLoadValue)
+                            .then(res =>
+                                setWindLoadResult(prev => ({...prev, value: res, isCalculated: true})));
                     }}>계산하기
                     </button>
                 </div>
-                {windLoadResult.isCalculated &&
+                <div>
+                    <InputLargeTitle title={'계산결과'}/>
+                    <div className={'px-4 py-5 bg-white shadow-sm flex justify-center items-center'}>
+                        {windLoadResult.isCalculated ?
+                            <>
+                                <span
+                                    className={'text-lg font-bold mr-2 text-neutral-500'}>설계풍하중 : </span>{windLoadResult.value}
+                                <span className={'ml-2'}>kN/m<sup>2</sup></span>
+                            </>
+                    :
                     <div>
-                        <InputLargeTitle title={'계산'}/>
-                        <div className={'px-4 py-5 bg-white shadow-sm flex justify-center items-center'}>
-                            <span className={'text-lg font-bold mr-2 text-neutral-500'}>설계풍하중 : </span>{windLoadResult.value} <span>kN/m<sup>2</sup></span>
-                        </div>
+                        계산이 완료되지 않았습니다.
                     </div>
-                }
+                    }
+
+                </div>
             </div>
         </div>
-    );
+</div>
+)
+    ;
 }

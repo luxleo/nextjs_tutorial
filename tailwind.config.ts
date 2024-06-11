@@ -20,7 +20,7 @@ const config: Config = {
         "hkred" : "#ed1a2e",
         'hkcyan' : '#47b5e0',
         'hkivory' : '#d9e0d4',
-        'hkdarkblue' : '#15325c'
+        'hkdarkblue' : '#1d4681'
       },
       fontFamily:{
         dotum: ['var(--font-dotum)']
