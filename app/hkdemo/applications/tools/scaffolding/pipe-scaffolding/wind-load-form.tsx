@@ -567,10 +567,10 @@ function WindLoadForm() {
                             </div>
                             :
                             <div>
-                                계산이 완료되지 않았습니다.
+                                {errorState.message? <div className={'flex justify-center items-center mt-2 text-sm text-red-500'}>{errorState.message}</div>
+                                    : '계산이 완료되지 않았습니다.'}
                             </div>
                         }
-
                     </div>
                 </div>
             </div>

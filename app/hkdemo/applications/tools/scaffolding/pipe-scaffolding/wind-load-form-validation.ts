@@ -35,7 +35,7 @@ export async function isWindLoadFormInValid(windLoadValue: windLoadValue) {
     if (!validatedData.success) {
         return {
             errors: validatedData.error.flatten().fieldErrors,
-            message: "에러가 있다."
+            message: "입력값을 다시 확인해주세요."
         }
     }
     return false;
