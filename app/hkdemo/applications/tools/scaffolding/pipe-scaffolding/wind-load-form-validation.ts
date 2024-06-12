@@ -7,7 +7,9 @@ export type windLoadFormErrorState = {
     message?: string | null;
     errors? : {
         defaultVelocity?: string[];
-        panelInfo?: string[];
+        width?: string[];
+        length?: string[];
+        height?: string[];
         solidityRatio?: string[];
     }
 }
@@ -16,11 +18,9 @@ const WindLoadFormSchema = z.object({
     defaultVelocity: z.coerce
         .number()
         .min(1, '기본풍속은 0m/s 이상의 값 입니다.'),
-    panelInfo: z.object({
-        width: z.coerce.number(),
-        length: z.coerce.number(),
-        height: z.coerce.number().optional(),
-    }),
+    width: z.coerce.number().min(0.01, '너비는 0 이상의 값 이어야합니다.'),
+    length: z.coerce.number().min(0.01, '길이는 0 이상의 값 이어야합니다.'),
+    height: z.coerce.number().min(0.01,"높이는 0 이상의 값 이어야합니다.").optional(),
     solidityRatio: z.coerce
         .number()
         .min(0, '충실률은 0이상 입니다.')
@@ -28,8 +28,9 @@ const WindLoadFormSchema = z.object({
 });
 
 export async function isWindLoadFormInValid(windLoadValue: windLoadValue) {
-    const {defaultVelocity, panelInfo, solidityRatio} = windLoadValue;
-    const validatedData = WindLoadFormSchema.safeParse({defaultVelocity, panelInfo, solidityRatio});
+    const {defaultVelocity, solidityRatio} = windLoadValue;
+    const {width,length,height} = windLoadValue.panelInfo;
+    const validatedData = WindLoadFormSchema.safeParse({defaultVelocity, width,length,height ,solidityRatio});
 
     if (!validatedData.success) {
         return {

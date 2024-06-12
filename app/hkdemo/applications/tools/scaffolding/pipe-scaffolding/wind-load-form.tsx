@@ -44,6 +44,9 @@ export type windLoadResult = {
 }
 
 function WindLoadForm() {
+    const updateWindLoadValue = useWindLoadFormStore(state => state.updateWindLoadValue);
+    const toggleWindLoadFormModal = useWindLoadFormStore(state => state.toggleModalOn);
+
     const [isWithLocation, setIsWithLocation] = useState<boolean>(false);
     const [locationList, setLocationList] = useState<windData[]>(windDataList);
     const [locationSearchWord, setLocationSearchWord] = useState<string>('');
@@ -172,14 +175,17 @@ function WindLoadForm() {
                         <div className={'flex flex-col'}>
                             <div>
                                 <input className={'text-center'} name={'default-velocity'}
+                                       type={'number'}
                                        value={windLoadValue.defaultVelocity}
-                                       onChange={(e) => updateVelocity(parseFloat(e.target.value))}
+                                       onChange={(e) => {
+                                           updateVelocity(parseFloat(e.target.value));
+                                       }}
                                        aria-describedby={'defaultVelocity-error'}
                                 /> <span>m/s</span>
                             </div>
                             <div id={'defaultVelocity-error'} aria-live={'polite'} aria-atomic={true}>
                                 {errorState.errors?.defaultVelocity &&
-                                    errorState.errors.defaultVelocity.map((error: string)=> (
+                                    errorState.errors.defaultVelocity.map((error: string) => (
                                         <p className={'mt-2 text-sm text-red-500'} key={error}>
                                             {error}
                                         </p>
@@ -427,37 +433,71 @@ function WindLoadForm() {
                                     </div>
                                 ))}
                             </div>
-                            <div className={'flex flex-col gap-y-2 h-32'}>
-                                <div className={'flex justify-between'}>
-                                    <label htmlFor={'panel-width'} className={''}>망 또는 패널의 길이 <span
-                                        className={'text-lg'}>(l)</span></label>
-                                    <div>
-                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-width'}
-                                               onChange={(e) => updatePanelWidth(parseFloat(e.target.value))}
-                                        />
-                                        <label htmlFor={'panel-width'} className={'ml-2'}>m</label>
+                            <div className={'flex flex-col gap-y-2'}>
+                                <div className={'flex flex-col'}>
+                                    <div className={'flex justify-between'}>
+                                        <label htmlFor={'panel-width'} className={''}>망 또는 패널의 길이 <span
+                                            className={'text-lg'}>(l)</span></label>
+                                        <div>
+                                            <input className={'w-20 h-8'} type={'number'} name={''}
+                                                   id={'panel-width'}
+                                                   onChange={(e) => updatePanelWidth(parseFloat(e.target.value))}
+                                                   aria-describedby={'panel-width-error'}
+                                            />
+                                            <label htmlFor={'panel-width'} className={'ml-2'}>m</label>
+                                        </div>
+                                    </div>
+                                    <div id={'panel-width-error'} aria-live={'polite'} aria-atomic={true}>
+                                        {errorState.errors?.width &&
+                                            errorState.errors.width.map(error=>(
+                                                <p className={'mt-2 text-sm text-red-500'} key={error}>
+                                                    {error}
+                                                </p>
+                                            ))
+                                        }
                                     </div>
                                 </div>
-                                <div className={'flex justify-between'}>
-                                    <label htmlFor={'panel-length'} className={''}>망 또는 패널의 높이 <span
-                                        className={'text-lg'}>(h)</span></label>
-                                    <div>
-                                        <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}
-                                               onChange={(e) => updatePanelLength(parseFloat(e.target.value))}
-                                        />
-                                        <label htmlFor={'panel-length'} className={'ml-2'}>m</label>
+                                <div className={'flex flex-col'}>
+                                    <div className={'flex justify-between'}>
+                                        <label htmlFor={'panel-length'} className={''}>망 또는 패널의 높이 <span
+                                            className={'text-lg'}>(h)</span></label>
+                                        <div>
+                                            <input className={'w-20 h-8'} type={'number'} name={''} id={'panel-length'}
+                                                   onChange={(e) => updatePanelLength(parseFloat(e.target.value))}
+                                                   aria-describedby={'panel-length-error'}
+                                            />
+                                            <label htmlFor={'panel-length'} className={'ml-2'}>m</label>
+                                        </div>
+                                    </div>
+                                    <div id={'panel-length-error'} aria-live={'polite'} aria-atomic={true}>
+                                        {errorState.errors?.length &&
+                                            errorState.errors.length.map(error=>(
+                                                <p className={'mt-2 text-sm text-red-500'} key={error}>
+                                                    {error}
+                                                </p>
+                                            ))}
                                     </div>
                                 </div>
                                 {windLoadValue['panelType'] === 'above' &&
-                                    <div className={'flex justify-between'}>
-                                        <label htmlFor={'panel-height'} className={''}>망 또는 패널의 지면으로 부터 높이 <span
-                                            className={'text-lg'}>(T)</span></label>
-                                        <div>
-                                            <input className={'w-20 h-8'} type={'number'} name={''}
-                                                   id={'panel-height'}
-                                                   onChange={(e) => updatePanelHeight(parseFloat(e.target.value))}
-                                            />
-                                            <label htmlFor={'panel-height'} className={'ml-2'}>m</label>
+                                    <div className={'flex flex-col'}>
+                                        <div className={'flex justify-between'}>
+                                            <label htmlFor={'panel-height'} className={''}>망 또는 패널의 지면으로 부터 높이 <span
+                                                className={'text-lg'}>(T)</span></label>
+                                            <div>
+                                                <input className={'w-20 h-8'} type={'number'} name={''}
+                                                       id={'panel-height'}
+                                                       onChange={(e) => updatePanelHeight(parseFloat(e.target.value))}
+                                                />
+                                                <label htmlFor={'panel-height'} className={'ml-2'}>m</label>
+                                            </div>
+                                        </div>
+                                        <div id={'panel-height-error'} aria-live={'polite'} aria-atomic={true}>
+                                            {errorState.errors?.height &&
+                                                errorState.errors.height.map(error => (
+                                                    <p className={'mt-2 text-sm text-red-500'} key={error}>
+                                                        {error}
+                                                    </p>
+                                                ))}
                                         </div>
                                     </div>
                                 }
@@ -469,7 +509,7 @@ function WindLoadForm() {
                                     <div key={`${el.value}-panel`} className={'flex gap-x-1 items-center'}
                                          onClick={() => updatePanelLocation(el.value)}
                                     >
-                                        <input type={'radio'} name={'panelLocation'} value={el.value}
+                                    <input type={'radio'} name={'panelLocation'} value={el.value}
                                                id={`${el.value}-panel`}
                                                className={'h-[0.8rem] w-[0.8rem] appearance-none checked:ring-0 focus:ring-0'}
                                                onChange={() => updatePanelLocation(el.value)}
@@ -493,37 +533,48 @@ function WindLoadForm() {
                     </div>
                 </div>
                 <div className={'flex justify-center items-center'}>
-                    <button className={'px-2 py-2 bg-hkdarkblue rounded-md text-white hover:bg-hk-blue-600'} onClick={async () => {
-                        const invalid = await isWindLoadFormInValid(windLoadValue);
-                        if (invalid) {
-                            setErrorState(invalid);
-                            return;
-                        }
-                        await calcWindLoad(windLoadValue)
-                            .then(res =>
-                                setWindLoadResult(prev => ({...prev, value: res, isCalculated: true})));
-                    }}>계산하기
+                    <button className={'px-2 py-2 bg-hkdarkblue rounded-md text-white hover:bg-hk-blue-600'}
+                            onClick={async () => {
+                                const invalid = await isWindLoadFormInValid(windLoadValue);
+                                if (invalid) {
+                                    setErrorState(invalid);
+                                    return;
+                                }
+                                await calcWindLoad(windLoadValue)
+                                    .then(res =>
+                                        setWindLoadResult(prev => ({...prev, value: res, isCalculated: true})));
+                            }}>계산하기
                     </button>
                 </div>
                 <div>
                     <InputLargeTitle title={'계산결과'}/>
                     <div className={'px-4 py-5 bg-white shadow-sm flex justify-center items-center'}>
                         {windLoadResult.isCalculated ?
-                            <>
-                                <span
-                                    className={'text-lg font-bold mr-2 text-neutral-500'}>설계풍하중 : </span>{windLoadResult.value}
-                                <span className={'ml-2'}>kN/m<sup>2</sup></span>
-                            </>
-                    :
-                    <div>
-                        계산이 완료되지 않았습니다.
-                    </div>
-                    }
+                            <div className={'flex gap-x-4 items-center'}>
+                                <div>
+                                    <span
+                                        className={'text-lg font-bold mr-2 text-neutral-500'}>설계풍하중 : </span>{windLoadResult.value}
+                                    <span className={'ml-2'}>kN/m<sup>2</sup></span>
+                                </div>
+                                <button className={'px-2 py-2 bg-hkdarkblue rounded-md text-white hover:bg-hk-blue-600'}
+                                        onClick={() => {
+                                            updateWindLoadValue(windLoadResult.value as number)
+                                            toggleWindLoadFormModal();
+                                        }}
+                                >
+                                    적용하기
+                                </button>
+                            </div>
+                            :
+                            <div>
+                                계산이 완료되지 않았습니다.
+                            </div>
+                        }
 
+                    </div>
                 </div>
             </div>
         </div>
-</div>
-)
-    ;
+    )
+        ;
 }

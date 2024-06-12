@@ -4,14 +4,23 @@ import BreadCrumbs from "@/app/hkdemo/applications/ui/breadCrumbs";
 import FormContainer, {InputLargeTitle} from "@/app/hkdemo/applications/ui/formContainer";
 import {useWindLoadFormStore} from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form-store";
 import WindLoadFormContainer from "@/app/hkdemo/applications/tools/scaffolding/pipe-scaffolding/wind-load-form";
+import {useEffect, useState} from "react";
 
 export default function Page() {
     const toggleWindLoadFormModal = useWindLoadFormStore(state => state.toggleModalOn);
     const isWindLoadFormModalOn = useWindLoadFormStore(state => state.isModalOn);
+    const windLoadValue = useWindLoadFormStore(state => state.windLoadValue);
+
+    const [windLoadLocal, setWindLoadLocal] = useState<number>(0);
+
+    useEffect(() => {
+        setWindLoadLocal(windLoadValue);
+    }, [windLoadValue]);
+
     return (
         <PageContainer>
             <div className={'w-full mb-10'}>
-                <BreadCrumbs breadLink={{menuName:'비계',subMenuName:"강관비계"}}/>
+                <BreadCrumbs breadLink={{menuName: '비계', subMenuName: "강관비계"}}/>
             </div>
             <div className={'w-[40%]'}>
                 <FormContainer title={'적용하중'}>
@@ -49,12 +58,22 @@ export default function Page() {
                             <InputLargeTitle title={'풍하중'}/>
                             <div className={'w-full flex gap-x-2'}>
                                 <div>
-                                    <input id={'wind-load'} name={'wind-load'} placeholder={'자중 사용'}
-                                           className={'w-[300px]'}/> <span>kN/m<sup>2</sup></span>
+                                    <input id={'wind-load'}
+                                           name={'wind-load'}
+                                           placeholder={'자중 사용'}
+                                           className={'w-[300px]'}
+                                           value={isNaN(windLoadLocal)? '' : windLoadLocal}
+                                           onChange={(e) => {
+                                               setWindLoadLocal(parseFloat(e.target.value))
+                                           }
+                                    }
+                                    /> <span>kN/m<sup>2</sup></span>
                                 </div>
-                                <button className={'text-sm bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow'}
-                                        onClick={toggleWindLoadFormModal}
-                                >상세 설정</button>
+                                <button
+                                    className={'text-sm bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow'}
+                                    onClick={toggleWindLoadFormModal}
+                                >상세 설정
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -62,5 +81,5 @@ export default function Page() {
             </div>
             {isWindLoadFormModalOn && <WindLoadFormContainer/>}
         </PageContainer>
-    )
+    );
 };
