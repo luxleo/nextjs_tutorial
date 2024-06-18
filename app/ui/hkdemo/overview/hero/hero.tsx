@@ -106,9 +106,9 @@ function HeroTextContainer({props}:
                         <HeroAction key={`${idx}-${action.actionName}`} heroAction={action}/>
                     ))}
                 </div>
-                <div className={'w-[300px] py-3 rounded-md flex-col items-start text-sm font-light hover:border-2 hover:pl-2 hover:font-bold'}>
-                    <div>Tel) 000-0000-0000</div>
-                    <div>Email) 0000@gmail.com</div>
+                <div className={'w-[300px] h-[50px] py-3 rounded-md flex-col items-start text-sm font-light hover:border-2 hover:pl-2 hover:font-bold'}>
+                    {/*<div>Tel) 000-0000-0000</div>*/}
+                    {/*<div>Email) 0000@gmail.com</div>*/}
                 </div>
             </div>
 

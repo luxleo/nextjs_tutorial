@@ -66,15 +66,15 @@ export default function Page() {
             </Suspense>
             <div className={'w-full flex flex-col'}>
                 <div className={'w-full flex justify-center'}>
-                    <div className={'w-[70%] flex'}>
-                    {locationData.map(locationInfo => (
-                        <div key={locationInfo.locationName} className={'grow basis-0'} onClick={() => {
-                            setCurrentLocation(locationInfo);
-                        }}>
-                            <LocationControllerHeader locationInfo={locationInfo} currentLocation={currentLocation}/>
-                        </div>
-                    ))}
-                    </div>
+                    {/*<div className={'w-[70%] flex'}>*/}
+                    {/*{locationData.map(locationInfo => (*/}
+                    {/*    <div key={locationInfo.locationName} className={'grow basis-0'} onClick={() => {*/}
+                    {/*        setCurrentLocation(locationInfo);*/}
+                    {/*    }}>*/}
+                    {/*        <LocationControllerHeader locationInfo={locationInfo} currentLocation={currentLocation}/>*/}
+                    {/*    </div>*/}
+                    {/*))}*/}
+                    {/*</div>*/}
                 </div>
                 <div ref={mapRef} className={'w-full h-[30vh] md:h-[50vh]'}>
 
