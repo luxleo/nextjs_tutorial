@@ -15,7 +15,7 @@ export type domain = {
 
 export type departmentDomain = {
     name: string;
-    actions: string[];
+    actions?: string[];
 }
 
 type projectImageURL = {
@@ -39,7 +39,7 @@ export type departmentInfo = {
     infoImageURL?: string;
     description: string;
     domains: departmentDomain[] | string;
-    projects: departmentProject[] | string;
+    projects?: departmentProject[] | string;
     isImplemented: boolean
 }
 
@@ -66,7 +66,7 @@ const domains: domain[] = [
     }
 ];
 
-const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부','수자원부','구조부'];
+const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부','수자원부','구조부','지반부'];
 
 export async function getDomains() {
     return domains;

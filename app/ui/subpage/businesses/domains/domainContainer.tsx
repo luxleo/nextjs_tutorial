@@ -29,7 +29,6 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
         params.delete('currentDepartment');
 
         replace(`${pathname}?${params.toString()}`)
-
     }
     return (
         <div className={''}>
@@ -46,8 +45,6 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
                 </div>
             </div>
             <div className={'px-[5%] md:px-[10%]'}>
-
-
                 <div className={'mt-10 md:mt-20 w-full flex justify-center text-2xl md:text-3xl md:font-extrabold'}>
                     {currentDomain.menu}
                 </div>
@@ -144,18 +141,18 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
                     <DepartmentBusinessDomainContainer content={content}/>
             }
 
-                <Suspense>
-                   <SectionTitle title={'부서 주요실적'}/>
-                </Suspense>
-            {
-                !content.isImplemented?
-                    <Image src={content.projects as string} alt={'ORGANIZATION'}
-                           width={1221}
-                           height={793}
-                           className={'w-full mb-20'}/>
-                    :
-                    <DepartmentProjectsContainer projects={content.projects as departmentProject[]} currentDepartment={currentDepartment}/>
-            }
+            {/*    <Suspense>*/}
+            {/*       <SectionTitle title={'부서 주요실적'}/>*/}
+            {/*    </Suspense>*/}
+            {/*{*/}
+            {/*    !content.isImplemented?*/}
+            {/*        <Image src={content.projects as string} alt={'ORGANIZATION'}*/}
+            {/*               width={1221}*/}
+            {/*               height={793}*/}
+            {/*               className={'w-full mb-20'}/>*/}
+            {/*        :*/}
+            {/*        <DepartmentProjectsContainer projects={content.projects as departmentProject[]} currentDepartment={currentDepartment}/>*/}
+            {/*}*/}
         </div>
     );
 }
@@ -188,7 +185,7 @@ function DepartmentBusinessDomain({departmentDomain}:{
                 {departmentDomain.name}
             </div>
             <div className={'flex flex-col mt-3'}>
-                {departmentDomain.actions.map((action,idx) => (
+                {departmentDomain.actions?.map((action,idx) => (
                     <div key={`${departmentDomain.name}${idx}`} className={'text-neutral-600'}>
                         - {action}
                     </div>

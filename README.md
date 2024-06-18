@@ -191,8 +191,10 @@
 
 ## 성능 지표 - lighthouse 이용
 ## unit / integration / end to end test
-    
-    
+## kakaomap 에러 날 경우
+    로컬에서 잘 구동 될 경우 kakao API 서버에 허용 도메인을 확인해야한다.
+    Third party Cookie 에러가 콘솔에 찍히는것과는 무관하다.
+
 # dev tip
 ## responsive 작성 요령
     사이즈 별로 다른 컴포넌트를 아예 작성함 

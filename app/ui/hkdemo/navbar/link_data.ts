@@ -66,10 +66,11 @@ export const links : mainLink[] = [
         name: "오시는 길",
         href: "/hk/location"
     },
-    {
-        name: "Tools",
-        href: "/hk-app/tools"
-    }
+    //TODO: 나중에 완성되면 넣는 걸로
+    // {
+    //     name: "Tools",
+    //     href: "/hk-app/tools"
+    // }
 ]
 
 const imagePrefix = '/hkdemo/subpage_images/';

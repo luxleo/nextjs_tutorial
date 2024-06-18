@@ -223,4 +223,23 @@ export const departmentInfos: departmentInfo[] = [
         projects: projects,
         isImplemented : true
     },
+    {
+        name: '지반부',
+        description: '토목 설계과정에서 요구되는 터널, 사면, 연약지반, 기초, 침투 및 동해석을 통하여 합리적이고 경제적인 설계가 이뤄질 수 있도록 신뢰 높은 설계를 제공하고 있습니다.',
+        domains: [
+            {
+                name: '비탈면 안정검토 및 보강설계',
+            },
+            {
+                name: '구조물 기초 및 연약지반 보강설계',
+            },
+            {
+                name: '가물막이 및 가시설 설계',
+            },
+            {
+                name: '기타 각종 지반관련 설계 및 컨설팅',
+            }
+        ],
+        isImplemented : true
+    },
 ];

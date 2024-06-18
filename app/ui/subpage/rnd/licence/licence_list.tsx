@@ -6,8 +6,11 @@ import clsx from "clsx";
 
 const pageSize = 6;
 function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
-    if(flag) return licences;
-    return licences.slice((pageNum - 1) * pageSize, pageNum * pageSize);
+    if(flag) return licences.sort((a, b) => b.enrollDate.localeCompare(a.enrollDate));;
+    const result = licences.slice((pageNum - 1) * pageSize, pageNum * pageSize)
+        .sort((a, b) => a.enrollDate.localeCompare(b.enrollDate));
+    console.log(result);
+    return result;
 }
 export default function LicenceList() {
     const flag = true;
@@ -39,9 +42,9 @@ function LicenceListContainer({pagedLicences}:{
                 </tr>
                 </thead>
                 <tbody>
-                {pagedLicences.map(licence => (
-                    <tr key={`${licence.no}-licence`} className={'font-light border-b'}>
-                        <td className={'py-3 w-[8%] text-center'}>{licence.no}</td>
+                {pagedLicences.map((licence,idx) => (
+                    <tr key={`${idx}-licence`} className={'font-light border-b'}>
+                        <td className={'py-3 w-[8%] text-center'}>{idx+1}</td>
                         <td className={'py-3 w-[30%]'}>{licence.licenceName}</td>
                         <td className={'py-3 w-[20%]'}>{licence.publishedBy}</td>
                         <td className={'py-3 w-[30%] pl-10'}>{licence.enrollNumber}</td>
@@ -51,8 +54,8 @@ function LicenceListContainer({pagedLicences}:{
                 </tbody>
             </table>
             <div className={'w-full flex flex-col gap-5 justify-center items-start md:hidden'}>
-                {pagedLicences.map(licence => (
-                    <div key={`${licence.no}-sm-licence`}
+                {pagedLicences.map((licence,idx) => (
+                    <div key={`${idx}-sm-licence`}
                          className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
                         <div className={'text-lg'}>
                             {licence.licenceName}
