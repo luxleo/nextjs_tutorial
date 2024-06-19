@@ -9,7 +9,7 @@ export default async function Layout({children}:
         <div className={'w-full min-h-screen'}>
             <Suspense fallback={<div>loading...</div>}>
                 <PageHeader/>
-                <section className={'flex justify-center'}>
+                <section className={'flex w-full'}>
                     <div className={'w-full'}>
                         {children}
                     </div>
