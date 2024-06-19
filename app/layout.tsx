@@ -1,5 +1,5 @@
 import '@/app/ui/global.css'
-import {hkDoTum, inter} from "@/app/ui/fonts";
+import {hkDoTum, inter, notoSansKr} from "@/app/ui/fonts";
 import {Metadata} from "next";
 
 export const metadata : Metadata = {
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${hkDoTum.className} antialiased `}>{children}</body>
+      <body className={`${notoSansKr.className} antialiased `}>{children}</body>
     </html>
   );
 }

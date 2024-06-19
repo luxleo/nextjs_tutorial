@@ -31,7 +31,7 @@ export default function PageHeader(){
         console.log(imageURL);
     }, []);
     return (
-        <section className={'relative w-full flex flex-col h-[300px] md:h-[300px] lg:h-[450px]'}>
+        <section className={'relative w-full flex flex-col h-[200px] sm:h-[400px]'}>
             <PageNavbarBackgroundImage imageURL={imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName?.toString()} subLinkName={subLinkName?.toString()} mainLink={currentLink}/>
         </section>
@@ -102,5 +102,6 @@ function PageNavbarBackgroundImage({ imageURL}:
                       objectFit: 'cover'
                   }}
                   className={'absolute top-0 left-0 -z-10 brightness-75'}
+                  priority={true}
     />;
 }
