@@ -26,7 +26,7 @@ export default function GreetingContainer() {
     return (
         <div className={'w-full flex max-w-[1440px]'}>
             <div className={'flex flex-col md:flex-row'}>
-                <div className={`md:basis-0 md:grow-[1.5] md:text-lg pt-3 shadow-md px-5 py-6 md:pr-10 bg-white md:z-50`}>
+                <div className={`md:basis-0 md:grow-[1.5] md:text-lg pt-3 shadow-md px-5 py-6 md:pr-10 bg-white md:z-10`}>
                     <div className={`${styles.slideUp} w-full h-full`}>
                         (주)에이치케이이앤씨는 2012년 창립하여 기술자 중심의 종합설계 및 안전진단 회사로 성장하였습니다.
                         <br/>

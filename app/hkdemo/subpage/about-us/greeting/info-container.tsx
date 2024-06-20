@@ -1,9 +1,11 @@
+'use client';
 import { BsBuildings } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { MdOutlineChair } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import Image from "next/image";
 import {IconType} from "react-icons";
+import {motion} from "framer-motion";
 
 export type CardInfo = {
     icon: IconType;
@@ -38,7 +40,14 @@ export default function InfoContainer() {
 function InfoCard({icon, title, content}:CardInfo) {
     const PassedIcon = icon;
     return (
-        <div className={'flex flex-row gap-x-5 items-center justify-start md:justify-start md:flex-col text-white md:items-center py-5 md:py-10 gap-y-2 md:gap-y-4'}>
+        <motion.div
+            initial={{opacity: 0.5, y: -50}}
+            whileInView={{opacity: 1, y: 0}}
+            transition={{
+                ease: 'easeOut',
+                duration: 1,
+            }}
+            className={'flex flex-row gap-x-5 items-center justify-start md:justify-start md:flex-col text-white md:items-center py-5 md:py-10 gap-y-2 md:gap-y-4'}>
             <div className={'text-5xl'}>
                 <PassedIcon/>
             </div>
@@ -50,6 +59,6 @@ function InfoCard({icon, title, content}:CardInfo) {
                     {content}
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

@@ -28,7 +28,7 @@ export default async function Page() {
                     {/*       className={'w-full mt-20'}*/}
                     {/*/>*/}
                     <GreetingContainer/>
-                    <div className={'h-[30px] md:h-[80px]'}>
+                    <div className={'h-[50px] md:h-[200px]'}>
 
                     </div>
                 </div>

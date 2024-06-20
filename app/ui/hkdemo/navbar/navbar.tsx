@@ -24,7 +24,7 @@ export default function NavBar() {
         };
     }, []);
     return (
-        <div className={'w-full fixed z-10'}>
+        <div className={'w-full fixed z-50'}>
             {/* PC 용 드랍다운 hkdemo */}
                 <HomeNavBar responsiveBackground={scrollPosition >50 ? 'scroll-downed' : 'default'}/>
             {/*  모바일 용 dropdown hkdemo*/}
