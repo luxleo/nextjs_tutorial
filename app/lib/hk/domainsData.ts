@@ -66,7 +66,7 @@ const domains: domain[] = [
     }
 ];
 
-const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부','수자원부','구조부','지반부'];
+const implementedDomainsName = ['건설사업관리부', '교통계획부', '조경부','수자원부','구조부','지반부','부설연구소','안전진단부','도시계획부','상하수도부','설계부'];
 
 export async function getDomains() {
     return domains;
