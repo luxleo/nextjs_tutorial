@@ -162,9 +162,9 @@ function DepartmentBusinessDomainContainer({content} : {
     const currentDomains = content.domains as departmentDomain[];
     return (
         <div className={'w-full flex flex-col'}>
-            <div className={'w-full md:pl-4 text-lg md:text-xl text-neutral-400 font-semibold'}>
-                {`${content.name} 사업영역입니다.`}
-            </div>
+            {/*<div className={'w-full md:pl-4 text-lg md:text-xl text-neutral-400 font-semibold'}>*/}
+            {/*    {`${content.name} 사업영역입니다.`}*/}
+            {/*</div>*/}
             <div className={'mt-6 grid grid-cols-1 md:grid-cols-2 w-full md:gap-x-6 gap-y-14 md:gap-y-20'}>
                 {currentDomains.map((domain,idx)=>(
                     <div key={idx} className={'w-full'}>

@@ -1,0 +1,31 @@
+@keyframes slideIn {
+    0% {
+        opacity: 60%;
+        transform: translateX(-1%);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 50%;
+        transform: translateY(-5%);
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+.horse{
+    animation: slideIn 0.5s ease-in;
+}
+
+.info_box{
+    animation: slideUp 0.4s ease-in;
+}

@@ -1,13 +1,10 @@
 const IMG_PREFIX = '/hkdemo/subpage_images/content-demo/';
 export const enum CONTENT_URL{
-    GREETING = `${IMG_PREFIX}greeting.png`,
-    GREETING_BANNER = `${IMG_PREFIX}greeting_footer.png`,
     CORE_VALUE =`${IMG_PREFIX}core_value.png`,
+    CORE_VALUE_FOOTER =`${IMG_PREFIX}core_value_footer.png`,
     SHARE_VALUE =`${IMG_PREFIX}share_value.png`,
     ORGANIZATION =`${IMG_PREFIX}organization.png`,
     HISTORY =`${IMG_PREFIX}history.png`,
-    PROJECTS1 = `${IMG_PREFIX}projects1.png`,
-    PROJECTS2 = `${IMG_PREFIX}projects2.png`,
     DOMAINS_DOMAINS = `${IMG_PREFIX}domains_domains.png`,
     DOMAINS_INFO = `${IMG_PREFIX}domains_info2.jpg`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
