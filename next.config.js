@@ -6,9 +6,10 @@ const nextConfig = {
             {
                 source: "/hk",
                 destination: "/hkdemo"
-            },{
-                source: "/hk/:path*",
-                destination: "/hkdemo/subpage/:path*"
+            },
+            {
+                source: "/:path*",
+                destination: "/subpage/:path*"
             },{
                 source: "/hk-app/:path*",
                 destination: "/hkdemo/applications/:path*"

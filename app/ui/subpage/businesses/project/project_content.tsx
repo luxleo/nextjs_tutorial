@@ -1,10 +1,7 @@
 'use client';
 
 import FilterNavBar from "@/app/ui/subpage/businesses/project/filter_bar";
-import Image from "next/image";
-import {CONTENT_URL} from "@/app/hkdemo/subpage/prefixed";
-import {useEffect, useState} from "react";
-import clsx from "clsx";
+import {useState} from "react";
 import {departmentProject} from "@/app/lib/hk/domainsData";
 
 //TODO: mock up으로 해두어서 다시 하기
@@ -20,20 +17,6 @@ export default function ProjectsContainer({initialProjects}:{
                 <FilterNavBar setToggleImage={setToggleImage} setProjects={setProjects}/>
             </div>
             <div className={'grow basis-0 h-[100vh] overflow-y-scroll'}>
-                {/*<Image src={CONTENT_URL.PROJECTS1} alt={'ORGANIZATION'}*/}
-                {/*       width={1150}*/}
-                {/*       height={680}*/}
-                {/*       className={clsx('w-full mb-20', {*/}
-                {/*           'hidden': toggleImage*/}
-                {/*       })}*/}
-                {/*/>*/}
-                {/*<Image src={CONTENT_URL.PROJECTS2} alt={'ORGANIZATION'}*/}
-                {/*       width={1150}*/}
-                {/*       height={680}*/}
-                {/*       className={clsx('w-full mb-20', {*/}
-                {/*           'hidden': !toggleImage*/}
-                {/*       })}*/}
-                {/*/>*/}
                 <div>
                     {/*LEARN key값이 중복될경우 흔적기관 처럼 남더라 항상 고유하게 해줘야함*/}
                     <ProjectContainer projects={projects}/>

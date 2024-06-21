@@ -21,10 +21,14 @@ export default function PageHeader(){
 
     function findImageURL(rawURL: string) {
         const splitURL = rawURL.split('/');
-        if (splitURL.length > 3) {
-            return splitURL[splitURL.length - 2];
+        let result = "";
+        if (splitURL.length > 2) {
+            result =  splitURL[splitURL.length - 2];
+        } else {
+            result = splitURL[splitURL.length-1];
         }
-        return splitURL[splitURL.length - 1];
+        console.log(rawURL)
+        return result;
     }
 
     useEffect(() => {

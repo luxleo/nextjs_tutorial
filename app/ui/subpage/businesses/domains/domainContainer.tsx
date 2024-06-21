@@ -10,9 +10,9 @@ import {
 import clsx from "clsx";
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import Image from "next/image";
-import {PROJECT_IMG_PREFIX} from "@/app/hkdemo/subpage/businesses/projects/data";
+import {PROJECT_IMG_PREFIX} from "@/app/subpage/businesses/projects/data";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {CONTENT_URL} from "@/app/hkdemo/subpage/prefixed";
+import {CONTENT_URL} from "@/app/subpage/prefixed";
 export default function DomainMenuWrapper({domains,currentDomain, currentDepartment, departmentInfo}:{
     domains: domain[];
     currentDomain: domain;
@@ -60,11 +60,6 @@ function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,dep
     currentDepartment: string;
     departmentInfo: departmentInfo;
 }) {
-    //const [currentDepartment, setCurrentDepartment] = useState<string>(departments[0]);
-
-    //useEffect(()=>{
-    //    setCurrentDepartment(departments[0])
-    //},[departments])
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const {replace} = useRouter();
@@ -140,19 +135,6 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
                     :
                     <DepartmentBusinessDomainContainer content={content}/>
             }
-
-            {/*    <Suspense>*/}
-            {/*       <SectionTitle title={'부서 주요실적'}/>*/}
-            {/*    </Suspense>*/}
-            {/*{*/}
-            {/*    !content.isImplemented?*/}
-            {/*        <Image src={content.projects as string} alt={'ORGANIZATION'}*/}
-            {/*               width={1221}*/}
-            {/*               height={793}*/}
-            {/*               className={'w-full mb-20'}/>*/}
-            {/*        :*/}
-            {/*        <DepartmentProjectsContainer projects={content.projects as departmentProject[]} currentDepartment={currentDepartment}/>*/}
-            {/*}*/}
         </div>
     );
 }
@@ -162,9 +144,6 @@ function DepartmentBusinessDomainContainer({content} : {
     const currentDomains = content.domains as departmentDomain[];
     return (
         <div className={'w-full flex flex-col'}>
-            {/*<div className={'w-full md:pl-4 text-lg md:text-xl text-neutral-400 font-semibold'}>*/}
-            {/*    {`${content.name} 사업영역입니다.`}*/}
-            {/*</div>*/}
             <div className={'mt-6 grid grid-cols-1 md:grid-cols-2 w-full md:gap-x-6 gap-y-14 md:gap-y-20'}>
                 {currentDomains.map((domain,idx)=>(
                     <div key={idx} className={'w-full'}>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {CONTENT_IMG_URL} from "@/app/hkdemo/subpage/prefixed";
+import {CONTENT_IMG_URL} from "@/app/subpage/prefixed";
 
 // TODO: dummy data 직접 데이터 수신해서 받기
 const imageURLS = [CONTENT_IMG_URL.PATENT1, CONTENT_IMG_URL.PATENT2, CONTENT_IMG_URL.PATENT3, CONTENT_IMG_URL.PATENT4];

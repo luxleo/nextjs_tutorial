@@ -6,18 +6,18 @@ export const links : mainLink[] = [
         sub_link: [
             {
                 name: "인사말",
-                href: "/hk/about-us/greeting"
+                href: "/about-us/greeting"
             },
             {
                 name: "경영이념",
-                href: "/hk/about-us/core_value"
+                href: "/about-us/core_value"
             },
             {
                 name: "조직구조",
-                href: "/hk/about-us/organization"
+                href: "/about-us/organization"
             },{
                 name: "연혁",
-                href: "/hk/about-us/history"
+                href: "/about-us/history"
             }
         ]},
     {
@@ -25,11 +25,11 @@ export const links : mainLink[] = [
         sub_link: [
             {
                 name: "사업영역",
-                href: "/hk/businesses/domains"
+                href: "/businesses/domains"
             },
             {
                 name: "프로젝트",
-                href: "/hk/businesses/projects"
+                href: "/businesses/projects"
             }
         ]},
     {
@@ -37,15 +37,15 @@ export const links : mainLink[] = [
         sub_link:[
             {
                 name: "업·면허등록 현황",
-                href: "/hk/rnd/licences"
+                href: "/rnd/licences"
             },
             {
                 name: "지적재산권",
-                href: "/hk/rnd/ipr_list"
+                href: "/rnd/ipr_list"
             },
             {
                 name: "연구개발",
-                href: "/hk/rnd/rnds"
+                href: "/rnd/rnds"
             }
         ]
     },
@@ -54,17 +54,17 @@ export const links : mainLink[] = [
         sub_link:[
             {
                 name: "CI소개",
-                href: "/hk/pr_center/cis"
+                href: "/pr_center/cis"
             },
             {
                 name: "브로슈어",
-                href: "/hk/pr_center/brochures"
+                href: "/pr_center/brochures"
             }
         ]
     },
     {
         name: "오시는 길",
-        href: "/hk/location"
+        href: "/location"
     },
     //TODO: 나중에 완성되면 넣는 걸로
     // {
@@ -81,12 +81,12 @@ export const linksForLandingPage: linkForLandingPage[] = [
         sub_link: [
             {
                 name: "사업영역",
-                href: "/hk/businesses/domains",
+                href: "/businesses/domains",
                 mainLinkName: '사업소개',
             },
             {
                 name: "프로젝트",
-                href: "/hk/businesses/projects",
+                href: "/businesses/projects",
                 mainLinkName: '사업소개',
             }
         ],
@@ -98,17 +98,17 @@ export const linksForLandingPage: linkForLandingPage[] = [
         sub_link: [
             {
                 name: "업·면허등록 현황",
-                href: "/hk/rnd/licences",
+                href: "/rnd/licences",
                 mainLinkName: '기술개발',
             },
             {
                 name: "지적재산권",
-                href: "/hk/rnd/ipr_list",
+                href: "/rnd/ipr_list",
                 mainLinkName: '기술개발',
             },
             {
                 name: "연구개발",
-                href: "/hk/rnd/rnds",
+                href: "/rnd/rnds",
                 mainLinkName: '기술개발',
             }
         ],
@@ -120,12 +120,12 @@ export const linksForLandingPage: linkForLandingPage[] = [
         sub_link: [
             {
                 name: "CI소개",
-                href: "/hk/pr_center/cis",
+                href: "/pr_center/cis",
                 mainLinkName: '홍보센터',
             },
             {
                 name: "브로슈어",
-                href: "/hk/pr_center/brochures",
+                href: "/pr_center/brochures",
                 mainLinkName: '홍보센터',
             }
         ],
