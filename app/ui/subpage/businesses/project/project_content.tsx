@@ -1,22 +1,32 @@
 'use client';
 
-import FilterNavBar from "@/app/ui/subpage/businesses/project/filter_bar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {departmentProject} from "@/app/lib/hk/domainsData";
+import {clsx} from "clsx";
+import {useProjectStore} from "@/app/subpage/businesses/projects/project_store";
+import styles from './projects.module.css';
+import { getFilterdProject} from "@/app/subpage/businesses/projects/action";
 
 //TODO: mock up으로 해두어서 다시 하기
 //TODO: content box
 export default function ProjectsContainer({initialProjects}:{
     initialProjects: departmentProject[];
 }) {
-    const [toggleImage, setToggleImage] = useState<boolean>(false);
+    const currentYear = useProjectStore(state => state.year);
     const [projects, setProjects] = useState<departmentProject[]>(initialProjects);
+
+    useEffect(() => {
+        (async function (year: number) {
+            await getFilterdProject({year}, initialProjects)
+                .then(res => setProjects(res));
+        })(currentYear);
+    }, [currentYear]);
     return (
-        <div className={'w-full flex gap-10'}>
-            <div className={'whitespace-nowrap hidden md:block'}>
-                <FilterNavBar setToggleImage={setToggleImage} setProjects={setProjects}/>
+        <div className={'w-full flex flex-col gap-10'}>
+            <div className={'w-full'}>
+                <FilterBar/>
             </div>
-            <div className={'grow basis-0 h-[100vh] overflow-y-scroll'}>
+            <div className={'w-full overflow-y-scroll'}>
                 <div>
                     {/*LEARN key값이 중복될경우 흔적기관 처럼 남더라 항상 고유하게 해줘야함*/}
                     <ProjectContainer projects={projects}/>
@@ -25,6 +35,26 @@ export default function ProjectsContainer({initialProjects}:{
         </div>
     );
 };
+
+const range = (start: number, end: number, step: number) => Array.from({length: (end - start) / step + 1}, (el, idx) => start + idx * step);
+
+function FilterBar() {
+    const year = useProjectStore(state => state.year);
+    const updateYear = useProjectStore(state => state.updateYear);
+    return (
+        <div className={'w-full flex gap-x-5'}>
+            {range(2017, 2023, 1).map(el => (
+                <div key={el} className={clsx('flex justify-center items-center py-3 px-6 text-lg select-none hover:cursor-pointer', {
+                    'border-2 hover:border-red-500': el !== year,
+                    'border-red-700 border-[.4rem] outline outline-[.3rem] outline-red-600' : el === year
+                })}
+                onClick={()=> updateYear(el)}>
+                    {el}
+                </div>
+            ))}
+        </div>
+    );
+}
 
 //TODO: 페이지네이션 적용하기
 function ProjectContainer({projects}:{

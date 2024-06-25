@@ -22,13 +22,13 @@ type heroAction = {
 const tempHeroActions = ['회사 소개','프로젝트','오시는 길'];
 const heroActions : heroAction[] = [{
     actionName: '회사 소개',
-    href: '/hk/about-us/greeting?mainLinkName=회사소개&subLinkName=인사말'
+    href: '/about-us/greeting?mainLinkName=회사소개&subLinkName=인사말'
 },{
     actionName:'프로젝트',
-    href: '/hk/businesses/projects?mainLinkName=사업소개&subLinkName=프로젝트'
+    href: '/businesses/projects?mainLinkName=사업소개&subLinkName=프로젝트'
 },{
     actionName:'오시는 길',
-    href: '/hk/contact/location?mainLinkName=Contact+Us&subLinkName=오시는+길'
+    href: '/contact/location?mainLinkName=Contact+Us&subLinkName=오시는+길'
 }];
 
 // TODO: 이미지 전환 될때 레이아웃 남겨두면서 부드럽게 전환하가
@@ -106,7 +106,7 @@ function HeroTextContainer({props}:
                         <HeroAction key={`${idx}-${action.actionName}`} heroAction={action}/>
                     ))}
                 </div>
-                <div className={'w-[300px] h-[50px] py-3 rounded-md flex-col items-start text-sm font-light hover:border-2 hover:pl-2 hover:font-bold'}>
+                <div className={'w-[300px] h-[50px] py-3 rounded-md flex-col items-start text-sm font-light'}>
                     {/*<div>Tel) 000-0000-0000</div>*/}
                     {/*<div>Email) 0000@gmail.com</div>*/}
                 </div>

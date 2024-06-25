@@ -28,7 +28,7 @@ export function PhoneNavBar({responsiveStlye}:{
             {/*left side*/}
             <section className={`grow-[0.2] flex justify-start w-[calc(120px+3.4vw)]`}>
                 <div className={'relative w-full aspect-[2/1] flex items-center'}>
-                    <Link href={"/hkdemo"}>
+                    <Link href={"/"}>
                         <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}
                                priority={true}/>
                     </Link>
