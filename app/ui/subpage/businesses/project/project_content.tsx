@@ -22,7 +22,7 @@ export default function ProjectsContainer({initialProjects}:{
         })(currentYear);
     }, [currentYear]);
     return (
-        <div className={'w-full flex flex-col gap-10'}>
+        <div className={'w-full flex flex-col gap-10 pb-10'}>
             <div className={'w-full'}>
                 <FilterBar/>
             </div>
