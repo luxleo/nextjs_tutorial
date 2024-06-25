@@ -1,16 +1,16 @@
 const IMG_PREFIX = '/hkdemo/subpage_images/content-demo/';
 export const enum CONTENT_URL{
-    CORE_VALUE =`${IMG_PREFIX}core_value.png`,
-    CORE_VALUE_FOOTER =`${IMG_PREFIX}core_value_footer.png`,
-    SHARE_VALUE =`${IMG_PREFIX}share_value.png`,
-    ORGANIZATION =`${IMG_PREFIX}organization.png`,
-    HISTORY =`${IMG_PREFIX}history.png`,
+    CORE_VALUE = `${IMG_PREFIX}core_value.png`,
+    CORE_VALUE_FOOTER = `${IMG_PREFIX}core_value_footer.png`,
+    SHARE_VALUE = `${IMG_PREFIX}share_value.png`,
+    ORGANIZATION = `${IMG_PREFIX}organization.png`,
+    HISTORY = `${IMG_PREFIX}history.png`,
     DOMAINS_DOMAINS = `${IMG_PREFIX}domains_domains.png`,
     DOMAINS_INFO = `${IMG_PREFIX}domains_info2.jpg`,
     DOMAINS_PROJECTS = `${IMG_PREFIX}domains_projects.png`,
     PR_CI = `${IMG_PREFIX}hk_ci_logo.png`,
-    CONTACT_QUERY= `${IMG_PREFIX}query.png`,
-
+    CONTACT_QUERY = `${IMG_PREFIX}query.png`,
+    COMPANY_LOGO = '/hkdemo/hkenc_logo.png',
 }
 
 const CONTENT_IMG_PREFIX = '/hkdemo/content';

@@ -2,6 +2,7 @@ import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import Image from "next/image";
 import {CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
+import {MdOutlineSimCardDownload} from "react-icons/md";
 
 export default function Page() {
 
@@ -34,6 +35,31 @@ export default function Page() {
                         비전을 표현하고 있습니다.
                     </div>
                 </div>
+                {/*company logo section*/}
+                <div className={'text-4xl md:text-5xl'}>
+                    <div className={'border-b-2 md:max-w-[20vw] border-red-700 pb-2'}>
+                        Company Logo
+                    </div>
+                </div>
+                <div className={'w-full flex flex-col md:flex-row mt-10 md:mt-0 md:items-center md:col-span-2'}>
+                    <div className={'md:basis-0 md:grow relative h-[100px] md:h-[200px]'}>
+                        <Image src={CONTENT_URL.COMPANY_LOGO}
+                               alt={'company logo'}
+                               fill={true}
+                               objectFit={'contain'}
+                        />
+                    </div>
+                    <div className={'md:basis-0 md:grow md:pl-10 flex justify-end md:justify-start'}>
+                        <div
+                            className={'px-2 inline-block rounded-sm py-2 bg-neutral-200 text-black text-sm hover:bg-neutral-400'}>
+                            <a href={'/hkdemo/content/logo_zip.zip'} download>
+                                <div className={'flex items-center gap-1'}>
+                                    <MdOutlineSimCardDownload/> 로고 다운로드
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 {/*footer color section*/}
                 <div className={'text-4xl md:text-5xl'}>
                     <div className={'border-b-2 md:max-w-[20vw] border-red-700 pb-2'}>
@@ -42,100 +68,100 @@ export default function Page() {
                 </div>
                 <div className={'w-full flex flex-col mt-10 md:mt-0 items-start md:col-span-2'}>
                     <div className={'flex flex-col w-full'}>
-                        <div className={'flex items-center w-full text-3xl'}>
-                            Main Color
-                            <div className={'grow border-black border'}></div>
-                        </div>
-                        <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
-                            <div
-                                className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkred text-white pl-10 py-2 font-semibold h-[3rem] text-xl'}>
-                                HK RED
+                            <div className={'flex items-center w-full text-3xl'}>
+                                Main Color
+                                <div className={'grow border-black border'}></div>
                             </div>
-                            <div className={'w-[85%] flex justify-start'}>
-                                <ul className={'list-disc'}>
-                                    <li>
-                                        <span className={'font-semibold'}>C</span> 0 <span
-                                        className={'font-semibold'}>M</span> 100 <span
-                                        className={'font-semibold'}>Y</span> 90 <span
-                                        className={'font-semibold'}>K</span> 0
-                                    </li>
-                                    <li>
-                                        <span className={'font-semibold'}>R</span> 237 <span
-                                        className={'font-semibold'}>G</span> 26 <span
-                                        className={'font-semibold'}>B</span> 46
-                                    </li>
-                                </ul>
+                            <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
+                                <div
+                                    className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkred text-white pl-10 py-2 font-semibold h-[3rem] text-xl'}>
+                                    HK RED
+                                </div>
+                                <div className={'w-[85%] flex justify-start'}>
+                                    <ul className={'list-disc'}>
+                                        <li>
+                                            <span className={'font-semibold'}>C</span> 0 <span
+                                            className={'font-semibold'}>M</span> 100 <span
+                                            className={'font-semibold'}>Y</span> 90 <span
+                                            className={'font-semibold'}>K</span> 0
+                                        </li>
+                                        <li>
+                                            <span className={'font-semibold'}>R</span> 237 <span
+                                            className={'font-semibold'}>G</span> 26 <span
+                                            className={'font-semibold'}>B</span> 46
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className={'mt-14 flex items-center w-full text-3xl'}>
-                            Sub Color
-                            <div className={'grow border-black border'}></div>
-                        </div>
-                        <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
-                            <div
-                                className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkcyan text-white pl-10 py-2 font-semibold h-[3rem]'}>
+                            <div className={'mt-14 flex items-center w-full text-3xl'}>
+                                Sub Color
+                                <div className={'grow border-black border'}></div>
                             </div>
-                            <div className={'w-[85%] flex justify-start'}>
-                                <ul className={'list-disc'}>
-                                    <li>
-                                        <span className={'font-semibold'}>C</span> 64 <span
-                                        className={'font-semibold'}>M</span> 10 <span
-                                        className={'font-semibold'}>Y</span> 4 <span
-                                        className={'font-semibold'}>K</span> 0
-                                    </li>
-                                    <li>
-                                        <span className={'font-semibold'}>R</span> 71 <span
-                                        className={'font-semibold'}>G</span> 181 <span
-                                        className={'font-semibold'}>B</span> 224
-                                    </li>
-                                </ul>
+                            <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
+                                <div
+                                    className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkcyan text-white pl-10 py-2 font-semibold h-[3rem]'}>
+                                </div>
+                                <div className={'w-[85%] flex justify-start'}>
+                                    <ul className={'list-disc'}>
+                                        <li>
+                                            <span className={'font-semibold'}>C</span> 64 <span
+                                            className={'font-semibold'}>M</span> 10 <span
+                                            className={'font-semibold'}>Y</span> 4 <span
+                                            className={'font-semibold'}>K</span> 0
+                                        </li>
+                                        <li>
+                                            <span className={'font-semibold'}>R</span> 71 <span
+                                            className={'font-semibold'}>G</span> 181 <span
+                                            className={'font-semibold'}>B</span> 224
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
-                            <div
-                                className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkivory text-white pl-10 py-2 font-semibold h-[3rem]'}>
+                            <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
+                                <div
+                                    className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkivory text-white pl-10 py-2 font-semibold h-[3rem]'}>
+                                </div>
+                                <div className={'w-[85%] flex justify-start'}>
+                                    <ul className={'list-disc'}>
+                                        <li>
+                                            <span className={'font-semibold'}>C</span> 14 <span
+                                            className={'font-semibold'}>M</span> 6 <span
+                                            className={'font-semibold'}>Y</span> 16 <span
+                                            className={'font-semibold'}>K</span> 0
+                                        </li>
+                                        <li>
+                                            <span className={'font-semibold'}>R</span> 217 <span
+                                            className={'font-semibold'}>G</span> 224 <span
+                                            className={'font-semibold'}>B</span> 212
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className={'w-[85%] flex justify-start'}>
-                                <ul className={'list-disc'}>
-                                    <li>
-                                        <span className={'font-semibold'}>C</span> 14 <span
-                                        className={'font-semibold'}>M</span> 6 <span
-                                        className={'font-semibold'}>Y</span> 16 <span
-                                        className={'font-semibold'}>K</span> 0
-                                    </li>
-                                    <li>
-                                        <span className={'font-semibold'}>R</span> 217 <span
-                                        className={'font-semibold'}>G</span> 224 <span
-                                        className={'font-semibold'}>B</span> 212
-                                    </li>
-                                </ul>
+                            <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
+                                <div
+                                    className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkdarkblue text-white pl-10 py-2 font-semibold h-[3rem]'}>
+                                </div>
+                                <div className={'w-[85%] flex justify-start'}>
+                                    <ul className={'list-disc'}>
+                                        <li>
+                                            <span className={'font-semibold'}>C</span> 100 <span
+                                            className={'font-semibold'}>M</span> 85 <span
+                                            className={'font-semibold'}>Y</span> 35 <span
+                                            className={'font-semibold'}>K</span> 30
+                                        </li>
+                                        <li>
+                                            <span className={'font-semibold'}>R</span> 21 <span
+                                            className={'font-semibold'}>G</span> 50 <span
+                                            className={'font-semibold'}>B</span> 92
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div className={'flex flex-col gap-y-3 items-end w-full pt-10'}>
-                            <div
-                                className={'w-[90%] rounded-br-lg rounded-tl-lg bg-hkdarkblue text-white pl-10 py-2 font-semibold h-[3rem]'}>
-                            </div>
-                            <div className={'w-[85%] flex justify-start'}>
-                                <ul className={'list-disc'}>
-                                    <li>
-                                        <span className={'font-semibold'}>C</span> 100 <span
-                                        className={'font-semibold'}>M</span> 85 <span
-                                        className={'font-semibold'}>Y</span> 35 <span
-                                        className={'font-semibold'}>K</span> 30
-                                    </li>
-                                    <li>
-                                        <span className={'font-semibold'}>R</span> 21 <span
-                                        className={'font-semibold'}>G</span> 50 <span
-                                        className={'font-semibold'}>B</span> 92
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
-    )
+)
 };
