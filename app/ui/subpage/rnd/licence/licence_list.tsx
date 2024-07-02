@@ -12,7 +12,9 @@ function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
     console.log(result);
     return result;
 }
-export default function LicenceList() {
+export default function LicenceList({licences}: {
+    licences: LicenceInfo[];
+}) {
     const flag = true;
     const [pagedLicences, setPagedLicences] = useState(getPagedLicences(1,flag));
 
@@ -42,7 +44,7 @@ function LicenceListContainer({pagedLicences}:{
                 </tr>
                 </thead>
                 <tbody>
-                {pagedLicences.map((licence,idx) => (
+                {licences.map((licence,idx) => (
                     <tr key={`${idx}-licence`} className={'font-light border-b'}>
                         <td className={'py-3 w-[8%] text-center'}>{idx+1}</td>
                         <td className={'py-3 w-[30%]'}>{licence.licenceName}</td>
@@ -54,7 +56,7 @@ function LicenceListContainer({pagedLicences}:{
                 </tbody>
             </table>
             <div className={'w-full flex flex-col gap-5 justify-center items-start md:hidden'}>
-                {pagedLicences.map((licence,idx) => (
+                {licences.map((licence,idx) => (
                     <div key={`${idx}-sm-licence`}
                          className={'w-full flex pl-2 flex-col justify-center items-start border-b-2'}>
                         <div className={'text-lg'}>

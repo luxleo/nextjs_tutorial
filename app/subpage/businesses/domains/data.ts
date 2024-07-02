@@ -5,6 +5,7 @@ const DOMAIN_ImageURL_PREFIX = '/hkdemo/domain_images';
 export const departmentInfos: departmentInfo[] = [
     {
         name: '건설사업관리부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/건설사업관리부.png`,
         description: '도로, 하천, 상하수도, 교량, 항만, 철도, 단지 등의 토목분야 전반에 대하여 전문기술 지원과 효율적인 현장운영 등을 통합 관리하여, 최상의 시설물을 완성 할 수 있도록, 건설사업 추진 전 단계에 걸쳐 공정관리, 품질관리, 안전관리 등의 종합적 관리 업무를 수행합니다.',
         domains: [
             {
@@ -94,6 +95,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '조경부',
+        infoImageURL:`${DOMAIN_ImageURL_PREFIX}/조경부.png`,
         description: '인간에 의해 환경을 아름답고 가치 있게 기획, 설계, 관리, 보존, 재생하는 것을 일컫는 것이 조경입니다. 당사 조경부는 전문적인 기술과 예술적인 감각으로 변화하는 패러다임의 흐름에 적응함과 더불어 미래 세대에게 지속 가능한 환경을 물려줄 수 있도록 인간과 자연의 조화와 공존을 고민하고 있습니다. 공원, 관광지, 유원지, 자연공원, 골프장 및 체육시설, 생태 및 경관계획 분야 등 다양한 업무를 수행합니다.',
         domains: [
             {
@@ -225,6 +227,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '지반부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/지반부.png`,
         description: '구조물의 기초설계, 사면안정성검토, 연약지반 개량설계, 지반내진해석, 지하안전영향평가 등 각종 지반공학 분야에 대한 설계를 수행합니다.',
         domains: [
             {
@@ -256,6 +259,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '설계부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/설계부.png`,
         description: '도로, 단지, 철도 등 다양한 토목분야의 타당성검토, 기본 및 실시설계를 수행합니다.',
         domains: [
             {
@@ -288,6 +292,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '상하수도부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/상하수도부.jpg`,
         description: '맑은 물 공급을 위한 취․정수시설, 송․배수시설 등 사수도 분야와 각종 생산 활동에서 배출되는 하․폐수를 맑은 물로 처리하는 하수처리시설 및 하수관거 등 하수도분야의 기본 및 실시설계를 수행합니다.',
         domains: [
             {
@@ -317,6 +322,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '도시계획부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/도시계획부.png`,
         description: '균형 있는 국토개발과 친환경 미래 녹색도시 구현을 위한 일반산업단지, 지식산업단지 등의 개발로 사회적 가치 창출을 위한 업무를 수행합니다.',
         domains: [
             {
@@ -342,6 +348,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '안전진단부',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/안전진단부.jpg`,
         description: '국토교통부 지정 안전진단 전문기관으로 구조물의 일상점검, 정기점검, 건설현장의 안전점검과 구조해석을 통한 안전성 평가를 통한 시설물의 안전여부를 평가하는 업무를 수행합니다.',
         domains: [
             {
@@ -367,6 +374,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '부설연구소',
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/부설연구소.png`,
         description: '기술연구(R&D)분야에 대한 역량을 강화하고 설계, 시공 등 다양한 분야에 대한 혁신기술을 적극적으로 개발하여 최고의 엔지니어링 기술 실현을 위한 업무를 수행합니다.',
         domains: [
             {

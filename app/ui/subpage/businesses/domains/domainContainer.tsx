@@ -69,7 +69,6 @@ function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,dep
         params.set('currentDepartment', departmentName);
 
         replace(`${pathname}?${params.toString()}`)
-
     }
     return (
         <div className={'w-full flex flex-col items-center mt-6 md:mt-10'}>
