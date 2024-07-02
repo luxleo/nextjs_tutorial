@@ -32,12 +32,12 @@ export default function DomainMenuWrapper({domains,currentDomain, currentDepartm
     }
     return (
         <div className={''}>
-            <div className={'w-full flex justify-center bg-neutral-100'}>
+            <div className={'w-full flex justify-center bg-neutral-100 select-none'}>
                 <div className={'w-[80%] md:w-[50%] flex justify-between overflow-x-scroll md:overflow-x-clip gap-3'}>
                 {domains.map(domain => (
                     <div key={domain.menu} onClick={() => onClickHandler(domain.menu)}
                          className={clsx('whitespace-nowrap text-center text-xl py-6 md:py-8 hover:cursor-pointer', {
-                             'text-neutral-900 border-b-red-500 border-b-4': domain === currentDomain
+                             'text-neutral-900 border-b-red-500 border-b-4': domain.menu === currentDomain.menu
                          })}>
                             {domain.menu}
                     </div>
@@ -72,9 +72,9 @@ function DomainDepartmentNavBar({departments,currentDomain,currentDepartment,dep
     }
     return (
         <div className={'w-full flex flex-col items-center mt-6 md:mt-10'}>
-            <div className={'w-full flex md:justify-center md:gap-0 overflow-x-scroll md:overflow-x-hidden'}>
+            <div className={'w-full flex md:justify-center md:gap-0 overflow-x-scroll md:overflow-x-hidden select-none'}>
                 {departments.map(department => (
-                    <div key={department} className={clsx('text-black font-semibold whitespace-nowrap text-sm md:text-lg px-8 py-4', {
+                    <div key={department} className={clsx('text-black font-semibold whitespace-nowrap text-sm md:text-lg px-8 py-4 hover:cursor-pointer', {
                         'text-white bg-red-600': department === currentDepartment,
                         'md:hover:bg-neutral-100': department !== currentDepartment
                     })}
