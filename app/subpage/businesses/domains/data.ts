@@ -95,7 +95,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '조경부',
-        infoImageURL:`${DOMAIN_ImageURL_PREFIX}/조경부.png`,
+        infoImageURL:`${DOMAIN_ImageURL_PREFIX}/조경부.jpg`,
         description: '인간에 의해 환경을 아름답고 가치 있게 기획, 설계, 관리, 보존, 재생하는 것을 일컫는 것이 조경입니다. 당사 조경부는 전문적인 기술과 예술적인 감각으로 변화하는 패러다임의 흐름에 적응함과 더불어 미래 세대에게 지속 가능한 환경을 물려줄 수 있도록 인간과 자연의 조화와 공존을 고민하고 있습니다. 공원, 관광지, 유원지, 자연공원, 골프장 및 체육시설, 생태 및 경관계획 분야 등 다양한 업무를 수행합니다.',
         domains: [
             {
@@ -147,7 +147,7 @@ export const departmentInfos: departmentInfo[] = [
     {
         name: '수자원부',
         description: '치수, 이수, 하천환경 및 방재사업 등 수자원 분야 전반에 걸친 업무를 수행합니다.',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/수자원부_main.bmp`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/수자원부.jpg`,
         domains: [
             {
                 name: '치수 및 이수분야',
@@ -189,7 +189,7 @@ export const departmentInfos: departmentInfo[] = [
     {
         name: '구조부',
         description: '도로, 철도, 지중구조물, 항만, 상하수도 등 다양한 분야의 구조물에 대한 계획과 세부설계를 담당하고 있으며, 축적된 기술력을 기반으로 안전하고 경제적인 구조해석 및 설계를 수행합니다.',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/거가대교.jpg`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/구조부.png`,
         domains: [
             {
                 name: '교량계획 및 설계',
@@ -259,7 +259,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '설계부',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/설계부.png`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/설계부.jpg`,
         description: '도로, 단지, 철도 등 다양한 토목분야의 타당성검토, 기본 및 실시설계를 수행합니다.',
         domains: [
             {
@@ -348,7 +348,7 @@ export const departmentInfos: departmentInfo[] = [
     },
     {
         name: '안전진단부',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/안전진단부.jpg`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/안전진단부.png`,
         description: '국토교통부 지정 안전진단 전문기관으로 구조물의 일상점검, 정기점검, 건설현장의 안전점검과 구조해석을 통한 안전성 평가를 통한 시설물의 안전여부를 평가하는 업무를 수행합니다.',
         domains: [
             {
