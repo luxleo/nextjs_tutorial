@@ -27,7 +27,7 @@ export default function Page() {
                     <div className={`${styles.info_box} w-full md:basis-0 md:grow flex flex-col self-center shadow-md py-8 px-8`}>
                         <div className={'text-[1.5rem] leading-none'}>
                             <span className={'font-light text-neutral-700'}>경영철학</span><br/>
-                            <span className={'text-[3.2rem]'}>馬不停蹄</span>
+                            <span className={'text-[3.2rem]'}>馬不停蹄 <span className={'text-[1.2rem] text-neutral-500'}>| 마부정제</span></span>
                         </div>
                         <div className={'mt-[1.5rem] text-[1.6rem]'}>
                             달리는 말은 말굽을 멈추지 않는다.

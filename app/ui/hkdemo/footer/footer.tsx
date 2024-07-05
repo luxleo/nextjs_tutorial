@@ -8,7 +8,6 @@ export default function Footer() {
                 className={'grow order-2 md:order-1 md:basis-0 flex text-xs md:text-sm flex-col text-neutral-300 md:items-start md:justify-start'}>
                 <div>ADR) {`${locationData[0].streetAddress} ${locationData[0].buildingInfo}`}</div>
                 <div>FAX) 0505-0000-0000</div>
-                <div>Email) 0000@gmail.com</div>
             </div>
             <div className={'grow order-1 md:order-2 md:basis-0 flex md:flex-col items-center'}>
                 <div className={'md:w-[15vw] w-[50vw] flex items-center'}>

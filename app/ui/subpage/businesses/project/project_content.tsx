@@ -42,7 +42,7 @@ function FilterBar() {
     const year = useProjectStore(state => state.year);
     const updateYear = useProjectStore(state => state.updateYear);
     return (
-        <div className={'w-full flex gap-x-5'}>
+        <div className={'w-full flex gap-x-5 overflow-x-scroll md:overflow-x-visible'}>
             {range(2017, 2023, 1).map(el => (
                 <div key={el} className={clsx('flex justify-center items-center py-3 px-6 text-lg select-none hover:cursor-pointer', {
                     'border-2 hover:border-red-500': el !== year,
