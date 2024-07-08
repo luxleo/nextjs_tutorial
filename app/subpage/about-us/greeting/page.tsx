@@ -13,7 +13,7 @@ export default async function Page() {
         <section className={'w-full'}>
             <div className={'px-[5%] sm:px-[10%]'}>
                 <Suspense>
-                    <SectionTitle title={null}/>
+                    <SectionTitle title={'인사말'}/>
                 </Suspense>
                 <div className={'mt-5 sm:mt-20 w-full flex flex-col items-start'}>
 

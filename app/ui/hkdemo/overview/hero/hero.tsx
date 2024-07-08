@@ -22,13 +22,13 @@ type heroAction = {
 const tempHeroActions = ['회사 소개','프로젝트','오시는 길'];
 const heroActions : heroAction[] = [{
     actionName: '회사 소개',
-    href: '/about-us/greeting?mainLinkName=회사소개&subLinkName=인사말'
+    href: '/about-us/greeting'
 },{
     actionName:'프로젝트',
-    href: '/businesses/projects?mainLinkName=사업소개&subLinkName=프로젝트'
+    href: '/businesses/projects'
 },{
     actionName:'오시는 길',
-    href: '/contact/location?mainLinkName=Contact+Us&subLinkName=오시는+길'
+    href: '/contact/location'
 }];
 
 // TODO: 이미지 전환 될때 레이아웃 남겨두면서 부드럽게 전환하가

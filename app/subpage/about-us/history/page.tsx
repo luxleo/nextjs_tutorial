@@ -9,7 +9,7 @@ export default function Page() {
     return (
         <section className={'w-full px-[5%] sm:px-[10%] pb-10'}>
             <Suspense>
-                <SectionTitle title={null}/>
+                <SectionTitle title={'연혁'}/>
             </Suspense>
             <div className={'flex justify-center items-center py-5 md:py-10 text-[3rem] md:text-[3.5rem]'}>
                 <span className={'text-hkred pr-3'}>HK</span> <span className={'font-light'}>HISTORY</span>

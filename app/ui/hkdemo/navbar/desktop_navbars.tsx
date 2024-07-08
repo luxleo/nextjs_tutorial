@@ -134,11 +134,7 @@ function NavSubLink({link, mainLinkName}: {
     return (
         <div>
             <Link href={{
-                pathname: link.href,
-                query: {
-                    mainLinkName: mainLinkName,
-                    subLinkName: link.name
-                }
+                pathname: link.href
             }}>
                 <p className={'text-lg font-medium hover:text-black hover:font-semibold text-neutral-600'}>
                    <span>

@@ -275,10 +275,6 @@ function SectionContainer(data : linkForLandingPage){
                     <div key={`${item.name}-sublink-forMain`} className={'flex justify-center items-center border-2 text-sm md:text-xl text-white hover:text-black hover:bg-white text-center'}>
                         <Link href={{
                             pathname: item.href,
-                            query: {
-                                mainLinkName: item.mainLinkName,
-                                subLinkName: item.name
-                            }
                         }} className={'w-full h-full flex justify-center items-center px-5 md:px-20 py-2'}>
                             {item.name}
                         </Link>

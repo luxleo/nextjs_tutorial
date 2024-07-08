@@ -10,7 +10,7 @@ export default function Page() {
     return (
         <section className={'w-full px-[5%] sm:px-[10%] mb-20'}>
             <Suspense>
-                <SectionTitle title={null}/>
+                <SectionTitle title={'브로슈어'}/>
             </Suspense>
             <div className={'w-full flex flex-col sm:items-start '}>
                 <div className={'mb-4 flex items-center gap-2'}>

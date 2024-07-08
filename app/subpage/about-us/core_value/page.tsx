@@ -13,7 +13,7 @@ export default function Page() {
         <section className={'w-full'}>
             <div className={'px-[5%] sm:px-[10%]'}>
                 <Suspense>
-                    <SectionTitle title={null}/>
+                    <SectionTitle title={'경영이념'}/>
                 </Suspense>
             </div>
             <div className={'mt-20 w-full flex flex-col items-start px-[5%] sm:px-[10%]'}>
