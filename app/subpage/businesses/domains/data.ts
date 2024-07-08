@@ -51,7 +51,7 @@ export const departmentInfos: departmentInfo[] = [
     {
         name: '교통계획부',
         description: '교통법정계획(도시교통정비, 대중교통, 교통안전 등)을 비롯한 타당성평가, 광역교통체계, 교통영향평가, 교통체계개선(TSM), 민간투자사업 등 다양한 분야의 종합교통계획 업무를 수행합니다.',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/교통부_대문사진.png`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/교통부.png`,
         domains: [
             {
                 name: '교통시설 타당성조사 및 타당성 평가',
