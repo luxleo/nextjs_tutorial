@@ -6,8 +6,18 @@ export default function Footer() {
         <div id={'root-footer'} className={'w-full flex flex-col md:flex-row h-[25vh] md:h-[15vh] bg-neutral-800 items-center md:px-[5%] md:text-sm'}>
             <div
                 className={'grow order-2 md:order-1 md:basis-0 flex text-xs md:text-sm flex-col text-neutral-300 md:items-start md:justify-start'}>
-                <div>ADR) {`${locationData[0].streetAddress} ${locationData[0].buildingInfo}`}</div>
-                <div>FAX) 0505-0000-0000</div>
+                <div className={'flex gap-x-4'}>
+                    <div className={'w-5'}>Adr</div>
+                    <div>{`${locationData[0].streetAddress} ${locationData[0].buildingInfo}`}</div>
+                </div>
+                <div className={'flex gap-x-4'}>
+                    <div className={'w-5'}>Tel</div>
+                    <div>051-583-3317</div>
+                </div>
+                <div className={'flex gap-x-4'}>
+                    <div className={'w-5'}>Fax</div>
+                    <div>0504-846-3333</div>
+                </div>
             </div>
             <div className={'grow order-1 md:order-2 md:basis-0 flex md:flex-col items-center'}>
                 <div className={'md:w-[15vw] w-[50vw] flex items-center'}>

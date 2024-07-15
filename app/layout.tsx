@@ -1,5 +1,5 @@
 import '@/app/ui/global.css'
-import {inter, notoSansKr} from "@/app/ui/fonts";
+import { notoSansKr} from "@/app/ui/fonts";
 import {Metadata} from "next";
 import NavBar from "@/app/ui/hkdemo/navbar/navbar";
 import Footer from "@/app/ui/hkdemo/footer/footer";
