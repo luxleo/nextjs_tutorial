@@ -147,7 +147,7 @@ export const departmentInfos: departmentInfo[] = [
     {
         name: '수자원부',
         description: '치수, 이수, 하천환경 및 방재사업 등 수자원 분야 전반에 걸친 업무를 수행합니다.',
-        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/수자원부_main.bmp`,
+        infoImageURL: `${DOMAIN_ImageURL_PREFIX}/수자원부_main.png`,
         domains: [
             {
                 name: '치수 및 이수분야',
