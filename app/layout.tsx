@@ -3,6 +3,7 @@ import { notoSansKr} from "@/app/ui/fonts";
 import {Metadata} from "next";
 import NavBar from "@/app/ui/hkdemo/navbar/navbar";
 import Footer from "@/app/ui/hkdemo/footer/footer";
+import {GoogleAnalytics} from '@next/third-parties/google';
 
 declare global {
   interface Window {
@@ -10,13 +11,13 @@ declare global {
   }
 }
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
   title: {
     template: "%s | HK E&C",
     default: "HK E&C"
   },
-  description: "next js tutorial project",
-}
+  description: "one of top civil engineering company"
+};
 
 export default function RootLayout({
   children,
@@ -30,6 +31,7 @@ export default function RootLayout({
         {children}
         <Footer/>
       </body>
+      <GoogleAnalytics gaId={"G-4HR0DWB405"}/>
     </html>
   );
 }

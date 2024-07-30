@@ -34,9 +34,7 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('i called 1');
                 setCurrentPage(2);
-                console.log(currentPage);
             } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 2 - 1) {
                 //현재 2페이지
                 outerDivRef.current?.scrollTo({
@@ -44,9 +42,7 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('i called 2');
                 setCurrentPage(3);
-                console.log(currentPage);
             } else {
                 // 현재 3페이지
                 outerDivRef.current?.scrollTo({
@@ -54,9 +50,7 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('i called 3');
                 setCurrentPage(4);
-                console.log(currentPage);
             } //else {
             //     // 현재 4페이지
             //     window.scrollTo({
@@ -185,7 +179,6 @@ const Dot = ({num, currentPage, contentPointer, setCurrentPage, pageHeight, cont
         })}
              onClick={() => {
                  setCurrentPage(num);
-                 console.log(pageHeight);
                  contentPointer.current?.scrollTo({
                          top: (pageHeight + DIVIDER_HEIGHT) * (num - 1),
                          left: 0,
@@ -258,7 +251,7 @@ function SectionContainer(data : linkForLandingPage){
         <div className={'w-full relative h-full flex flex-col justify-center items-center'}>
             <Image src={data.bg_URL} alt={'hero image'}
                    fill
-                   sizes={'100vw'}
+                   sizes={'50vw'}
                    style={{
                        objectFit: 'cover'
                    }}

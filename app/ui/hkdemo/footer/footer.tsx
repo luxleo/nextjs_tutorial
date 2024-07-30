@@ -21,7 +21,7 @@ export default function Footer() {
             </div>
             <div className={'grow order-1 md:order-2 md:basis-0 flex md:flex-col items-center'}>
                 <div className={'md:w-[15vw] w-[50vw] flex items-center'}>
-                        <Image className={'w-full'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000}
+                        <Image className={'w-full'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={300}
                                height={300}
                                priority={true}/>
                 </div>

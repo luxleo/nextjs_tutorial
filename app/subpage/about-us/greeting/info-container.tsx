@@ -27,6 +27,7 @@ export default function InfoContainer() {
                    objectFit={'cover'}
                    fill={true}
                    quality={50}
+                   sizes={'60vw'}
                    priority={true}
                    className={'-z-10'}
             />

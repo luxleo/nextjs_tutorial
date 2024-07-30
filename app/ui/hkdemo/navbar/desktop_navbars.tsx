@@ -45,7 +45,7 @@ export default function HomeNavBar({responsiveBackground}:{
             <section className={`md:grow-[0.2] flex basis-0 justify-start w-[calc(150px+3.4vw)]`}>
                 <div className={'relative md:w-full w-[18vw] flex items-center'}>
                     <Link href={"/"}>
-                        <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={1000} height={300}
+                        <Image className={'left-0'} src={"/hkdemo/hkenc_logo.png"} alt={"company logo"} width={300} height={300}
                                priority={true}/>
                     </Link>
                 </div>

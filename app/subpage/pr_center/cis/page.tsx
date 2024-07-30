@@ -3,7 +3,11 @@ import Image from "next/image";
 import {CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
 import {MdOutlineSimCardDownload} from "react-icons/md";
+import {Metadata} from "next";
 
+export const metadata : Metadata = {
+    title: "CI"
+}
 export default function Page() {
 
     return (

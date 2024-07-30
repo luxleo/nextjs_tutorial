@@ -2,7 +2,11 @@ import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import {Suspense} from "react";
 import ResearchList from "@/app/ui/subpage/rnd/research/research_list";
 import ResearchProjectList from "@/app/ui/subpage/rnd/research_project/research_project_list";
+import {Metadata} from "next";
 
+export const metadata : Metadata = {
+    title: "연구개발"
+}
 export default function Page() {
 
     return (

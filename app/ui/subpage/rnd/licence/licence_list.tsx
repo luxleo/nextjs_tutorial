@@ -9,7 +9,6 @@ function getPagedLicences(pageNum: number,flag:boolean) : LicenceInfo[] {
     if(flag) return licences.sort((a, b) => b.enrollDate.localeCompare(a.enrollDate));;
     const result = licences.slice((pageNum - 1) * pageSize, pageNum * pageSize)
         .sort((a, b) => a.enrollDate.localeCompare(b.enrollDate));
-    console.log(result);
     return result;
 }
 export default function LicenceList({licences}: {

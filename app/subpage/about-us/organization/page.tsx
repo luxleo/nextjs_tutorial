@@ -2,7 +2,11 @@ import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import Image from "next/image";
 import {CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
+import {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "조직구조",
+};
 export default function Page() {
 
 

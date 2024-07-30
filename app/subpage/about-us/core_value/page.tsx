@@ -1,11 +1,15 @@
 import Image from "next/image";
 import {CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
-import {motion} from "framer-motion";
 
 import styles from './core_value.module.css';
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import {ShareValue} from "@/app/subpage/about-us/core_value/core-value-framers";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "경영이념",
+};
 
 export default function Page() {
 
@@ -21,6 +25,7 @@ export default function Page() {
                     <div className={`${styles.horse} w-full h-[250px] md:basis-0 md:grow-[1.8] relative md:h-[300px] lg:h-[450px]`}>
                         <Image src={CONTENT_URL.CORE_VALUE} alt={'core value'}
                                fill
+                               sizes={"(max-width: 768px) 90vw, 50vw"}
                                objectFit={'cover'}
                         />
                     </div>

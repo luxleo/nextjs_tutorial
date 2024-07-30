@@ -5,6 +5,11 @@ import {Suspense} from "react";
 import styles from './styles.module.css'
 import GreetingContainer from "@/app/subpage/about-us/greeting/greeting-container";
 import InfoContainer from "@/app/subpage/about-us/greeting/info-container";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "인사말",
+};
 
 export default async function Page() {
 

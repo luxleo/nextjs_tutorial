@@ -101,7 +101,7 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
                     <div className={'w-full relative aspect-[2/1] md:aspect-[3/1] mb-10'}>
                         <Image src={content.infoImageURL as string} alt={'ORGANIZATION'}
                                fill
-                               sizes={'100vw'}
+                               sizes={'50vw'}
                                className={'w-full object-cover'}
                                priority
                         />
@@ -110,7 +110,7 @@ function DomainInfoContainer({currentDepartment, departmentInfo}:{
                     <div className={'w-full relative aspect-[2/1] md:aspect-[3/1] mb-10'}>
                         <Image src={CONTENT_URL.DOMAINS_INFO} alt={'ORGANIZATION'}
                                fill
-                               sizes={'100vw'}
+                               sizes={'50vw'}
                                className={'w-full object-cover'}
                         />
                     </div>

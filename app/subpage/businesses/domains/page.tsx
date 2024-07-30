@@ -1,6 +1,10 @@
 import {findDomainByMenuName, getCurrentDepartmentInfo, getDomains} from "@/app/lib/hk/domainsData";
 import DomainMenuWrapper from "@/app/ui/subpage/businesses/domains/domainContainer";
+import {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "사업영역",
+};
 export default async function Page({searchParams}:{
     searchParams?: {
         currentDomain? : string;

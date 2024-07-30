@@ -3,8 +3,13 @@ import Image from "next/image";
 import {CONTENT_IMG_URL, CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
 import { MdOutlineSimCardDownload } from "react-icons/md";
+import {Metadata} from "next";
 
-//TODO: 브로슈어 지금은 올라가있는 파일 다운로드하게 되어있는데 추후에 서버로 요청해서 내려받도록 하자. + 다운로드 횟수도 카운트 해보기
+//TODO: 브로슈어 지금은 올라가있는 파일 다운로드하게
+// 되어있는데 추후에 서버로 요청해서 내려받도록 하자. + 다운로드 횟수도 카운트 해보기
+export const metadata : Metadata = {
+    title: "브로슈어"
+}
 export default function Page() {
 
     return (

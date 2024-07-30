@@ -27,7 +27,6 @@ export default function PageHeader(){
         if (splitted.length > 1) {
             result =  splitted[splitted.length - 2];
         }
-        console.log(result);
         return result;
     }
     function getSubLinkName (pathName: string) {
@@ -36,7 +35,6 @@ export default function PageHeader(){
         if (splitted.length > 1) {
             result =  splitted[splitted.length - 1];
         }
-        console.log(result);
         return result;
     }
     function findImageURL(rawURL: string) {
@@ -51,7 +49,7 @@ export default function PageHeader(){
     }
 
     return (
-        <section className={'relative w-full flex flex-col h-[200px] sm:h-[400px]'}>
+        <section className={'relative w-full flex flex-col h-[200px] sm:h-[350px]'}>
             <PageNavbarBackgroundImage imageURL={imageURL}/>
             <PageNavbarWrapper mainLinkName={mainLinkName} subLinkName={subLinkName} mainLink={currentLink}/>
         </section>
@@ -85,7 +83,7 @@ function PageNavbar({mainLink,subLinkName}:{
     const router = useRouter();
     return (
         <div className={'relative flex flex-col h-full items-center w-full'}>
-            <div className={'text-2xl md:text-3xl lg:text-5xl text-white'}>
+            <div className={'text-2xl md:text-3xl lg:text-5xl lg:pb-10 text-white'}>
                 {mainLink?.name}
             </div>
             <div className={'absolute bottom-0 flex w-full md:w-[90%]'}>
@@ -115,10 +113,11 @@ function PageNavbarBackgroundImage({ imageURL}:
                                 }) {
     return <Image src={imageURL} alt={'hero image'}
                   fill
-                  sizes={'100vw'}
+                  sizes={'60vw'}
                   style={{
                       objectFit: 'cover'
                   }}
+                  // placeholder={'blur'}
                   className={'absolute top-0 left-0 -z-10 brightness-75'}
                   priority={true}
     />;
