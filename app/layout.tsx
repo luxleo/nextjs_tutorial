@@ -14,7 +14,7 @@ declare global {
 export const metadata: Metadata = {
   title: {
     template: "%s | HK E&C",
-    default: "HK E&C"
+    default: "(주)에이치케이이앤씨 HK E&C"
   },
   description: "one of top civil engineering company"
 };
@@ -31,7 +31,7 @@ export default function RootLayout({
         {children}
         <Footer/>
       </body>
-      <GoogleAnalytics gaId={"G-4HR0DWB405"}/>
+      <GoogleAnalytics gaId={process.env.GAID as string}/>
     </html>
   );
 }

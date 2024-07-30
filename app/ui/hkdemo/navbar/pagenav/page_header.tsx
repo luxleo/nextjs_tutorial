@@ -88,9 +88,9 @@ function PageNavbar({mainLink,subLinkName}:{
             </div>
             <div className={'absolute bottom-0 flex w-full md:w-[90%]'}>
                 {mainLink?.sub_link?.map(sublink=>(
-                    <div key={sublink.name} className={clsx('grow h-[3rem] text-md md:h-[4rem] md:text-xl lg:h-[5rem] lg:text-xl font-light',
+                    <div key={sublink.name} className={clsx('grow h-[3rem] text-md md:h-[4rem] md:text-xl lg:h-[5rem] lg:text-xl font-light select-none hover:cursor-pointer',
                         {
-                            'bg-neutral-900 bg-opacity-60 text-white' : sublink.eng_name != subLinkName,
+                            'bg-neutral-900 bg-opacity-60 hover:bg-neutral-700 hover:bg-opacity-80 text-white' : sublink.eng_name != subLinkName,
                             'bg-red-600 bg-opacity-100 text-white': sublink.eng_name == subLinkName
                         })}
                          onClick={()=>router.push(sublink.href)}
