@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json package-lock.json yarn.lock* pnpm-lock.yaml* ./
+COPY ../../package.json package-lock.json yarn.lock* pnpm-lock.yaml* ./
 RUN npm ci
 
 # 2. Rebuild the source code only when needed
@@ -16,14 +16,14 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ../.. .
-ARG SELECTED_ENV=production
-ENV NODE_ENV=${SELECTED_ENV}
 # This will do the trick, use the corresponding env file for each environment.
 RUN npm run build
 
 # 3. Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
+
+ENV NODE_ENV=test
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001

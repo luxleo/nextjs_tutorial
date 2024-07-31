@@ -31,7 +31,7 @@ export default function RootLayout({
         {children}
         <Footer/>
       </body>
-      <GoogleAnalytics gaId={process.env.GAID as string}/>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GAID as string}/>
     </html>
   );
 }
