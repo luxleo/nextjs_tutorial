@@ -1,6 +1,6 @@
 import {linkForLandingPage, mainLink} from "@/app/ui/hkdemo/navbar/link_types";
 
-export const links : mainLink[] = [
+export const links: mainLink[] = [
     {
         name: "회사소개",
         eng_name: "about-us",
@@ -19,12 +19,13 @@ export const links : mainLink[] = [
                 name: "조직구조",
                 eng_name: "organization",
                 href: "/about-us/organization"
-            },{
+            }, {
                 name: "연혁",
                 eng_name: "history",
                 href: "/about-us/history"
             }
-        ]},
+        ]
+    },
     {
         name: "사업소개",
         eng_name: "businesses",
@@ -39,11 +40,12 @@ export const links : mainLink[] = [
                 eng_name: "projects",
                 href: "/businesses/projects"
             }
-        ]},
+        ]
+    },
     {
         name: "기술개발",
         eng_name: "rnd",
-        sub_link:[
+        sub_link: [
             {
                 name: "업·면허등록 현황",
                 eng_name: "licences",
@@ -64,7 +66,7 @@ export const links : mainLink[] = [
     {
         name: "홍보센터",
         eng_name: "pr_center",
-        sub_link:[
+        sub_link: [
             {
                 name: "CI소개",
                 eng_name: "cis",
@@ -82,12 +84,17 @@ export const links : mainLink[] = [
         eng_name: "location",
         href: "/location"
     },
+    {
+        name: "고객센터",
+        eng_name: "cs",
+        href: "/cs"
+    }
     //TODO: 나중에 완성되면 넣는 걸로
     // {
     //     name: "Tools",
     //     href: "/hk-app/tools"
     // }
-]
+];
 
 const imagePrefix = '/hkdemo/subpage_images/';
 export const linksForLandingPage: linkForLandingPage[] = [

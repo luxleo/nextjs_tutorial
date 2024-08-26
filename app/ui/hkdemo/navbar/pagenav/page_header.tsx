@@ -1,10 +1,9 @@
 'use client';
-import {mainLink, pageMainLink} from "@/app/ui/hkdemo/navbar/link_types";
+import {mainLink} from "@/app/ui/hkdemo/navbar/link_types";
 import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
 import clsx from "clsx";
 import {findMainLinkWithName} from "@/app/ui/hkdemo/navbar/link_data";
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
 //LEARN: min-h는 h를 부여하지 않아서 자식 요소가 참조할 요소가 없음.

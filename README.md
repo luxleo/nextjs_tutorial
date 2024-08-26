@@ -205,3 +205,13 @@
         // md 이상의 사이즈에서는 
         큰 화면
     </div>
+
+# tailwind css 
+## !(bang) 으로 important 속성 부여하여 responsive 렌더링 최적화 하기
+    브라우져마다 상이하게 `hidden md:flex` 등의 responsive 렌더링이 적용되지 않는 경우 !으로 important 속성을 부여해주어
+    강제하면 된다. `hidden md:flex` => `hidden md:!flex`
+
+# trouble shooting
+## Only plain objects, and a few built-ins, can be passed to Client Components from Server Components. Classes or null prototypes are not supported - 24.08.26
+    next 14 버젼에서 서버 컴포넌트로 부터 클라이언트 컴포넌트에 fetch의 결과를 전달할 때 오직 plain object, 혹은 원시타입 만 가능하다
+    따라서 Promise를 반환하면 오류가 발생한다.

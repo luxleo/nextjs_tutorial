@@ -1,20 +1,15 @@
 import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
-import {Suspense} from "react";
-import IPRCardContainer from "@/app/ui/subpage/rnd/ipr_list_card";
-import {Metadata} from "next";
 import CommonContainer from "@/app/ui/subpage/commom-container";
+import ContactForm from "@/app/subpage/cs/contact-form";
+import {Suspense} from "react";
 
-export const metadata : Metadata = {
-    title: "지적재산권"
-}
 export default function Page() {
-
     return (
         <CommonContainer>
+            <SectionTitle title={'문의사항'}/>
             <Suspense>
-                <SectionTitle title={'특허목록'}/>
+                <ContactForm/>
             </Suspense>
-            <IPRCardContainer/>
         </CommonContainer>
     )
 };

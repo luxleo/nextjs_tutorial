@@ -1,3 +1,4 @@
+export const SERVER_URL_PREFIXED = process.env.SERVER_URL;
 const IMG_PREFIX = '/hkdemo/subpage_images/content-demo/';
 export const enum CONTENT_URL{
     CORE_VALUE = `${IMG_PREFIX}core_value.png`,

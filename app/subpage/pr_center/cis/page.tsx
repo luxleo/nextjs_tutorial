@@ -4,6 +4,7 @@ import {CONTENT_URL} from "@/app/subpage/prefixed";
 import {Suspense} from "react";
 import {MdOutlineSimCardDownload} from "react-icons/md";
 import {Metadata} from "next";
+import CommonContainer from "@/app/ui/subpage/commom-container";
 
 export const metadata : Metadata = {
     title: "CI"
@@ -11,7 +12,7 @@ export const metadata : Metadata = {
 export default function Page() {
 
     return (
-        <section className={'w-full px-[5%] md:px-[10%] pb-10'}>
+        <CommonContainer>
             <Suspense>
                 <SectionTitle title={'CI 자료'}/>
             </Suspense>
@@ -166,6 +167,6 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-        </section>
+        </CommonContainer>
 )
 };
