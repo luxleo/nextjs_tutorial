@@ -25,8 +25,10 @@ const initialContactFormValue : ContactPayload = {
 
 export type ContactPayload = z.infer<typeof contactFormSchema>;
 
-export default function ContactForm() {
-    const [errorMessage, setErrorMessage] = useState<string>("");
+export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
+    const [verifiedEmail, setVerifiedEmail] = useState<string>("");
+    const [step, setStep] = useState<number>(1);
+    const [verificationCode, setVerificationCode] = useState<string>("");
     const [isFetchFinished, setIsFetchFinished] = useState<boolean>(false);
 
     const {
@@ -38,7 +40,12 @@ export default function ContactForm() {
             resolver: zodResolver(contactFormSchema),
             defaultValues: initialContactFormValue
         });
-
+    const submitTester1 = () => {
+        console.log("================submit tester 1");
+    }
+    const submitTester2 = () => {
+        console.log("================submit tester 2");
+    }
     const onSubmitHandler = useCallback(async (payload: ContactPayload) => {
         console.log(JSON.stringify(payload));
         const isOk = await createInquiry(payload);
@@ -47,11 +54,28 @@ export default function ContactForm() {
         }
     },[])
 
+    const onEmailChangeHandler = useCallback(()=>{
+
+    },[])
+
     return (
         <>
-            {!isFetchFinished ?
-                <form className={'w-full'} onSubmit={handleSubmit(formData => onSubmitHandler(formData))}>
+            {!isFetchFinished  &&
+                <form className={'w-full'} onSubmit={handleSubmit(formData => {
+                    if (step === 1) {
+                        // 유저 이메일로 검증 코드를 보내어 이메일을 확인한다. + verified Email 에 현재 이메일을 저장하여 나중에 수정하지 못하도록 조치한다.
+                    } else if (step === 2) {
+                        // 이메일 검증을 위하여 입력한 경우이다. + 검증 코드를 비교하고 일치할 경우 verified Email 과 현재 Email을 비교하여 같은 경우에만 다음으로 진행한다.
+                        // 유저가 작성한 inquiry를 서버로 전송하여 저장한다.
+                        incPhase();
+                    }
+
+                        // return onSubmitHandler(formData);
+                    }
+                )}>
                     <div className={'flex flex-col md:!flex-row'}>
+
+
                         <LabelWrapper title={'성함'}>
                             <input type={'text'} placeholder={'성함을 입력해주세요'} {...register('customerName')}/>
                             {errors.customerName && <ErrorMessageBox errorMessage={errors.customerName.message}/>}
@@ -89,24 +113,16 @@ export default function ContactForm() {
                             {errors.content && <ErrorMessageBox errorMessage={errors.content.message}/>}
                         </LabelWrapper>
                     </div>
-                    <button className={'bg-slate-300'}>
+                    <button className={'bg-slate-300 w-full flex py-3 justify-center items-center rounded-md hover:shadow-inner hover:shadow-slate-500'}>
                         제출
                     </button>
                 </form>
-                :
-                <div className={'flex flex-col'}>
-                    <div>
-                        check
-                    </div>
-                    <div>
-                        문의가 전송되었습니다.
-                    </div>
-                </div>
+
             }
 
         </>
 
-    )
+    );
 };
 
 function LabelWrapper({title, children}: {
