@@ -26,24 +26,16 @@ function Renderer() {
     }
 }
 
-interface RecaptchaComponent {
-    getValue : () => string,
-    getWidgetId : () => string,
-    reset : () => void,
-    execute : () => void,
-    executeAsync : () => void,
-}
-
 function RecaptchaContainer({
     incPhase
                             }:{incPhase: ()=>void}) {
-    const recaptchaREF = useRef<null | RecaptchaComponent>(null);
+    const recaptchaREF = useRef<null | ReCAPTCHA>(null);
     const onChangeHandler = () => {
         incPhase();
     }
     return (
         <div>
-            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} ref={recaptchaREF} onChange={onChangeHandler} />
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string} ref={recaptchaREF} onChange={onChangeHandler} />
         </div>
     )
 }
