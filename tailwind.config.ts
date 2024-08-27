@@ -19,6 +19,15 @@ const config = {
     },
     extend: {
       colors: {
+        'hk-blue': {
+          200: '#2589FE',
+          300: '#0070F3',
+          600: '#232f3e',
+        },
+        "hkred" : "#ed1a2e",
+        'hkcyan' : '#47b5e0',
+        'hkivory' : '#d9e0d4',
+        'hkdarkblue' : '#1d4681',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -71,6 +80,19 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      gridTemplateColumns: {
+        '13': 'repeat(13, minmax(0, 1fr))',
+      },
+      fontFamily:{
+        dotum: ['var(--font-dotum)']
+      }
+    },
+    keyframes: {
+      shimmer: {
+        '100%': {
+          transform: 'translateX(100%)',
+        },
       },
     },
   },

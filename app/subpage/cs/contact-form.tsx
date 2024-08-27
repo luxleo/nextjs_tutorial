@@ -5,6 +5,9 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {useCallback, useState} from "react";
 import {createInquiry} from "@/app/subpage/cs/actions";
+import {Input} from "@/components/ui/input";
+import {Textarea} from "@/components/ui/textarea";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 const contactFormSchema =z.object({
     customerName: z.coerce.string().min(2, "이름은 2자 이상, 5자 이하 로 입력해주세요").max(5, "이름은 2자 이상, 5자 이하 로 입력해주세요"),
@@ -62,6 +65,7 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
         <>
             {!isFetchFinished  &&
                 <form className={'w-full'} onSubmit={handleSubmit(formData => {
+                    console.log(`data : ${JSON.stringify(formData)}`);
                     if (step === 1) {
                         // 유저 이메일로 검증 코드를 보내어 이메일을 확인한다. + verified Email 에 현재 이메일을 저장하여 나중에 수정하지 못하도록 조치한다.
                     } else if (step === 2) {
@@ -74,42 +78,45 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
                     }
                 )}>
                     <div className={'flex flex-col md:!flex-row'}>
-
-
                         <LabelWrapper title={'성함'}>
-                            <input type={'text'} placeholder={'성함을 입력해주세요'} {...register('customerName')}/>
+                            <Input type={'text'} placeholder={'성함을 입력해주세요'} {...register('customerName')}/>
                             {errors.customerName && <ErrorMessageBox errorMessage={errors.customerName.message}/>}
                         </LabelWrapper>
                         <LabelWrapper title={'이메일'}>
-                            <input type={'email'} placeholder={'이메일을 입력해주세요'} {...register('email')} />
+                            <Input type={'email'} placeholder={'이메일을 입력해주세요'} {...register('email')} />
                             {errors.email && <ErrorMessageBox errorMessage={errors.email.message}/>}
                         </LabelWrapper>
                     </div>
                     <div>
                         <LabelWrapper title={"문의분류"}>
-                            <select defaultValue={'PROJECT'} {...register('type')}>
-                                <option value={'PROJECT'}>
-                                    프로젝트 문의
-                                </option>
-                                <option value={'RECRUIT'}>
-                                    채용
-                                </option>
-                                <option value={'ETC'}>
-                                    기타 문의
-                                </option>
-                            </select>
+                            <Select defaultValue={'PROJECT'} >
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a verified email to display"  />
+                                </SelectTrigger>
+                                <SelectContent {...register('type')}>
+                                    <SelectItem value={'PROJECT'}>
+                                        프로젝트 문의
+                                    </SelectItem>
+                                    <SelectItem value={'RECRUIT'}>
+                                        채용
+                                    </SelectItem>
+                                    <SelectItem value={'ETC'}>
+                                        기타 문의
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
                             {errors.type && <ErrorMessageBox errorMessage={errors.type.message}/>}
                         </LabelWrapper>
                     </div>
                     <div>
                         <LabelWrapper title={'제목'}>
-                            <input type={'text'} placeholder={'제목을 입력해주세요'} {...register('title')} />
+                            <Input type={'text'} placeholder={'제목을 입력해주세요'} {...register('title')} />
                             {errors.title && <ErrorMessageBox errorMessage={errors.title.message}/>}
                         </LabelWrapper>
                     </div>
                     <div>
                         <LabelWrapper title={'문의내용'}>
-                            <textarea placeholder={"문의 내용을 입력해주세요"} {...register('content')} />
+                            <Textarea placeholder={"문의 내용을 입력해주세요"} {...register('content')} />
                             {errors.content && <ErrorMessageBox errorMessage={errors.content.message}/>}
                         </LabelWrapper>
                     </div>
