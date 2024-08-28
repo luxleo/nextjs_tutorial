@@ -1,13 +1,19 @@
 'use client';
 import ReCAPTCHA from "react-google-recaptcha";
-import {useCallback, useRef, useState} from "react";
+import React, {createContext, useCallback, useContext, useRef, useState} from "react";
 import ContactForm from "@/app/subpage/cs/contact-form";
 
-export default function PhaseContainer() {
+const SiteKeyContext = createContext<string>("");
+
+export default function PhaseContainer({siteKey}:{ siteKey: string;}) {
     return (
-        <section className={'w-full'}>
-            <Renderer/>
-        </section>
+        <SiteKeyContext.Provider value={siteKey}>
+            <section className={'w-full flex max-w-[1440px]'}>
+                <ColumnPadding/>
+                <Renderer/>
+                <ColumnPadding/>
+            </section>
+        </SiteKeyContext.Provider>
     );
 };
 
@@ -27,17 +33,20 @@ function Renderer() {
 }
 
 function RecaptchaContainer({
-    incPhase
+                                incPhase
                             }:{incPhase: ()=>void}) {
     const recaptchaREF = useRef<null | ReCAPTCHA>(null);
     const onChangeHandler = () => {
         incPhase();
     }
+    const siteKey = useContext(SiteKeyContext);
     return (
-        <div>
-            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string} ref={recaptchaREF} onChange={onChangeHandler} />
+        <div className={'w-full flex justify-center h-[10rem]'}>
+            <div className={'w-[500px] flex justify-center bg-slate-300 items-center'}>
+                <ReCAPTCHA sitekey={siteKey} ref={recaptchaREF} onChange={onChangeHandler}/>
+            </div>
         </div>
-    )
+    );
 }
 
 function FinalContainer() {
@@ -49,6 +58,14 @@ function FinalContainer() {
             <div>
                 문의가 전송되었습니다.
             </div>
+        </div>
+    )
+}
+
+function ColumnPadding() {
+    return (
+        <div className={'w-0 md:w-[122px]'}>
+
         </div>
     )
 }
