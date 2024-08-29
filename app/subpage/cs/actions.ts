@@ -33,7 +33,9 @@ export const sendVerificationEmail = async (targetEmail: string) => {
     };
 
     // @ts-ignore
-    await transporter.sendMail(options);
+    const response = await transporter.sendMail(options);
+    console.log(response);
+    return verificationCode;
 };
 
 export const createInquiry = async (payload: ContactPayload) => {

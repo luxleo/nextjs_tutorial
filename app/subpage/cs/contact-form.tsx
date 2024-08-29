@@ -3,12 +3,13 @@
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
-import {useCallback, useState} from "react";
+import {useCallback, useContext, useState} from "react";
 import {createInquiry, sendVerificationEmail} from "@/app/subpage/cs/actions";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
+import {FormContext} from "@/app/subpage/cs/PhaseContainer";
 
 const contactFormSchema =z.object({
     customerName: z.coerce.string().min(2, "이름은 2자 이상, 5자 이하 로 입력해주세요").max(5, "이름은 2자 이상, 5자 이하 로 입력해주세요"),
@@ -32,8 +33,9 @@ export type ContactPayload = z.infer<typeof contactFormSchema>;
 export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
     const [verifiedEmail, setVerifiedEmail] = useState<string>("");
     const [step, setStep] = useState<number>(1);
-    const [verificationCode, setVerificationCode] = useState<string>("");
     const [isFetchFinished, setIsFetchFinished] = useState<boolean>(false);
+
+    const formContext = useContext(FormContext);
 
     const form =   useForm({
             resolver: zodResolver(contactFormSchema),
@@ -68,8 +70,20 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
                     console.log(`data : ${JSON.stringify(formData)}`);
                     if (step === 1) {
                         // 유저 이메일로 검증 코드를 보내어 이메일을 확인한다. + verified Email 에 현재 이메일을 저장하여 나중에 수정하지 못하도록 조치한다.
-                        await sendVerificationEmail(formData.email);
+                        // TODO 1 : 폼 전송시 이메일 인증 메일 발송 후 검증 코드 입력하는 Dialog 컴포넌트 렌더링
+                        // TODO 2 : Dialog 검증 코드 입력 일치 할 경우 서버에 문의 저장, => useRef로 form submit 수동 조작
+                        // TODO 3 : 저장후 전송 완료 컴포넌트 렌더링 (step == 3)
+
+                        formContext.controlOTPDialog(true);
+                        // const verificationCode = await sendVerificationEmail(formData.email);
+                        let verificationCode = '';
+                        for (let i = 0; i < 4; i++) {
+                            verificationCode += Math.floor(Math.random() * 10);
+                        }
+
+                        formContext.changeVerificationCode(verificationCode);
                     } else if (step === 2) {
+
                         // 이메일 검증을 위하여 입력한 경우이다. + 검증 코드를 비교하고 일치할 경우 verified Email 과 현재 Email을 비교하여 같은 경우에만 다음으로 진행한다.
                         // 유저가 작성한 inquiry를 서버로 전송하여 저장한다.
                         incPhase();

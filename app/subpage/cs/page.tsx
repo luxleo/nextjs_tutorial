@@ -1,4 +1,3 @@
-import SectionTitle from "@/app/ui/hkdemo/overview/section_title";
 import CommonContainer from "@/app/ui/subpage/commom-container";
 import {Suspense} from "react";
 import PhaseContainer from "@/app/subpage/cs/PhaseContainer";
@@ -8,7 +7,6 @@ export default function Page() {
     const SERVER_RECAPTCHA_SITE_KEY = process.env.SERVER_RECAPTCHA_SITE_KEY;
     return (
         <CommonContainer>
-            {/*<SectionTitle title={'문의사항'}/>*/}
             <CsPageTitle/>
             <Suspense fallback={'Looding ... '}>
                 <PhaseContainer siteKey={SERVER_RECAPTCHA_SITE_KEY as string}/>

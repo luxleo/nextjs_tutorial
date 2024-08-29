@@ -2,31 +2,79 @@
 import ReCAPTCHA from "react-google-recaptcha";
 import React, {createContext, useCallback, useContext, useRef, useState} from "react";
 import ContactForm from "@/app/subpage/cs/contact-form";
+import OTPVerification from "@/app/subpage/cs/otp-verfication";
 
-const SiteKeyContext = createContext<string>("");
+interface FormContext {
+    siteKey: string;
+    isOTPDialogOn: boolean;
+    controlOTPDialog: (value: boolean) => void
+    verificationCode: string;
+    changeVerificationCode: (value: string) => void
+    phase: number;
+    incPhase: () => void
+}
+
+const initialFormContextValue : FormContext= {
+    siteKey: "",
+    isOTPDialogOn: false,
+    controlOTPDialog: (value) => {
+    },
+    verificationCode: "",
+    changeVerificationCode: (value) => {
+    },
+    phase: 1,
+    incPhase: () => {
+    },
+}
+
+export const FormContext = createContext<FormContext>(initialFormContextValue);
 
 export default function PhaseContainer({siteKey}:{ siteKey: string;}) {
+    const [isOTPDialogOn, setIsOTPDialogOn] = useState<boolean>(false);
+    const [verificationCode, setVerificationCode] = useState<string>("");
+    const [phase, setPhase] = useState<number>(1);
+
+    const controlOTPDialog = useCallback((value: boolean) => {
+        setIsOTPDialogOn(value);
+    }, []);
+    const changeVerificationCode = useCallback((value: string) => {
+        setVerificationCode(value);
+    }, []);
+    const incPhase = useCallback(()=>{
+            setPhase(prev => prev + 1);
+        }
+        ,[])
+
+    const FormContextValue : FormContext = {
+        siteKey: siteKey,
+        isOTPDialogOn: isOTPDialogOn,
+        controlOTPDialog: controlOTPDialog,
+        verificationCode: verificationCode,
+        changeVerificationCode: changeVerificationCode,
+        phase: phase,
+        incPhase: incPhase,
+    }
     return (
-        <SiteKeyContext.Provider value={siteKey}>
-            <section className={'w-full flex max-w-[1440px]'}>
+        //TODO: verification dialog 여기서 띄운다.
+        <FormContext.Provider value={FormContextValue}>
+            <section className={'w-full flex max-w-[1440px] h-full'}>
                 <ColumnPadding/>
                 <Renderer/>
                 <ColumnPadding/>
+                {isOTPDialogOn && <OTPVerification />}
             </section>
-        </SiteKeyContext.Provider>
+        </FormContext.Provider>
     );
 };
 
-//TODO: context provider로 구현 해보자
 function Renderer() {
-    const [phase, setPhase] = useState<number>(1); // INFO: phase 1 : recaptcha , phase 2 : form validation && email verification , phase 3 : email send
-    const incPhase = useCallback(() => setPhase(prev => ++prev), []);
+    const formContext = useContext(FormContext);
 
-    switch (phase){
+    switch (formContext.phase){
         case 1:
-            return <RecaptchaContainer incPhase={incPhase}/>;
+            return <RecaptchaContainer incPhase={formContext.incPhase}/>;
         case 2:
-            return <ContactForm incPhase={incPhase}/>
+            return <ContactForm incPhase={formContext.incPhase}/>
         case 3:
             return <FinalContainer/>
     }
@@ -39,11 +87,11 @@ function RecaptchaContainer({
     const onChangeHandler = () => {
         incPhase();
     }
-    const siteKey = useContext(SiteKeyContext);
+    const formContext = useContext(FormContext);
     return (
-        <div className={'w-full flex justify-center h-[10rem]'}>
+        <div className={'w-full flex justify-center h-full'}>
             <div className={'w-[500px] flex justify-center bg-slate-300 items-center'}>
-                <ReCAPTCHA sitekey={siteKey} ref={recaptchaREF} onChange={onChangeHandler}/>
+                <ReCAPTCHA sitekey={formContext.siteKey} ref={recaptchaREF} onChange={onChangeHandler}/>
             </div>
         </div>
     );

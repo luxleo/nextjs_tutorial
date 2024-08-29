@@ -1,9 +1,10 @@
 import Image from "next/image";
 import {locationData} from "@/app/lib/hk/data";
+import styles from './footer.module.css'
 
 export default function Footer() {
     return (
-        <div id={'root-footer'} className={'w-full flex flex-col md:flex-row h-[25vh] md:h-[15vh] bg-neutral-800 items-center md:px-[5%] md:text-sm'}>
+        <div id={'root-footer'} className={`${styles.footer} w-full flex flex-col md:flex-row h-[25vh] md:h-[15vh] bg-neutral-800 items-center md:px-[5%] md:text-sm`}>
             <div
                 className={'grow order-2 md:order-1 md:basis-0 flex text-xs md:text-sm flex-col text-neutral-300 md:items-start md:justify-start'}>
                 <div className={'flex gap-x-4'}>

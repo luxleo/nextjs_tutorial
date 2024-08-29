@@ -26,9 +26,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSansKr.className} antialiased `}>
+      <body className={`${notoSansKr.className} antialiased`}>
         <NavBar/>
-        {children}
+        <section className={'min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-15vh)]'}>
+          {children}
+        </section>
         <Footer/>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GAID as string}/>

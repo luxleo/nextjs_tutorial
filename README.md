@@ -215,3 +215,15 @@
 ## Only plain objects, and a few built-ins, can be passed to Client Components from Server Components. Classes or null prototypes are not supported - 24.08.26
     next 14 버젼에서 서버 컴포넌트로 부터 클라이언트 컴포넌트에 fetch의 결과를 전달할 때 오직 plain object, 혹은 원시타입 만 가능하다
     따라서 Promise를 반환하면 오류가 발생한다.
+
+## footer 위치 고정 - 24.08.29
+    content 의 길이가 화면 사이즈 보다 작은 경우 footer가 viewport 내부에 들어오는 문제를 해결한다.
+    -> content wrapper를 두고 이 wrapper의 높이를 calc(100vh-`footer_height`)로 설정해준다.
+
+## ContextAPI - 24.08.29
+    prop drilling 으로 상태 공유 하지 않고 , composite component 인 경우에 zustand 등의 전역 스토어를 
+    이용하지 않고 context API를 이용하여 처리한다.
+
+## shadcn- OTP ui 커스텀 - 24.08.29
+    size 바로 적용하지 않고 컴포넌트 까서 설정 해주어야한다.
+[참조코드](./components/ui/input-otp.tsx)

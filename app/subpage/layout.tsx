@@ -6,7 +6,7 @@ export default async function Layout({children}:
                                        children: ReactNode
                                    }){
     return (
-        <div className={'w-full'}>
+        <div className={'w-full h-full'}>
             <Suspense fallback={<div>loading...</div>}>
                 <PageHeader/>
                 <section className={'flex w-full'}>
