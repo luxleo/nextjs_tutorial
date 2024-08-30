@@ -20,7 +20,7 @@ const contactFormSchema =z.object({
     // TODO: 1. 문의 종류 : ("프로젝트 문의","채용 문의","기타 문의") 2. 첨부파일 ( 크기제한), 3. 이메일 주소 인증
 })
 
-const initialContactFormValue : ContactPayload = {
+export const initialContactFormValue : ContactPayload = {
     customerName: "",
     email: "",
     title: "",
@@ -73,14 +73,17 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
                         // TODO 1 : 폼 전송시 이메일 인증 메일 발송 후 검증 코드 입력하는 Dialog 컴포넌트 렌더링
                         // TODO 2 : Dialog 검증 코드 입력 일치 할 경우 서버에 문의 저장, => useRef로 form submit 수동 조작
                         // TODO 3 : 저장후 전송 완료 컴포넌트 렌더링 (step == 3)
-
+                        formContext.fillInquiryForm(formData);
                         formContext.controlOTPDialog(true);
-                        // const verificationCode = await sendVerificationEmail(formData.email);
+                        // const verificationCode = await sendVerificationEmail(formData.emails);
+                        // if (verificationCode === 'fail') {
+                        //     formContext.controlOTPDialog(false);
+                        //     return;
+                        // }
                         let verificationCode = '';
                         for (let i = 0; i < 4; i++) {
                             verificationCode += Math.floor(Math.random() * 10);
                         }
-
                         formContext.changeVerificationCode(verificationCode);
                     } else if (step === 2) {
 
@@ -120,7 +123,7 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
                                                     프로젝트 문의
                                                 </SelectItem>
                                                 <SelectItem value={'RECRUIT'}>
-                                                    채용
+                                                    채용 문의
                                                 </SelectItem>
                                                 <SelectItem value={'ETC'}>
                                                     기타 문의

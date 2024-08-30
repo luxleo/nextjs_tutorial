@@ -6,18 +6,20 @@ import nodemailer from 'nodemailer';
 import {Template} from './react-email/Template';
 
 const URL_PREFIXED = `${SERVER_URL_PREFIXED}/api/safe/inquiry`;
+const GMAIL_AUTHENTICATION = process.env.GMAIL_AUTHENTICATION;
 
 const URLS = {
     "create_inquiry": `${URL_PREFIXED}/create`
 }
 
+//TODO: 발신전용 메일로 교환해주어야한다. => G_SUITE 이용 권장
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
         user: 'lux00leo@gmail.com',
-        pass: 'zjsdbvyaxjydmifc',
+        pass: GMAIL_AUTHENTICATION,
     },
 })
 
@@ -28,13 +30,19 @@ export const sendVerificationEmail = async (targetEmail: string) => {
     const options = {
         from: 'lux00leo@gmail.com',
         to: targetEmail,
-        subject: 'hk verification email test',
+        subject: 'hk verification emails test',
         html: emailHtml,
     };
-
-    // @ts-ignore
-    const response = await transporter.sendMail(options);
+    let isEmailSuccessfullyDelivered = true;
+    // TODO: 존재하지 않는 이메일로 보내면 어떻게 되는지 => SMTP 프로토콜로 전달만 하기 때문에 전송 완료 여부는 알 수 없다.
+    const response = await transporter.sendMail(options,(err,info)=>{
+        if (err) {
+            isEmailSuccessfullyDelivered = false;
+            console.log(err);
+        }
+    });
     console.log(response);
+    if(!isEmailSuccessfullyDelivered) return "fail";
     return verificationCode;
 };
 

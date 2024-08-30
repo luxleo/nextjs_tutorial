@@ -1,7 +1,7 @@
 'use client';
 import ReCAPTCHA from "react-google-recaptcha";
 import React, {createContext, useCallback, useContext, useRef, useState} from "react";
-import ContactForm from "@/app/subpage/cs/contact-form";
+import ContactForm, {ContactPayload, initialContactFormValue} from "@/app/subpage/cs/contact-form";
 import OTPVerification from "@/app/subpage/cs/otp-verfication";
 
 interface FormContext {
@@ -12,9 +12,11 @@ interface FormContext {
     changeVerificationCode: (value: string) => void
     phase: number;
     incPhase: () => void
+    inquiryFormPayload: ContactPayload;
+    fillInquiryForm: (form: ContactPayload) => void;
 }
 
-const initialFormContextValue : FormContext= {
+const initialFormContextValue: FormContext = {
     siteKey: "",
     isOTPDialogOn: false,
     controlOTPDialog: (value) => {
@@ -25,7 +27,11 @@ const initialFormContextValue : FormContext= {
     phase: 1,
     incPhase: () => {
     },
-}
+    inquiryFormPayload: initialContactFormValue,
+    fillInquiryForm: (form) => {
+
+    }
+};
 
 export const FormContext = createContext<FormContext>(initialFormContextValue);
 
@@ -33,6 +39,7 @@ export default function PhaseContainer({siteKey}:{ siteKey: string;}) {
     const [isOTPDialogOn, setIsOTPDialogOn] = useState<boolean>(false);
     const [verificationCode, setVerificationCode] = useState<string>("");
     const [phase, setPhase] = useState<number>(1);
+    const [inquiryFormPayload, setInquiryFormPayload] = useState<ContactPayload>(initialContactFormValue);
 
     const controlOTPDialog = useCallback((value: boolean) => {
         setIsOTPDialogOn(value);
@@ -42,6 +49,9 @@ export default function PhaseContainer({siteKey}:{ siteKey: string;}) {
     }, []);
     const incPhase = useCallback(()=>{
             setPhase(prev => prev + 1);
+        },[])
+    const fillInquiryForm = useCallback((form: ContactPayload)=> {
+            setInquiryFormPayload(form);
         }
         ,[])
 
@@ -53,6 +63,8 @@ export default function PhaseContainer({siteKey}:{ siteKey: string;}) {
         changeVerificationCode: changeVerificationCode,
         phase: phase,
         incPhase: incPhase,
+        inquiryFormPayload: inquiryFormPayload,
+        fillInquiryForm: fillInquiryForm,
     }
     return (
         //TODO: verification dialog 여기서 띄운다.
