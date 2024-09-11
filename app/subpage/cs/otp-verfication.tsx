@@ -48,7 +48,6 @@ function FormOTP({verificationCode}:{
         // TODO: 성공로직 =>  서버에 전달하고 마무리 스테이지로 넘긴다.
         await createInquiry(formContext.inquiryFormPayload)
             .then(res => {
-                console.log("문의 사항 생성에 성공했습니다.")
             formContext.incPhase();
             formContext.controlOTPDialog(false);
         });

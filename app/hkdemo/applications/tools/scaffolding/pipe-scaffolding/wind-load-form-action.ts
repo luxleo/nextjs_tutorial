@@ -9,9 +9,7 @@ import {windLoadValue} from "@/app/hkdemo/applications/tools/scaffolding/pipe-sc
 export async function calcWindLoad(windLoadValue: windLoadValue) {
     const Vz = windLoadValue.defaultVelocity * getKzr(windLoadValue) * getKzt(windLoadValue) * windLoadValue.importanceCoefficient;
     const Qz = 0.5 * 1.22 * Math.pow(Vz, 2);
-    console.log(`Vz : ${Vz}`);
-    console.log(`Qz : ${Qz}`);
-    console.log(`Cf : ${getWindForceEfficient(windLoadValue)}`);
+
     const result =  Qz * getGF(windLoadValue) * getWindForceEfficient(windLoadValue);
     return Math.round(result) / 1000;
 }
@@ -113,7 +111,6 @@ function getDefaultWindForceEfficient(windLoadValue : windLoadValue) {
         y1 = 1.6;
         y2 = 2.0;
     }
-    console.log(`C0 = ${(y2 - y1) / (x2 - x1) * (solidityRatio - x1) + y1}`)
     return (y2 - y1) / (x2 - x1) * (solidityRatio - x1) + y1;
 }
 

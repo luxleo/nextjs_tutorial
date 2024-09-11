@@ -38,16 +38,13 @@ export const sendVerificationEmail = async (targetEmail: string) => {
     const response = await transporter.sendMail(options,(err,info)=>{
         if (err) {
             isEmailSuccessfullyDelivered = false;
-            console.log(err);
         }
     });
-    console.log(response);
     if(!isEmailSuccessfullyDelivered) return "fail";
     return verificationCode;
 };
 
 export const createInquiry = async (payload: ContactPayload) => {
-    console.log(`============ server comp called payload : ${JSON.stringify(payload)}\nrequest to : ${URLS.create_inquiry}`);
     return await fetch(URLS.create_inquiry, {
         method: "POST",
         headers: {

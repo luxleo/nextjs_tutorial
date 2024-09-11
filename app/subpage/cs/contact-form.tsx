@@ -44,30 +44,12 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
     const register = form.register;
     const handleSubmit = form.handleSubmit;
     const errors = form.formState.errors;
-    const submitTester1 = () => {
-        console.log("================submit tester 1");
-    }
-    const submitTester2 = () => {
-        console.log("================submit tester 2");
-    }
-    const onSubmitHandler = useCallback(async (payload: ContactPayload) => {
-        console.log(JSON.stringify(payload));
-        const isOk = await createInquiry(payload);
-        if (isOk) {
-            setIsFetchFinished(true);
-        }
-    },[])
-
-    const onEmailChangeHandler = useCallback(()=>{
-
-    },[])
 
     return (
         <>
             {!isFetchFinished  &&
                 <Form {...form}>
                 <form className={'w-full flex flex-col gap-y-6'} onSubmit={handleSubmit(async formData => {
-                    console.log(`data : ${JSON.stringify(formData)}`);
                     if (step === 1) {
                         // 유저 이메일로 검증 코드를 보내어 이메일을 확인한다. + verified Email 에 현재 이메일을 저장하여 나중에 수정하지 못하도록 조치한다.
                         // TODO 1 : 폼 전송시 이메일 인증 메일 발송 후 검증 코드 입력하는 Dialog 컴포넌트 렌더링

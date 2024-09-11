@@ -17,7 +17,6 @@ export default function HeroContainer() {
 
     const wheelHandler = (e : WheelEvent<HTMLDivElement>) => {
         const pageHeight = window.innerHeight; // 화면 세로길이, 100vh와 같습니다.
-        const DIVIDER_HEIGHT = 1;
         if (pageHeight != globalHeight) {
             setGlobalHeight(pageHeight);
         }
@@ -58,11 +57,8 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log("kiki");
-                console.log(document.body.scrollHeight)
                 const innerHeight = window.innerHeight;
                 const diff = document.body.scrollHeight - window.scrollY;
-                console.log(diff > innerHeight && diff < innerHeight * 2)
                 setCurrentPage(5);
                 // setCurrentWindowBottom(1);
             }
@@ -75,7 +71,6 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('kikiki1')
                 setCurrentPage(1);
             } else if (scrollTop <= pageHeight * 2) {
                 //현재 2페이지
@@ -84,7 +79,6 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('kikiki2')
                 setCurrentPage(2);
             } else if (scrollTop <= pageHeight * 3) {
                 // 현재 3페이지
@@ -93,21 +87,18 @@ export default function HeroContainer() {
                     left: 0,
                     behavior: "smooth",
                 });
-                console.log('kikiki3')
                 setCurrentPage(3);
             }
-            else {
-                window.scrollTo({
-                    top: pageHeight* 3,
-                    left: 0,
-                    behavior: "smooth",
-                });
-                console.log('kikiki4')
-                setCurrentPage(4);
-            }
+            // else {
+            //     window.scrollTo({
+            //         top: pageHeight* 3,
+            //         left: 0,
+            //         behavior: "smooth",
+            //     });
+            //     setCurrentPage(4);
+            // }
         }
     }
-    // const throttleWheelHandler = useMemo(() => throttling(600), []);
 
     useEffect(() => {
         function preventDefaultWheel (e : any) {
@@ -121,6 +112,16 @@ export default function HeroContainer() {
             //     });
             //     setCurrentPage(4);
             // }
+            const pageHeight = window.innerHeight;
+            const {deltaY} = e;
+            if (deltaY <0 && window.scrollY > pageHeight * 3) {
+                window.scrollTo({
+                    top: pageHeight * 3,
+                    left: 0,
+                    behavior: "smooth",
+                });
+                setCurrentPage(4);
+            }
         }
 
 
