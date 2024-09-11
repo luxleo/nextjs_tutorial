@@ -55,7 +55,7 @@ export default function Hero() {
     })
 
     return (
-        <section id={'index1'} className={'h-[100vh] w-full'}>
+        <section id={'index1'} className={'h-[100vh] w-full sticky top-0'}>
             <div className={'relative w-full h-full overflow-hidden'}>
                 {heroImageUrls.map((url,idx) => (
                     <HeroImageContainer key={idx} idx={idx} currentIdx={heroIdx} imageURL={`${heroImageUrlPrefix}${url}`}/>

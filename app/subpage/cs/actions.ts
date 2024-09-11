@@ -3,7 +3,7 @@ import { render } from '@react-email/components';
 import {SERVER_URL_PREFIXED} from "@/app/subpage/prefixed";
 import {ContactPayload} from "@/app/subpage/cs/contact-form";
 import nodemailer from 'nodemailer';
-import {Template} from './react-email/Template';
+import Template from "@/app/emails/InquiryEmailVerificationEmail";
 
 const URL_PREFIXED = `${SERVER_URL_PREFIXED}/api/safe/inquiry`;
 const GMAIL_AUTHENTICATION = process.env.GMAIL_AUTHENTICATION;
@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendVerificationEmail = async (targetEmail: string) => {
     const verificationCode = generateVerificationCode();
-    const emailHtml = await render(Template({verification_code:  verificationCode}));
+    const emailHtml = await render(Template({verificationCode:  verificationCode}));
 
     const options = {
         from: 'lux00leo@gmail.com',

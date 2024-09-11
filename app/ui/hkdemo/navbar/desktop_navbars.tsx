@@ -99,6 +99,7 @@ function NavMainLink({link,responsiveStyle}:
     return (
         <>
             {link.href === undefined ?
+
                 <div className={'px-2'} onMouseEnter={onMouseEnterHandler}>
                 <p className={clsx('relative cursor-pointer flex items-center gap-2 text-xl text-black hover:text-inherit',
                     {

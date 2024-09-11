@@ -22,80 +22,89 @@ export default function HeroContainer() {
             setGlobalHeight(pageHeight);
         }
         const {deltaY} = e;
-        const {scrollTop} = outerDivRef.current as HTMLDivElement; // 스크롤 위쪽 끝부분 위치
-
+        const scrollTop = document.documentElement.scrollTop;
 
         if (deltaY > 0) {
             // 스크롤 내릴 때
             if (scrollTop >= 0 && scrollTop < pageHeight) {
                 //현재 1페이지
-                outerDivRef.current?.scrollTo({
-                    top: (pageHeight+DIVIDER_HEIGHT),
+                //outerDivRef.current?
+                window.scrollTo({
+                    top: pageHeight,
                     left: 0,
                     behavior: "smooth",
                 });
                 setCurrentPage(2);
-            } else if (scrollTop > pageHeight && scrollTop < (pageHeight+DIVIDER_HEIGHT) * 2 - 1) {
+            } else if (scrollTop < pageHeight * 2 ) {
                 //현재 2페이지
-                outerDivRef.current?.scrollTo({
-                    top: (pageHeight+DIVIDER_HEIGHT)*2,
+                window.scrollTo({
+                    top: pageHeight*2,
                     left: 0,
                     behavior: "smooth",
                 });
                 setCurrentPage(3);
-            } else {
+            } else if (scrollTop < pageHeight * 3 ) {
                 // 현재 3페이지
-                outerDivRef.current?.scrollTo({
-                    top: (pageHeight+DIVIDER_HEIGHT)*3,
+                window.scrollTo({
+                    top: pageHeight*3,
                     left: 0,
                     behavior: "smooth",
                 });
                 setCurrentPage(4);
-            } //else {
-            //     // 현재 4페이지
-            //     window.scrollTo({
-            //         top: document.body.scrollHeight,
-            //         left: 0,
-            //         behavior: "smooth",
-            //     });
-            //     setCurrentPage(5);
-            //     setCurrentWindowBottom(1);
-            // }
+            } else {
+                // 현재 4페이지
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    left: 0,
+                    behavior: "smooth",
+                });
+                console.log("kiki");
+                console.log(document.body.scrollHeight)
+                const innerHeight = window.innerHeight;
+                const diff = document.body.scrollHeight - window.scrollY;
+                console.log(diff > innerHeight && diff < innerHeight * 2)
+                setCurrentPage(5);
+                // setCurrentWindowBottom(1);
+            }
         } else {
             // 스크롤 올릴 때
-            if (scrollTop >= 0 && scrollTop <= pageHeight + DIVIDER_HEIGHT) {
+            if (scrollTop >= 0 && scrollTop <=pageHeight ) {
                 //현재 1페이지
-                outerDivRef.current?.scrollTo({
+                window.scrollTo({
                     top: 0,
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('kikiki1')
                 setCurrentPage(1);
-            } else if (scrollTop >= pageHeight && scrollTop <= (pageHeight + DIVIDER_HEIGHT) * 2) {
+            } else if (scrollTop <= pageHeight * 2) {
                 //현재 2페이지
-                outerDivRef.current?.scrollTo({
-                    top: (pageHeight + DIVIDER_HEIGHT),
+                window.scrollTo({
+                    top: pageHeight,
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('kikiki2')
                 setCurrentPage(2);
-            } else if (scrollTop >= pageHeight && scrollTop <= (pageHeight + DIVIDER_HEIGHT) * 3 && window.scrollY == 0) {
+            } else if (scrollTop <= pageHeight * 3) {
                 // 현재 3페이지
-                outerDivRef.current?.scrollTo({
-                    top: (pageHeight + DIVIDER_HEIGHT) * 2,
+                window.scrollTo({
+                    top: pageHeight* 2,
                     left: 0,
                     behavior: "smooth",
                 });
+                console.log('kikiki3')
                 setCurrentPage(3);
             }
-            // } else {
-            //     window.scrollTo({
-            //         top: 0,
-            //         left: 0,
-            //         behavior: "smooth",
-            //     });
-            //     setCurrentPage(4);
-            // }
+            else {
+                window.scrollTo({
+                    top: pageHeight* 3,
+                    left: 0,
+                    behavior: "smooth",
+                });
+                console.log('kikiki4')
+                setCurrentPage(4);
+            }
         }
     }
     // const throttleWheelHandler = useMemo(() => throttling(600), []);
@@ -129,7 +138,7 @@ export default function HeroContainer() {
     const throttleWheelHandler = useMemo(() => throttling(600), []);
     return (
         <div id={'indexContainer'} ref={outerDivRef}
-             className={"relative md:h-[85vh] md:overflow-y-scroll w-full justify-center items-center"}
+             className={"relative w-full justify-center items-center"}
              onWheel={(e) => {
                  throttleWheelHandler(() => wheelHandler(e));
              }}
@@ -138,17 +147,14 @@ export default function HeroContainer() {
                   pageHeight={globalHeight}/>
             <Hero/>
             {linksForLandingPage.map(data => (
-                <div key={data.title}>
-                    <div className={'w-full hidden md:block h-[1px] bg-neutral-400'}></div>
-                    <div id={'index2'} className={'w-full h-[100vh]'}>
-                        <SectionContainer title={data.title} description={data.description} sub_link={data.sub_link}
-                                          bg_URL={data.bg_URL}/>
-                    </div>
-                </div>
+                <SectionContainer key={data.title} title={data.title} description={data.description}
+                                  sub_link={data.sub_link}
+                                  bg_URL={data.bg_URL}/>
+
             ))}
 
             <div className={clsx('sticky hidden bottom-1 md:flex flex-col items-center justify-end', {
-                'md:hidden': currentPage === 4
+                'md:hidden': currentPage === 5
             })}>
                 <div className={'bounce-icon'}>
                     <IconContext.Provider value={{color: 'white', size: '1.5rem'}}>
@@ -160,7 +166,7 @@ export default function HeroContainer() {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 const Dot = ({num, currentPage, contentPointer, setCurrentPage, pageHeight, content}: {
@@ -179,7 +185,8 @@ const Dot = ({num, currentPage, contentPointer, setCurrentPage, pageHeight, cont
         })}
              onClick={() => {
                  setCurrentPage(num);
-                 contentPointer.current?.scrollTo({
+                 // contentPointer.current?
+                 window.scrollTo({
                          top: (pageHeight + DIVIDER_HEIGHT) * (num - 1),
                          left: 0,
                          behavior: 'smooth',
@@ -195,7 +202,7 @@ const Dot = ({num, currentPage, contentPointer, setCurrentPage, pageHeight, cont
                     transition: "background-color 0.5s",
                 }}
                 onClick={() => {
-                    contentPointer.current?.scrollTo({
+                    window.scrollTo({
                         top: num === 1 ? 0 : (pageHeight + DIVIDER_HEIGHT) * (num - 1),
                         left: 0,
                         behavior: "smooth",
@@ -248,7 +255,7 @@ const Dots = ({ currentPage,contentPointer, setCurrentPage,pageHeight }:{
 
 function SectionContainer(data : linkForLandingPage){
     return (
-        <div className={'w-full relative h-full flex flex-col justify-center items-center'}>
+        <div className={'w-full sticky top-0 h-[100vh] flex flex-col justify-center items-center'}>
             <Image src={data.bg_URL} alt={'hero image'}
                    fill
                    sizes={'50vw'}

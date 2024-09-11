@@ -1,8 +1,23 @@
-import {Link,Hr, Img,Heading,Section, Html, Text, Tailwind, Head, Preview,Body,Container} from "@react-email/components";
+import {
+    Link,
+    Hr,
+    Img,
+    Heading,
+    Section,
+    Html,
+    Text,
+    Tailwind,
+    Head,
+    Preview,
+    Body,
+    Container,
+    Markdown
+} from "@react-email/components";
 
-export default function Template() {
+export default function Template({verificationCode}:{
+    verificationCode: string;
+}) {
     const previewText = `Verification Code HK E&C`;
-    const verificationCode = "1234";
     return (
         <Html lang={'ko'}>
             <Head/>
@@ -12,51 +27,35 @@ export default function Template() {
                     <Container className={'p-[20px] my-0 mx-auto bg-[#eee]'} >
                         <Section style={coverSection}>
                             <Section style={imageSection}>
-                                {/*<Img*/}
-                                {/*    src={`${baseUrl}/static/aws-logo.png`}*/}
-                                {/*    width="75"*/}
-                                {/*    height="45"*/}
-                                {/*    alt="AWS's Logo"*/}
-                                {/*/>*/}
+                                {/*필요한 에셋을 S3로 부터 가져오도록 한다.*/}
+                                <Img
+                                    src={`/hkenc_logo.png`}
+                                    width="75"
+                                    height="45"
+                                    alt="AWS's Logo"
+                                />
                             </Section>
                             <Section style={upperSection}>
-                                <Heading style={h1}>Verify your email address</Heading>
+                                <Heading style={h1}>이메일 주소 인증</Heading>
                                 <Text style={mainText}>
-                                    Thanks for your inquiry to HKE&C. We
-                                    want to make sure it's really you. Please enter the following
-                                    verification code when prompted. If you don&apos;t want to
-                                    create an account, you can ignore this message.
+                                    HKE&C에 문의 해주심에 감사드립니다.
+                                    문의에 원활한 답변을 하기 위해 아래의 인증코드를 입력해주세요.
                                 </Text>
                                 <Section style={verificationSection}>
                                     <Text style={verifyText}>Verification code</Text>
 
                                     <Text style={codeText}>{verificationCode}</Text>
-                                    <Text style={validityText}>
-                                        (This code is valid until your current browser closed)
-                                    </Text>
                                 </Section>
                             </Section>
                             <Hr />
                             <Section style={lowerSection}>
                                 <Text style={cautionText}>
-                                    Amazon Web Services will never email you and ask you to disclose
-                                    or verify your password, credit card, or banking account number.
+                                    주)HK E&C에 문의하신적이 없다면, 본 메일을 무시 해주세요
                                 </Text>
                             </Section>
                         </Section>
                         <Text style={footerText}>
-                            This message was produced and distributed by Amazon Web Services,
-                            Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
-                            Services, Inc.. All rights reserved. AWS is a registered trademark
-                            of{" "}
-                            <Link href="https://amazon.com" target="_blank" style={link}>
-                                Amazon.com
-                            </Link>
-                            , Inc. View our{" "}
-                            <Link href="https://amazon.com" target="_blank" style={link}>
-                                privacy policy
-                            </Link>
-                            .
+                            copyright ⓒ HK E&C. All right Reserved.
                         </Text>
                     </Container>
                 </Body>
@@ -148,6 +147,6 @@ const verificationSection = {
     justifyContent: "center",
 };
 
-const mainText = { ...text, marginBottom: "14px" };
+const mainText = { ...text, marginBottom: "14px", whiteSpace: 'pre-line' };
 
 const cautionText = { ...text, margin: "0px" };

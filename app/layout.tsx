@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${notoSansKr.className} antialiased`}>
         <NavBar/>
-        <section className={'min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-15vh)]'}>
+        <section className={'min-h-[calc(100vh-25vh)] md:min-h-[calc(100vh-20vh)]'}>
           {children}
         </section>
         <Footer/>

@@ -75,15 +75,15 @@ export default function ContactForm({incPhase}:{incPhase: ()=>void}) {
                         // TODO 3 : 저장후 전송 완료 컴포넌트 렌더링 (step == 3)
                         formContext.fillInquiryForm(formData);
                         formContext.controlOTPDialog(true);
-                        // const verificationCode = await sendVerificationEmail(formData.emails);
-                        // if (verificationCode === 'fail') {
-                        //     formContext.controlOTPDialog(false);
-                        //     return;
-                        // }
-                        let verificationCode = '';
-                        for (let i = 0; i < 4; i++) {
-                            verificationCode += Math.floor(Math.random() * 10);
+                        const verificationCode = await sendVerificationEmail(formData.email);
+                        if (verificationCode === 'fail') {
+                            formContext.controlOTPDialog(false);
+                            return;
                         }
+                        // let verificationCode = '';
+                        // for (let i = 0; i < 4; i++) {
+                        //     verificationCode += Math.floor(Math.random() * 10);
+                        // }
                         formContext.changeVerificationCode(verificationCode);
                     } else if (step === 2) {
 
